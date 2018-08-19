@@ -1,0 +1,12 @@
+table{
+ border-collapse: collapse;
+ border-spacing: 5px;
+}
+
+th {
+background-color: #000000;
+}
+
+td{
+ border: 1px gray solid;
+}

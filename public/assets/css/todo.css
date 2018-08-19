@@ -1,0 +1,28 @@
+div.todo{
+}
+div.todo-box{
+	display:inline-block;
+	/display:inline;
+	/zoom:1;
+	text-align:left;
+	width:20em;
+}
+ul.todo{
+	margin:16px 0;
+	padding:0;
+}
+ul.todo li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+ul.todo li a,
+ul.todo li a:visited{
+	margin-right:4px;
+	color:#ff5577;
+	text-decoration:none;
+	font-weight:900;
+}
+input.action{
+	width:15em;
+}
