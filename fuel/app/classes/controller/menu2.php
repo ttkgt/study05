@@ -7,9 +7,9 @@ class Controller_menu2 extends Controller
 		if(!isset($_SESSION)){
 			session_start();
 		}
-		$_SESSION['id']     = '11';
-		$_SESSION['itemCd'] = 'H11';
-		$_SESSION['area']   = '2号棟　印刷工程';
+		$_SESSION['id']     = '15';
+		$_SESSION['itemCd'] = 'H15';
+		$_SESSION['area']   = '第１工場';
 		
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
