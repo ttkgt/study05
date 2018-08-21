@@ -9,8 +9,8 @@ class Controller_menu2 extends Controller
 		}
 		$_SESSION['id']     = '20';
 		$_SESSION['itemCd'] = 'H20';
-		//$_SESSION['area']   = '2号棟　印刷工程';
 		$_SESSION['area']   = '第１工場';
+		//$_SESSION['area']   = '第２工場';
 		
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
