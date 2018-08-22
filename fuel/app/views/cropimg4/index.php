@@ -250,7 +250,7 @@
 </head> 
 <body> 
 <!--<h1>cropimg デモでーす。</h1>-->
-<?php if($_SESSION['area'] == '2号棟　印刷工程'){?> 
+<?php if($_SESSION['area'] == '第２工場'){?> 
     <?php if($_SESSION['img_top'] == 0){?> 
             <img src="http://localhost/study05/assets/img/koujou1.png" alt="crop img" class="cropimg">
     <?php }else{?> 
