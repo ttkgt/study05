@@ -92,18 +92,18 @@
 <!-- CODE -->
 
 <ul class="ddmenu">
-			<li><a href="#">HOME</a></li>
+			<li><a href="#">メニュー01</a></li>
 			<!--ニュース-->
-			<li><a href="#">ニュース</a>
+			<li><a href="#">メニュー02</a>
 				<ul>
-					<li><a href="#">新製品 &raquo;</a>
+					<li><a href="#">メニュー02-01 &raquo;</a>
 						<ul>
 							<li><a href="#">ハードウェア</a></li>
 							<li><a href="#">ソフトウェア</a></li>
 						</ul>
 					</li>
-					<li><a href="#">新サービス</a></li>
-					<li><a href="#">弊社について</a></li>
+					<li><a href="#">メニュー02-02</a></li>
+					<li><a href="#">メニュー02-03</a></li>
 					<li><a href="#">fuelPHP勉強 &raquo;</a>
 						<ul>
 							<li><a href="#"><?php echo Html::anchor('kouji/index','study05'); ?></a></li>
@@ -127,7 +127,7 @@
 				</ul>
 			</li>
 			<!--新製品・技術-->
-			<li><a href="#">製品・技術</a>
+			<li><a href="#">メニュー03</a>
 				<ul>
 					<li><a href="#">ハードウェア &raquo;</a>
 						<ul>
@@ -148,7 +148,7 @@
 				</ul>
 			</li>
 			<!--会社情報-->
-			<li><a href="#">会社情報</a>
+			<li><a href="#">メニュー04</a>
 				<ul>
 					<li><a href="#">会社概要 &raquo;</a>
 						<ul>
@@ -167,7 +167,7 @@
 				</ul>
 			</li>
 			<!--お問い合わせ-->
-			<li><a href="#">お問い合わせ</a>
+			<li><a href="#">メニュー05</a>
 				<ul class="sub">
 					<li><a href="#">よくあるご質問 &raquo;</a>
 						<ul>
