@@ -232,10 +232,10 @@
 </noscript>
 
 <!--jQueryとプラグイン-->
-<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+<!--<script src="http://code.jquery.com/jquery-2.1.1.js"></script>-->
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.22/jquery-ui.min.js"></script>-->
 <!--jquery-3.3.1.min.jsはscrolltableができない-->
-<!--<script src="http://localhost/study05/assets/js/jquery-3.3.1.min.js"></script>-->
+<script src="http://localhost/study05/assets/js/jquery-2.1.1.js"></script>
 <script src="http://localhost/study05/assets/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.mousewheel.js"></script> 
 <script src="http://localhost/study05/assets/js/cropimg.jquery.js"></script> 
