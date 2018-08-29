@@ -120,6 +120,7 @@
 							<li><a href="#"><?php echo Html::anchor('cropimg2/index','cropimg2'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('cropimg3/index','cropimg3'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('cropimg4/index','cropimg4'); ?></a></li>
+							<li><a href="#"><?php echo Html::anchor('cropimg4backup/index','cropimg4backup'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('chromeContext/index','chromeContext'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('contextmenu/index','contextmenu'); ?></a></li>
 						</ul>
