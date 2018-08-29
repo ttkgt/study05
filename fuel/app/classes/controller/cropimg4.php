@@ -11,6 +11,7 @@ class Controller_cropimg4 extends Controller
 		}
 		$itemCd = $_SESSION['itemCd'];
 		$area   = $_SESSION['area'];
+		$background= $_SESSION['background'];
 
 		$kensakumoji = "";
 
@@ -71,6 +72,7 @@ class Controller_cropimg4 extends Controller
 		}
 		$itemCd = $_SESSION['itemCd'];
 		$area   = $_SESSION['area'];
+		$background= $_SESSION['background'];
 		
 		$item = Model_Item::find(Input::post('id'));
 		$val  = Model_Item::validate('edit');

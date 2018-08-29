@@ -399,11 +399,14 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 			$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 			$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-			$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-			$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-			//$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-			//$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-			$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+                            $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+                            $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+                        }else{
+                            $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+                            $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+                        }
+                        $('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 			$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
 			$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
@@ -414,21 +417,27 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 			$('#'+$itemCd[i]).css('text-align','left');			//position:ボックス内の文字を左寄せに指定する
 			if ($itemCd[i] == '<?php echo $_SESSION['itemCd'];?>'){
-				$('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
-				//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-				//JSONのnullは""にキャストされている
-				//if($itemTop[i] != null && $itemLeft[i] != null){
-				if($itemTop[i] != "" && $itemLeft[i] != ""){
-					sessionStorage.setItem('newOnOff',"on");
-				}
-				sessionStorage.setItem('targetI',i);
-				//sessionStorage.setItem('targetItemCd',$itemCd[i]);
-			}else{
-				$('#'+$itemCd[i]).css('z-index','1');
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-				//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-			}	
+                            $('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
+                            if ('<?php echo $_SESSION['background'];?>'=='1'){
+                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+                            }else{
+                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+                            }
+                            //JSONのnullは""にキャストされている
+                            //if($itemTop[i] != null && $itemLeft[i] != null){
+                            if($itemTop[i] != "" && $itemLeft[i] != ""){
+                                sessionStorage.setItem('newOnOff',"on");
+                            }
+                            sessionStorage.setItem('targetI',i);
+                            //sessionStorage.setItem('targetItemCd',$itemCd[i]);
+                        }else{
+                            $('#'+$itemCd[i]).css('z-index','1');
+                            if ('<?php echo $_SESSION['background'];?>'=='1'){
+                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+                            }else{
+                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+                            }
+                        }	
 			$('#'+$itemCd[i]).css('background-size','cover');
 			$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 			//if($itemCd[i]=="new"){
