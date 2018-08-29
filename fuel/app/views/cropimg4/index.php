@@ -264,17 +264,13 @@
     <?php }?> 
 <?php }?> 
 
-<!--
 <?php echo Form::open('http://localhost/study05/cropimg4/index');?>
 <?php echo Form::label('検索文字 ', 'kensakumoji', array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::input('kensakumoji', '', array('size'=>20), array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::submit('submit', '検索', array('class' => 'btn btn-success btn-sm'));?>
 <?php echo Form::close();?>
--->
-<!--
+
 <table class="scrollTable" cellpadding="0" cellspacing="0" border="0">
--->
-<!--	
 	<thead>
 		<tr>
 			<th width="2%" align="center">No</th>
@@ -285,10 +281,7 @@
 		    <th width="43%" align="center">説明</th>
 		</tr>
 	</thead>
--->
-<!--
 	<tbody>
--->
 		<script>var id       = [];</script>
 		<script>var itemCd   = [];</script>
 		<script>var itemName = [];</script>
@@ -298,7 +291,6 @@
 		<script>var itemTop  = [];</script>
 		<script>var itemLeft = [];</script>
 		<?php foreach ($items as $item): ?>		
-<!--
 			<tr>
 				<td><?php echo $item->id; ?></td>
 				<td><?php echo $item->item_cd; ?></td>
@@ -307,7 +299,6 @@
 				<td><?php echo $item->area; ?></td>
 				<td><?php echo $item->comment; ?></td>
 			</tr>
--->
 
 			<script>id.push('<?php echo $item->id; ?>');</script>
 			<script>itemCd.push('<?php echo $item->item_cd; ?>');</script>
@@ -329,37 +320,37 @@
 		<script>sessionStorage.setItem('itemTop', JSON.stringify(itemTop));</script>
 		<script>sessionStorage.setItem('itemLeft',JSON.stringify(itemLeft));</script>
 			
-<!--
 	</tbody>
--->
-<!--
 </table>
--->
-
 
 <script> 
 
 $(document).ready(function() {
 	$('img.cropimg').cropimg({ 
-//		resultWidth:800, 
-//		resultHeight:600 
-//		resultWidth:1600, 
-//		resultHeight:900 
-//		resultWidth:1366, 
-//		resultHeight:768 
-//		resultWidth:1920, 
-//		resultHeight:1080 
-//		resultWidth :1000, 
-//		resultHeight:558 
-//		resultWidth :950, 
-//		resultHeight:530 
-//		resultWidth :930, 
-//		resultHeight:523
-	//幅と高さは、ウィンドウの内側の最大とする。
-    resultWidth  : window.innerWidth,
-    resultHeight : window.innerHeight
+//	resultWidth:800, 
+//	resultHeight:600 
+//	resultWidth:1600, 
+//	resultHeight:900 
+//	resultWidth:1366, 
+//	resultHeight:768 
+//	resultWidth:1920, 
+//	resultHeight:1080 
+//	resultWidth :1000, 
+//	resultHeight:558 
+//	resultWidth :950, 
+//	resultHeight:530
+            //if ('<?php echo $_SESSION['pattern'];?>'=='1'){
+                //resultWidth :930, 
+                //resultHeight:523
+            //}else{
+                //幅と高さは、ウィンドウの内側の最大とする。
+                //resultWidth  : window.innerWidth,
+                //resultHeight : window.innerHeight
+            //}
 
-	}); 
+                resultWidth :<?php echo $_SESSION['resultWidth'];?>, 
+                resultHeight:<?php echo $_SESSION['resultHeight'];?>
+        }); 
 	//スクリプトから表示状態を指定する
 	$("body").css({ visibility: "visible" });
 
@@ -400,12 +391,12 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 			$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
 			if ('<?php echo $_SESSION['background'];?>'=='1'){
-                            $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-                            $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-                        }else{
-                            $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-                            $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-                        }
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
                         $('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 			$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -418,11 +409,11 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('text-align','left');			//position:ボックス内の文字を左寄せに指定する
 			if ($itemCd[i] == '<?php echo $_SESSION['itemCd'];?>'){
                             $('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
-                            if ('<?php echo $_SESSION['background'];?>'=='1'){
-                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-                            }else{
-                                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-                            }
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
                             //JSONのnullは""にキャストされている
                             //if($itemTop[i] != null && $itemLeft[i] != null){
                             if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -493,10 +484,13 @@ $(function(){
 						$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 						$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 						$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-						//$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-						//$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 						$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 						$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 						$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -509,8 +503,11 @@ $(function(){
 						$('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 						if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 							$('#'+$itemCd[i]).css('z-index','2');
-							//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 							//JSONのnullは""にキャストされている
 							//if($itemTop[i] != null && $itemLeft[i] != null){
 							if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -518,8 +515,11 @@ $(function(){
 							}
 						}else{
 							$('#'+$itemCd[i]).css('z-index','1');
-							//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							}
 						}	
 						$('#'+$itemCd[i]).css('background-size','cover');
 						$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
@@ -553,10 +553,13 @@ $(function(){
 		$('#'+$itemCd[$targetI]).css('top', y);						//top:上からの配置位置（距離）を指定する
 		$('#'+$itemCd[$targetI]).css('left', x);					//left:左からの配置位置（距離）を指定する
 		$('#'+$itemCd[$targetI]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-		//$('#'+$itemCd[$targetI]).css('width','16px');				//width:幅を指定する
-		//$('#'+$itemCd[$targetI]).css('height','10px');				//height:高さを指定する
-		$('#'+$itemCd[$targetI]).css('width','120px');				//width:幅を指定する
-		$('#'+$itemCd[$targetI]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 		$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 		$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 		$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -568,8 +571,11 @@ $(function(){
 		$('#'+$itemCd[$targetI]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 		$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 		$('#'+$itemCd[$targetI]).css('z-index','2');
-		//$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-		$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 		$('#'+$itemCd[$targetI]).css('background-size','cover');
 		$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 	});
@@ -610,10 +616,13 @@ $(function(){
 					$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 					$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 					$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-					//$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-					//$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-					$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-					$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 					$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 					$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 					$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -626,8 +635,11 @@ $(function(){
 					$('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 					if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 						$('#'+$itemCd[i]).css('z-index','2');
-						//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 						//JSONのnullは""にキャストされている
 						//if($itemTop[i] != null && $itemLeft[i] != null){
 						if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -635,8 +647,11 @@ $(function(){
 						}
 					}else{
 						$('#'+$itemCd[i]).css('z-index','1');
-						//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							}
 					}	
 					$('#'+$itemCd[i]).css('background-size','cover');
 					$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
@@ -658,10 +673,13 @@ $(function(){
 				$('#'+$itemCd[$targetI]).css('top', newTop);				//top:上からの配置位置（距離）を指定する
 				$('#'+$itemCd[$targetI]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
 				$('#'+$itemCd[$targetI]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-				//$('#'+$itemCd[$targetI]).css('width','16px');				//width:幅を指定する
-				//$('#'+$itemCd[$targetI]).css('height','10px');				//height:高さを指定する
-				$('#'+$itemCd[$targetI]).css('width','120px');				//width:幅を指定する
-				$('#'+$itemCd[$targetI]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 				$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 				$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 				$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -673,8 +691,11 @@ $(function(){
 				$('#'+$itemCd[$targetI]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 				$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 				$('#'+$itemCd[$targetI]).css('z-index','2');
-				//$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 				$('#'+$itemCd[$targetI]).css('background-size','cover');
 				$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 			}
@@ -760,10 +781,13 @@ $(function(){
 					$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 					$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 					$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-					//$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-					//$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-					$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-					$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 					$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 					$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 					$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -776,8 +800,11 @@ $(function(){
 					$('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 					if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 						$('#'+$itemCd[i]).css('z-index','2');
-						//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 						//JSONのnullは""にキャストされている
 						//if($itemTop[i] != null && $itemLeft[i] != null){
 						if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -785,8 +812,11 @@ $(function(){
 						}
 					}else{
 						$('#'+$itemCd[i]).css('z-index','1');
-						//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							}
 					}	
 					$('#'+$itemCd[i]).css('background-size','cover');
 					$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
@@ -808,10 +838,13 @@ $(function(){
 				$('#'+$itemCd[$targetI]).css('top', newTop);				//top:上からの配置位置（距離）を指定する
 				$('#'+$itemCd[$targetI]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
 				$('#'+$itemCd[$targetI]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-				//$('#'+$itemCd[$targetI]).css('width','16px');				//width:幅を指定する
-				//$('#'+$itemCd[$targetI]).css('height','10px');				//height:高さを指定する
-				$('#'+$itemCd[$targetI]).css('width','120px');				//width:幅を指定する
-				$('#'+$itemCd[$targetI]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 				$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 				$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 				$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -823,8 +856,11 @@ $(function(){
 				$('#'+$itemCd[$targetI]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 				$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 				$('#'+$itemCd[$targetI]).css('z-index','2');
-				//$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 				$('#'+$itemCd[$targetI]).css('background-size','cover');
 				$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 
@@ -859,10 +895,13 @@ $(function(){
 						$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 						$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 						$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-						//$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-						//$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 						$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 						$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 						$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -875,8 +914,11 @@ $(function(){
 						$('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 						if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 							$('#'+$itemCd[i]).css('z-index','2');
-							//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 							//JSONのnullは""にキャストされている
 							//if($itemTop[i] != null && $itemLeft[i] != null){
 							if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -884,8 +926,11 @@ $(function(){
 							}
 						}else{
 							$('#'+$itemCd[i]).css('z-index','1');
-							//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							}
 						}	
 						$('#'+$itemCd[i]).css('background-size','cover');
 						$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
@@ -907,10 +952,13 @@ $(function(){
 					$('#'+$itemCd[$targetI]).css('top', newTop);					//top:上からの配置位置（距離）を指定する
 					$('#'+$itemCd[$targetI]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
 					$('#'+$itemCd[$targetI]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-					//$('#'+$itemCd[$targetI]).css('width','16px');				//width:幅を指定する
-					//$('#'+$itemCd[$targetI]).css('height','10px');				//height:高さを指定する
-					$('#'+$itemCd[$targetI]).css('width','120px');				//width:幅を指定する
-					$('#'+$itemCd[$targetI]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 					$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 					$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 					$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -922,8 +970,11 @@ $(function(){
 					$('#'+$itemCd[$targetI]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 					$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 					$('#'+$itemCd[$targetI]).css('z-index','2');
-					//$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-					$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 					$('#'+$itemCd[$targetI]).css('background-size','cover');
 					$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 				}
@@ -961,10 +1012,13 @@ $(function(){
 				$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
 				$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 				$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-				//$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-				//$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
 				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
 				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 				$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 				$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 				$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -977,8 +1031,11 @@ $(function(){
 				$('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 				if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 					$('#'+$itemCd[i]).css('z-index','2');
-					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 					//JSONのnullは""にキャストされている
 					//if($itemTop[i] != null && $itemLeft[i] != null){
 					if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -986,8 +1043,11 @@ $(function(){
 					}
 				}else{
 					$('#'+$itemCd[i]).css('z-index','1');
-					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+							}
 				}	
 				$('#'+$itemCd[i]).css('background-size','cover');
 				$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
@@ -1009,10 +1069,13 @@ $(function(){
 			$('#'+$itemCd[$targetI]).css('top', newTop);				//top:上からの配置位置（距離）を指定する
 			$('#'+$itemCd[$targetI]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
 			$('#'+$itemCd[$targetI]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-			//$('#'+$itemCd[$targetI]).css('width','16px');				//width:幅を指定する
-			//$('#'+$itemCd[$targetI]).css('height','10px');				//height:高さを指定する
-			$('#'+$itemCd[$targetI]).css('width','120px');				//width:幅を指定する
-			$('#'+$itemCd[$targetI]).css('height','40px');				//height:高さを指定する
+			if ('<?php echo $_SESSION['background'];?>'=='1'){
+				$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+			}else{
+				$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+				$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+			}
 			$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 			$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
@@ -1024,8 +1087,11 @@ $(function(){
 			$('#'+$itemCd[$targetI]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 			$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 			$('#'+$itemCd[$targetI]).css('z-index','2');
-			//$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-			$('#'+$itemCd[$targetI]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							if ('<?php echo $_SESSION['background'];?>'=='1'){
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+							}else{
+								$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+							}
 			$('#'+$itemCd[$targetI]).css('background-size','cover');
 			$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 		}

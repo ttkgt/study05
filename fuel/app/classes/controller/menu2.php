@@ -7,11 +7,16 @@ class Controller_menu2 extends Controller
 		if(!isset($_SESSION)){
 			session_start();
 		}
-		$_SESSION['id']           = '20';
-		$_SESSION['itemCd']       = 'H20';
-		//$_SESSION['area']   = '第１工場';
-		$_SESSION['area']         = '第２工場';
-		$_SESSION['background']   = '2';
+		$_SESSION['id']         = '20';
+		$_SESSION['itemCd']     = 'H20';
+		//$_SESSION['area']     = '第１工場';
+		$_SESSION['area']       = '第２工場';
+		$_SESSION['background'] = '2';
+                $_SESSION['pattern']    ='1';
+                //$_SESSION['resultWidth']    = '930'; 
+                //$_SESSION['resultHeight']   = '523';
+                $_SESSION['resultWidth']    = 'window.innerWidth'; 
+                $_SESSION['resultHeight']   = 'window.innerHeight';
 		
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
