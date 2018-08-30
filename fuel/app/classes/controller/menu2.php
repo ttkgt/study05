@@ -12,10 +12,10 @@ class Controller_menu2 extends Controller
 		//$_SESSION['area']     = '第１工場';
 		$_SESSION['area']       = '第２工場';
 		$_SESSION['background'] = '1';  //
-                //$_SESSION['resultWidth']    = '930'; 
-                //$_SESSION['resultHeight']   = '523';
-                $_SESSION['resultWidth']    = 'window.innerWidth'; 
-                $_SESSION['resultHeight']   = 'window.innerHeight';
+                $_SESSION['resultWidth']    = '930'; 
+                $_SESSION['resultHeight']   = '523';
+                //$_SESSION['resultWidth']    = 'window.innerWidth'; 
+                //$_SESSION['resultHeight']   = 'window.innerHeight';
 		
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
