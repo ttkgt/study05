@@ -14,214 +14,135 @@
 <!-- CSSの設定を内部に持っている-->
 <style type="text/css">
 
-	/* @import url("http://black-flag.net/css/reset.css"); */
-	body {
-			font-size: 100%;
-			line-height: 120%;
-			font-family: Arial,Helvetica,sans-serif;
-			color: #000;
-			text-align: center;
-			background: #fff;
-			/*visibility: hidden;*/
-			overflow: hidden;
-	}
+    /* @import url("http://black-flag.net/css/reset.css"); */
+    body {
+	font-size: 100%;
+	line-height: 120%;
+	font-family: Arial,Helvetica,sans-serif;
+	color: #000;
+	text-align: center;
+	background: #fff;
+	/*visibility: hidden;*/
+	overflow: hidden;
+    }
 
-		a:link { text-decoration:none; color: #000;}
-		a:visited { text-decoration:none; color: #000;}
-		a:active { text-decoration:none; color: #000;}
-		a:hover { text-decoration:none; color: #000;}
+    a:link { text-decoration:none; color: #000;}
+    a:visited { text-decoration:none; color: #000;}
+    a:active { text-decoration:none; color: #000;}
+    a:hover { text-decoration:none; color: #000;}
 
-		h1 {
-			margin-bottom: 20px;
-			/* padding: 10px 0; */
-			padding: 2px;
-			background: #000;
-			color: #fff;
-			font-size: 12px;
-			font-weight: bold;
-			text-align: center;
-			position: relative;
-		    z-index: 10;
+    h1 {
+        margin-bottom: 20px;
+        /* padding: 10px 0; */
+        padding: 2px;
+        background: #000;
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        z-index: 10;
+    }
 
-		}
-		h2 {
-			padding: 30px 0;
-			width: 100%;
-			font-size: 12px;
-		}
+    h2 {
+	padding: 30px 0;
+	width: 100%;
+	font-size: 12px;
+    }
 
-		#container {
-			width: 100%;
-			/* height: 400px; */
-			height: 100%;
-		}
+    #container {
+	width: 100%;
+	/* height: 400px; */
+	height: 100%;
+    }
 
-		/* #new
-		--------------------------- */
-/*
-		#new {
-			width: 16px;
-			height: 10px;
-			background:transparent;
-			padding:8px; 
-			border:solid 0px #ccc; 
-			border-radius:4px; 
-			line-height: 6px;
-			font-size: 14px;
-			display: none;
-			cursor: default;
-			position: absolute;
-			overflow: hidden;
-		    z-index: 2;
-			background: url('http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif');
-			background-size:cover;
-		}
-*/
-		/* #locatedarea
-		--------------------------- */
-		#locatedarea {
-			margin: 0 auto;
-			width: 400px;
-			height: 400px;
-			background: #ccc;
-			position: relative;
-			/*overflow: hidden;*/
-		}
-		.br::before {
-			content: "\A" ;
-			white-space: pre ;
-		}
+    #locatedarea {
+	margin: 0 auto;
+	width: 400px;
+	height: 400px;
+	background: #ccc;
+	position: relative;
+	/*overflow: hidden;*/
+    }
+
+    .br::before {
+	content: "\A" ;
+	white-space: pre ;
+    }
+
+    table.scrollTable{
+	width:100%;
+	height:100%;
+	border:1px solid #ddd;
+	font-size: 14px; /* データのフォントサイズ */
+	position: relative;
+        z-index: 10;
+    }
+
+    thead{
+	background-color: #000;
+	color:#fff;
+	font-size: 14px; /* 列見出しのフォントサイズ */
+    }
+
+    table.scrollTable td{
+	text-align:left;
+    }
+
+    tr.odd td{
+	background-color: #EAEAEA;
+    }
+
+    #kakusu1 { 
+	/* width: 100%; */
+	/* height: 66px; */
+	background:#AAAAAA;
+	display: none;
+	cursor: default;
+	position: absolute;
+        z-index: 3;
+    }
 		
-/*
-		#H01 { 
-			width: 16px;
-			height: 10px;
-			background:transparent;
-			padding:8px;
-			border:solid 0px #ccc;
-			border-radius:4px;
-			line-height: 6px;
-			font-size: 14px;
-			display: none;
-			cursor: default;
-			position: absolute;
-			overflow: hidden;
-		    z-index: 1;
-			background: url('http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif');
-			background-size:cover;
-		}
-*/
-/*
-		#H02 { 
-			width: 16px;
-			height: 10px;
-			background:transparent;
-			padding:8px;
-			border:solid 0px #ccc;
-			border-radius:4px;
-			line-height: 6px;
-			font-size: 14px;
-			display: none;
-			cursor: default;
-			position: absolute;
-			overflow: hidden;
-		    z-index: 1;
-			background: url('http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif');
-			background-size:cover;
-		}
-*/
-/*
-		#H03 { 
-			width: 16px;
-			height: 10px;
-			background:transparent;
-			padding:8px;
-			border:solid 0px #ccc;
-			border-radius:4px;
-			line-height: 6px;
-			font-size: 14px;
-			display: none;
-			cursor: default;
-			position: absolute;
-			overflow: hidden;
-		    z-index: 1;
-			background: url('http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif');
-			background-size:cover;
-		}
-*/
+    #kakusu2 { 
+	/* width: 100%; */ 
+	/* height: 366px; */
+	background:#AAAAAA;
+	display: none;
+	cursor: default;
+	position: absolute;
+        z-index: 3;
+    }
+		
+    #kakusu3 { 
+	/* width: 24%; */ 
+	/* height: 100%; */ 
+	background:#AAAAAA;
+	display: none;
+	cursor: default;
+	position: absolute;
+        z-index: 3;
+    }
+		
+    #kakusu4 { 
+	/* width: 24%; */
+	/* width: 1%; */
+	/* height: 100%; */
+	background:#AAAAAA;
+	display: none;
+	cursor: default;
+	position: absolute;
+        z-index: 3;
+    }
+		
+    label {
+	position: relative;
+        z-index: 11;
+    }
 
-		table.scrollTable{
-			width:100%;
-			height:100%;
-			border:1px solid #ddd;
-			font-size: 14px; /* データのフォントサイズ */
-			position: relative;
-		    z-index: 10;
-		}
-		thead{
-			background-color: #000;
-			color:#fff;
-			font-size: 14px; /* 列見出しのフォントサイズ */
-		}
-		table.scrollTable td{
-			text-align:left;
-		}
-		tr.odd td{
-			background-color: #EAEAEA;
-		}
-
-		#kakusu1 { 
-			/* width: 100%; */
-			/* height: 66px; */
-			background:#AAAAAA;
-			display: none;
-			cursor: default;
-			position: absolute;
-		    z-index: 3;
-		}
-		
-		#kakusu2 { 
-			/* width: 100%; */ 
-			/* height: 366px; */
-			background:#AAAAAA;
-			display: none;
-			cursor: default;
-			position: absolute;
-		    z-index: 3;
-		}
-		
-		#kakusu3 { 
-			/* width: 24%; */ 
-			/* height: 100%; */ 
-			background:#AAAAAA;
-			display: none;
-			cursor: default;
-			position: absolute;
-		    z-index: 3;
-		}
-		
-		#kakusu4 { 
-			/* width: 24%; */
-			/* width: 1%; */
-			/* height: 100%; */
-			background:#AAAAAA;
-			display: none;
-			cursor: default;
-			position: absolute;
-		    z-index: 3;
-		}
-		
-		label
-		{
-			position: relative;
-		    z-index: 11;
-		}
-
-		input
-		{
-			position: relative;
-		    z-index: 11;
-		}
+    input {
+	position: relative;
+        z-index: 11;
+    }
 		
 </style>
 
@@ -271,56 +192,56 @@
 <?php echo Form::close();?>
 
 <table class="scrollTable" cellpadding="0" cellspacing="0" border="0">
-	<thead>
-		<tr>
-			<th width="2%" align="center">No</th>
-			<th width="5%" align="center">資産番号</th>
-		    <th width="20%" align="center">資産名</th>
-		    <th width="20%" align="center">型式・メーカー</th>
-		    <th width="10%" align="center">設置場所</th>
-		    <th width="43%" align="center">説明</th>
-		</tr>
-	</thead>
-	<tbody>
-		<script>var id       = [];</script>
-		<script>var itemCd   = [];</script>
-		<script>var itemName = [];</script>
-		<script>var maker    = [];</script>
-		<script>var area     = [];</script>
-		<script>var comment  = [];</script>
-		<script>var itemTop  = [];</script>
-		<script>var itemLeft = [];</script>
-		<?php foreach ($items as $item): ?>		
-			<tr>
-				<td><?php echo $item->id; ?></td>
-				<td><?php echo $item->item_cd; ?></td>
-				<td><?php echo $item->item_name; ?></td>
-				<td><?php echo $item->maker; ?></td>
-				<td><?php echo $item->area; ?></td>
-				<td><?php echo $item->comment; ?></td>
-			</tr>
+    <thead>
+	<tr>
+            <th width="2%" align="center">No</th>
+            <th width="5%" align="center">資産番号</th>
+            <th width="20%" align="center">資産名</th>
+            <th width="20%" align="center">型式・メーカー</th>
+            <th width="10%" align="center">設置場所</th>
+            <th width="43%" align="center">説明</th>
+        </tr>
+    </thead>
+    <tbody>
+	<script>var id       = [];</script>
+	<script>var itemCd   = [];</script>
+	<script>var itemName = [];</script>
+	<script>var maker    = [];</script>
+	<script>var area     = [];</script>
+	<script>var comment  = [];</script>
+	<script>var itemTop  = [];</script>
+	<script>var itemLeft = [];</script>
+	<?php foreach ($items as $item): ?>		
+            <tr>
+		<td><?php echo $item->id; ?></td>
+		<td><?php echo $item->item_cd; ?></td>
+		<td><?php echo $item->item_name; ?></td>
+		<td><?php echo $item->maker; ?></td>
+		<td><?php echo $item->area; ?></td>
+		<td><?php echo $item->comment; ?></td>
+            </tr>
 
-			<script>id.push('<?php echo $item->id; ?>');</script>
-			<script>itemCd.push('<?php echo $item->item_cd; ?>');</script>
-			<script>itemName.push('<?php echo $item->item_name; ?>');</script>
-			<script>maker.push('<?php echo $item->maker; ?>');</script>
-			<script>area.push('<?php echo $item->area; ?>');</script>
-			<script>comment.push('<?php echo $item->comment; ?>');</script>
-			<script>itemTop.push('<?php echo $item->item_top; ?>');</script>
-			<script>itemLeft.push('<?php echo $item->item_left; ?>');</script>
+            <script>id.push('<?php echo $item->id; ?>');</script>
+            <script>itemCd.push('<?php echo $item->item_cd; ?>');</script>
+            <script>itemName.push('<?php echo $item->item_name; ?>');</script>
+            <script>maker.push('<?php echo $item->maker; ?>');</script>
+            <script>area.push('<?php echo $item->area; ?>');</script>
+            <script>comment.push('<?php echo $item->comment; ?>');</script>
+            <script>itemTop.push('<?php echo $item->item_top; ?>');</script>
+            <script>itemLeft.push('<?php echo $item->item_left; ?>');</script>
 			
-		<?php endforeach; ?>	
+        <?php endforeach; ?>
+            
+	<script>sessionStorage.setItem('id',      JSON.stringify(id));</script>
+	<script>sessionStorage.setItem('itemCd',  JSON.stringify(itemCd));</script>
+	<script>sessionStorage.setItem('itemName',JSON.stringify(itemName));</script>
+	<script>sessionStorage.setItem('maker',   JSON.stringify(maker));</script>
+	<script>sessionStorage.setItem('area',    JSON.stringify(area));</script>
+	<script>sessionStorage.setItem('comment', JSON.stringify(comment));</script>
+	<script>sessionStorage.setItem('itemTop', JSON.stringify(itemTop));</script>
+	<script>sessionStorage.setItem('itemLeft',JSON.stringify(itemLeft));</script>
 			
-		<script>sessionStorage.setItem('id',      JSON.stringify(id));</script>
-		<script>sessionStorage.setItem('itemCd',  JSON.stringify(itemCd));</script>
-		<script>sessionStorage.setItem('itemName',JSON.stringify(itemName));</script>
-		<script>sessionStorage.setItem('maker',   JSON.stringify(maker));</script>
-		<script>sessionStorage.setItem('area',    JSON.stringify(area));</script>
-		<script>sessionStorage.setItem('comment', JSON.stringify(comment));</script>
-		<script>sessionStorage.setItem('itemTop', JSON.stringify(itemTop));</script>
-		<script>sessionStorage.setItem('itemLeft',JSON.stringify(itemLeft));</script>
-			
-	</tbody>
+    </tbody>
 </table>
 
 <script> 
