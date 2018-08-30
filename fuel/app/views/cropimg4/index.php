@@ -339,14 +339,11 @@ $(document).ready(function() {
 //	resultHeight:558 
 //	resultWidth :950, 
 //	resultHeight:530
-            //if ('<?php echo $_SESSION['pattern'];?>'=='1'){
-                //resultWidth :930, 
-                //resultHeight:523
-            //}else{
-                //幅と高さは、ウィンドウの内側の最大とする。
-                //resultWidth  : window.innerWidth,
-                //resultHeight : window.innerHeight
-            //}
+//      resultWidth :930, 
+//      resultHeight:523
+//      幅と高さは、ウィンドウの内側の最大とする。
+//      resultWidth  : window.innerWidth,
+//      resultHeight : window.innerHeight
 
                 resultWidth :<?php echo $_SESSION['resultWidth'];?>, 
                 resultHeight:<?php echo $_SESSION['resultHeight'];?>
@@ -1194,10 +1191,16 @@ $(function() {
 -->
 	<!--文字付で画像を表示-->
 	<?php foreach ($items as $item): ?>
-		<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_name; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_cd,0,18); ?></span></span></span>
-		<!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_name,0,18); ?></span></span></span>-->
-		<!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?></span>-->
+            <?php if($_SESSION['background'] == '1'){?> 
+                <span id=<?php echo $item->item_cd; ?>><?php echo $item->id; ?></span>
+            <?php }else{?> 
+                <span id=<?php echo $item->item_cd; ?>><?php echo $item->item_name; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_cd,0,18); ?></span></span></span>
+            <?php }?> 
+            <!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_name,0,18); ?></span></span></span>-->
+            <!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?></span>-->
 	<?php endforeach; ?>	
+                
+                
 
 <!--
 	<span id="H01">02</span></span>

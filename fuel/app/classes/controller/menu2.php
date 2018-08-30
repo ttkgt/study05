@@ -11,8 +11,7 @@ class Controller_menu2 extends Controller
 		$_SESSION['itemCd']     = 'H20';
 		//$_SESSION['area']     = '第１工場';
 		$_SESSION['area']       = '第２工場';
-		$_SESSION['background'] = '2';
-                $_SESSION['pattern']    ='1';
+		$_SESSION['background'] = '1';  //
                 //$_SESSION['resultWidth']    = '930'; 
                 //$_SESSION['resultHeight']   = '523';
                 $_SESSION['resultWidth']    = 'window.innerWidth'; 
