@@ -696,11 +696,11 @@ $('img.cropimg').mousedown(function(){
 		$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
 		$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
 		if ('<?php echo $_SESSION['background'];?>'=='1'){
-                    $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-                    $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+            $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+            $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
 		}else{
-                    $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-                    $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+            $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+            $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
 		}
 		$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 		$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う

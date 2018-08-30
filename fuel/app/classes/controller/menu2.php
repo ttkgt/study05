@@ -11,12 +11,16 @@ class Controller_menu2 extends Controller
 		$_SESSION['itemCd']     = 'H20';
 		//$_SESSION['area']     = '第１工場';
 		$_SESSION['area']       = '第２工場';
-		$_SESSION['background'] = '1';  //
-                $_SESSION['resultWidth']    = '930'; 
-                $_SESSION['resultHeight']   = '523';
-                //$_SESSION['resultWidth']    = 'window.innerWidth'; 
-                //$_SESSION['resultHeight']   = 'window.innerHeight';
-		
+		$_SESSION['background'] = '2';  //1:小要素＋一覧表 , 2:大要素
+
+        if($_SESSION['background'] == '1'){
+            $_SESSION['resultWidth']    = '930'; 
+            $_SESSION['resultHeight']   = '523';
+        }else{
+            $_SESSION['resultWidth']    = 'window.innerWidth'; 
+            $_SESSION['resultHeight']   = 'window.innerHeight';
+        }
+            
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
 		$_SESSION['img_height'] = 0; 
