@@ -262,10 +262,10 @@ $(document).ready(function() {
 //      resultWidth :930, 
 //      resultHeight:523
 //      幅と高さは、ウィンドウの内側の最大とする。
-//      resultWidth  : window.innerWidth,
-//      resultHeight : window.innerHeight
+      //resultWidth  : window.innerWidth,
+      //resultHeight : window.innerHeight
 
-        resultWidth :<?php echo $_SESSION['resultWidth'];?>, 
+		resultWidth :<?php echo $_SESSION['resultWidth'];?>, 
         resultHeight:<?php echo $_SESSION['resultHeight'];?>
     }); 
     

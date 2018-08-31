@@ -15,8 +15,9 @@ class Controller_menu2 extends Controller
 
         if($_SESSION['background'] == '1'){
             //$_SESSION['resultWidth']    = '930'; 
+			//$_SESSION['resultHeight']   = '523';
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
-            $_SESSION['resultHeight']   = '523';
+            $_SESSION['resultHeight']   = 'window.innerHeight * 0.3';
         }else{
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
             $_SESSION['resultHeight']   = 'window.innerHeight';
