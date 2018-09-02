@@ -158,7 +158,8 @@
 <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.22/jquery-ui.min.js"></script>
 -->
-<script src="http://localhost/study05/assets/js/jquery-3.3.1.min.js"></script>
+<!--<script src="http://localhost/study05/assets/js/jquery-3.3.1.min.js"></script>-->
+<script src="http://localhost/study05/assets/js/jquery-2.1.1.js"></script>
 <script src="http://localhost/study05/assets/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.mousewheel.js"></script> 
 <script src="http://localhost/study05/assets/js/zcropimg.jquery.js"></script>
@@ -364,7 +365,8 @@ $(document).ready(function() {
 		//上
 		$('#kakusu1').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
 		//下
-		$('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4),left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
+		$('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4)
+			,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
 		//左
 		$('#kakusu3').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
 		//右
@@ -1011,7 +1013,8 @@ $(function(){
   $('.scrollTable').scrolltable({
     //stripe: true,
     stripe: false,
-    oddClass: 'odd'
+    oddClass: 'odd',
+	maxHeight: <?php echo $_SESSION['scrollTableHeight'];?> - 60
    });
 });
 
