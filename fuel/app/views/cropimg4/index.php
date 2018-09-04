@@ -365,11 +365,10 @@ $(document).ready(function() {
 		//上
 		$('#kakusu1').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
 		//下
-		$('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4)
-			,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
-//alert(window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4);
-alert(window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop'))*2+4));
-
+//		$('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4)
+//			,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
+		$('#kakusu2').css({top:<?php echo $_SESSION['resultHeight'];?> -4
+			,left:0,display:'block',height:<?php echo $_SESSION['scrollTableHeight'];?>,width:'100%'})
 		//左
 		$('#kakusu3').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
 		//右
@@ -901,8 +900,11 @@ $(window).resize(function(){
     //alert("ブラウザのサイズを変更した時");	
     //上
     $('#kakusu1').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
-    //下
-    $('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4),left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
+		//下
+//		$('#kakusu2').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4)
+//			,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
+		$('#kakusu2').css({top:<?php echo $_SESSION['resultHeight'];?> -4
+			,left:0,display:'block',height:<?php echo $_SESSION['scrollTableHeight'];?>,width:'100%'})
     //左
     $('#kakusu3').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
     //右
