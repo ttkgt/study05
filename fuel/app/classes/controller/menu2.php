@@ -22,6 +22,7 @@ class Controller_menu2 extends Controller
         }else{
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
             $_SESSION['resultHeight']   = 'window.innerHeight';
+            $_SESSION['scrollTableHeight']   = '0';
         }
             
 		$_SESSION['img_top']    = 0; 
