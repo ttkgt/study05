@@ -143,6 +143,65 @@
 		position: relative;
         z-index: 11;
     }
+	
+
+			ul.contextMenu {
+				margin: 0px;               /* メニューバー外側の余白(ゼロ) */
+				padding: 0px 0px 0px 15px; /* メニューバー内側の余白(左に15px) */
+				background-color: #cc0000; /* バーの背景色(濃い赤色) */
+			}
+			ul.contextMenu li {
+				width: 125px;          /* メニュー項目の横幅(125px) */
+				display: inline-block; /* ★横並びに配置する */
+				list-style-type: none; /* ★リストの先頭記号を消す */
+				position: relative;    /* ★サブメニュー表示の基準位置にする */
+			}
+			ul.contextMenu a {
+				background-color: #cc0000; /* メニュー項目の背景色(濃い赤色) */
+				color: white;              /* メニュー項目の文字色(白色) */
+				line-height: 40px;         /* メニュー項目のリンクの高さ(40px) */
+				text-align: center;        /* メインメニューの文字列の配置(中央寄せ) */
+				text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
+				font-weight: bold;         /* 太字にする */
+				display: block;            /* ★項目内全域をリンク可能にする */
+			}
+			ul.contextMenu a:hover {
+				background-color: #ffdddd; /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
+				color: #dd0000;            /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+			}
+			ul.contextMenu ul {
+				margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+				padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+				display: none;      /* ★標準では非表示にする */
+				position: absolute; /* ★絶対配置にする */
+			}
+			ul.contextMenu ul li {
+				width: 135px;               /* サブメニュー1項目の横幅(135px) */
+				border-top: 1px solid pink; /* 項目上側の枠線(ピンク色で1pxの実線) */
+			}
+			ul.contextMenu ul li a {
+				line-height: 35px;   /* サブメニュー1項目の高さ(35px) */
+				text-align: left;    /* 文字列の配置(左寄せ) */
+				padding-left: 5px;   /* 文字列前方の余白(5px) */
+				font-weight: normal; /* 太字にはしない */
+			}
+			ul.contextMenu ul li a:hover {
+				background-color: #ffff80; /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+				color: #005500;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+			}
+			ul.contextMenu ul ul {
+				margin: 0px;        /* ★サブメニュー外側の余白(ゼロ) */
+				padding: 0px;       /* ★サブメニュー内側の余白(ゼロ) */
+				display: none;      /* ★標準では非表示にする */
+				position: absolute; /* ★絶対配置にする */
+				top: -1px;          /* 1pxだけ上方向にずらす(※上に1pxの枠線を引いている場合) */
+				left: 100%;         /* ★基準位置からの距離を親ボックスの幅100％にする */
+				border-left: 1px solid pink; /* 左側に引く枠線(ピンク色で1pxの実線) */
+			}
+
+
+
+	
 
 </style>
 
@@ -1115,6 +1174,21 @@ $('.scrollTable td').on("click",function(){
     }
 });
 
+
+
+				$(function(){
+				// ▼マウスが載ったらサブメニューを表示
+				$("ul.contextMenu li").mouseenter(function(){
+					$(this).siblings().find("ul").hide();  // 兄弟要素に含まれるサブメニューを全部消す。
+					$(this).children().slideDown(150);     // 自分のサブメニューを表示する。
+				});
+				// ▼どこかがクリックされたらサブメニューを消す
+				$('html').click(function() {
+					$('ul.contextMenu ul').slideUp(150);
+				});
+			});
+
+
 $(function() {
     $('#<?php echo $_SESSION['itemCd'];?>').contextMenu('myMenu1',
     {
@@ -1200,14 +1274,35 @@ $(function() {
 	<span id="kakusu3"></span></span>
 	<span id="kakusu4"></span></span>
 
-	<div class="contextMenu" id="myMenu1">
-		<ul>
+	<!--<div class="contextMenu" id="myMenu1">-->
+	<ul class="contextMenu" id="myMenu1">
+		
+		<!--<ul>-->
 			<!--<li id="save"><img src="http://localhost/study05/assets/img/save_20180713055232.gif" /> 保存</li>-->
 			<!--<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>-->
-			<li id="save">大サイズ大サイズ</li>
-			<li id="remove">小サイズ小サイズ</li>
-        </ul>
-	</div>
+		<li><a href="#">メニュー02</a>
+			<ul>
+				<li><a href="#">ハードウェア &raquo;</a>
+					<ul>
+						<li><a href="#">法人向け</a></li>
+						<li><a href="#">個人向け</a></li>
+					</ul>
+				</li>
+				<li><a href="#">ソフトウェア &raquo;</a>
+					<ul>
+						<li><a href="#">for Windows</a></li>
+						<li><a href="#">for Mac</a></li>
+						<li><a href="#">for Android</a></li>
+						<li><a href="#">for iOS</a></li>
+						<li><a href="#">その他</a></li>
+					</ul>
+				</li>
+				<li><a href="#">ウェブサービス</a></li>
+			</ul>
+		</li>
+        <!--</ul>-->
+	</ul>
+	<!--</div>-->
 </div><!--/#container-->
 
 <script>
