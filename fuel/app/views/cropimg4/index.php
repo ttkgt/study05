@@ -1200,7 +1200,13 @@ $(function() {
 	<div class="contextMenu" id="myMenu1">
 		<ul>
 			<!--<li id="save"><img src="http://localhost/study05/assets/img/save_20180713055232.gif" /> 保存</li>-->
-			<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>
+			<!--<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>-->
+            <li><a href="#">アイコンサイズ &raquo;</a>
+                <ul>
+                    <li><a href="#">大</a></li>
+                    <li><a href="#">小</a></li>
+                </ul>
+            </li>
 		</ul>
 	</div>
 </div><!--/#container-->
