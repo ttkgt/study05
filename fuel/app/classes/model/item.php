@@ -12,6 +12,7 @@ class Model_Item extends Model
 		'comment',
 		'item_top',
 		'item_left',
+		'icon_size',
 		'created_at',
 		'updated_at',
 	);
