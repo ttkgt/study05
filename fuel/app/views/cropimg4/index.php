@@ -143,7 +143,7 @@
 		position: relative;
         z-index: 11;
     }
-		
+
 </style>
 
 <!-- 初期状態は非表示 -->
@@ -1152,7 +1152,10 @@ $(function() {
                     //					alert('除外しました');
                 }
             },
-        }
+        },
+		menuStyle:{
+			width:'200px'
+		}
     });
 });
 
@@ -1201,13 +1204,9 @@ $(function() {
 		<ul>
 			<!--<li id="save"><img src="http://localhost/study05/assets/img/save_20180713055232.gif" /> 保存</li>-->
 			<!--<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>-->
-            <li><a href="#">アイコンサイズ &raquo;</a>
-                <ul>
-                    <li><a href="#">大</a></li>
-                    <li><a href="#">小</a></li>
-                </ul>
-            </li>
-		</ul>
+			<li id="save">大サイズ大サイズ</li>
+			<li id="remove">小サイズ小サイズ</li>
+        </ul>
 	</div>
 </div><!--/#container-->
 
