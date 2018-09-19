@@ -13,6 +13,7 @@ class Model_Item extends Model
 		'item_top',
 		'item_left',
 		'icon_size',
+		'icon_color',
 		'created_at',
 		'updated_at',
 	);

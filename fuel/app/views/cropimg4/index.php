@@ -204,15 +204,16 @@
 		</tr>
     </thead>
     <tbody>
-	<script>var id        = [];</script>
-	<script>var itemCd    = [];</script>
-	<script>var itemName  = [];</script>
-	<script>var maker     = [];</script>
-	<script>var area      = [];</script>
-	<script>var comment   = [];</script>
-	<script>var itemTop   = [];</script>
-	<script>var itemLeft  = [];</script>
-	<script>var iconSize  = [];</script>
+	<script>var id         = [];</script>
+	<script>var itemCd     = [];</script>
+	<script>var itemName   = [];</script>
+	<script>var maker      = [];</script>
+	<script>var area       = [];</script>
+	<script>var comment    = [];</script>
+	<script>var itemTop    = [];</script>
+	<script>var itemLeft   = [];</script>
+	<script>var iconSize   = [];</script>
+	<script>var iconColor  = [];</script>
 	<?php foreach ($items as $item): ?>		
 		<tr>
 			<td><?php echo $item->id; ?></td>
@@ -232,6 +233,7 @@
         <script>itemTop.push('<?php echo $item->item_top; ?>');</script>
         <script>itemLeft.push('<?php echo $item->item_left; ?>');</script>
         <script>iconSize.push('<?php echo $item->icon_size; ?>');</script>
+        <script>iconColor.push('<?php echo $item->icon_color; ?>');</script>
 	<?php endforeach; ?>
             
 	<script>sessionStorage.setItem('id',      JSON.stringify(id));</script>
@@ -243,6 +245,7 @@
 	<script>sessionStorage.setItem('itemTop', JSON.stringify(itemTop));</script>
 	<script>sessionStorage.setItem('itemLeft',JSON.stringify(itemLeft));</script>
 	<script>sessionStorage.setItem('iconSize',JSON.stringify(iconSize));</script>
+	<script>sessionStorage.setItem('iconColor',JSON.stringify(iconColor));</script>
 			
     </tbody>
 </table>
@@ -278,11 +281,12 @@ $(document).ready(function() {
 
     //DBの値を変数にセット
     //var $id       = JSON.parse(sessionStorage.getItem('id'));
-    var $itemCd   = JSON.parse(sessionStorage.getItem('itemCd'));
-    var $itemName = JSON.parse(sessionStorage.getItem('itemName'));
-    var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
-    var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
-    var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $itemCd    = JSON.parse(sessionStorage.getItem('itemCd'));
+    var $itemName  = JSON.parse(sessionStorage.getItem('itemName'));
+    var $itemTop   = JSON.parse(sessionStorage.getItem('itemTop'));
+    var $itemLeft  = JSON.parse(sessionStorage.getItem('itemLeft'));
+    var $iconSize  = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 
     //初期表示時の背景画像の高さと幅をセッション変数に保存
     sessionStorage.setItem('imgHeight',$('img.cropimg').height());
@@ -322,7 +326,7 @@ $(document).ready(function() {
 			}
 			$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-			$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+			$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
 			$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 			$('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
 			$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -333,11 +337,12 @@ $(document).ready(function() {
 			if ($itemCd[i] == '<?php echo $_SESSION['itemCd'];?>'){
 				$('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
 				//if (<?php echo $_SESSION['background'];?>=='1'){
-				if ($iconSize[i]=='1'){
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				}else{
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-				}
+				//if ($iconSize[i]=='1'){
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+				//}else{
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+				//}
 				//JSONのnullは""にキャストされている
 				//if($itemTop[i] != null && $itemLeft[i] != null){
 				if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -348,13 +353,15 @@ $(document).ready(function() {
 			}else{
 				$('#'+$itemCd[i]).css('z-index','1');
 				//if (<?php echo $_SESSION['background'];?>=='1'){
-				if ($iconSize[i]=='1'){
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-				}else{
-					$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-				}
+				//if ($iconSize[i]=='1'){
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+				//}else{
+					//$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+				//}
 			}	
 			$('#'+$itemCd[i]).css('background-size','cover');
+			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
 			$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 			//if($itemCd[i]=="new"){
 			//	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -394,6 +401,7 @@ $(function(){
     var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 
     var that = this;
     setTimeout(function() {
@@ -424,7 +432,7 @@ $(function(){
 					}
 					$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 					$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-					$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+					$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
 					$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 					$('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
 					$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -435,11 +443,11 @@ $(function(){
 					if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 						$('#'+$itemCd[i]).css('z-index','2');
 						//if (<?php echo $_SESSION['background'];?>=='1'){
-						if ($iconSize[i]=='1'){
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-						}else{
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-						}
+						//if ($iconSize[i]=='1'){
+						//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+						//}else{
+						//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+						//}
 						//JSONのnullは""にキャストされている
 						//if($itemTop[i] != null && $itemLeft[i] != null){
 						if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -448,13 +456,14 @@ $(function(){
 					}else{
 						$('#'+$itemCd[i]).css('z-index','1');
 						//if (<?php echo $_SESSION['background'];?>=='1'){
-						if ($iconSize[i]=='1'){
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-						}else{
-							$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-						}
+						//if ($iconSize[i]=='1'){
+						//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+						//}else{
+						//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+						//}
 					}	
 					$('#'+$itemCd[i]).css('background-size','cover');
+        			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
 					$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 					//if($itemCd[i]=="new"){
 					//	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -496,7 +505,7 @@ $(function(){
     }
     $('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
     $('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-    $('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+    $('#'+$itemCd[$targetI]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
     $('#'+$itemCd[$targetI]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
     $('#'+$itemCd[$targetI]).css('line-height','6px');			//line-height:行の高さを指定する
     $('#'+$itemCd[$targetI]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -506,12 +515,13 @@ $(function(){
     $('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
     $('#'+$itemCd[$targetI]).css('z-index','2');
     //if (<?php echo $_SESSION['background'];?>=='1'){
-    if ($iconSize[i]=='1'){
-		$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-    }else{
-		$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-    }
+    //if ($iconSize[i]=='1'){
+	//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+    //}else{
+	//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+    //}
     $('#'+$itemCd[$targetI]).css('background-size','cover');
+    $('#'+$itemCd[$targetI]).css('background-color',$iconColor[i]);
     $('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 });
 	
@@ -537,6 +547,7 @@ $('img.cropimg').exResize(function(){
     var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 		
     //背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
     setTimeout(function(){
@@ -562,7 +573,7 @@ $('img.cropimg').exResize(function(){
                 }
                 $('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
                 $('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-                $('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+                $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
                 $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
                 $('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
                 $('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -573,11 +584,11 @@ $('img.cropimg').exResize(function(){
                 if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
                     $('#'+$itemCd[i]).css('z-index','2');
                     //if (<?php echo $_SESSION['background'];?>=='1'){
-                    if ($iconSize[i]=='1'){
-                        $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-                    }else{
-                        $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-                    }
+                    //if ($iconSize[i]=='1'){
+                    //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+                    //}else{
+                    //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+                    //}
                     //JSONのnullは""にキャストされている
                     //if($itemTop[i] != null && $itemLeft[i] != null){
                     if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -586,13 +597,14 @@ $('img.cropimg').exResize(function(){
                 }else{
                     $('#'+$itemCd[i]).css('z-index','1');
                     //if (<?php echo $_SESSION['background'];?>=='1'){
-                    if ($iconSize[i]=='1'){
-                        $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-                    }else{
-                        $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-                    }
+                    //if ($iconSize[i]=='1'){
+                    //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+                    //}else{
+                    //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+                    //}
                 }	
                 $('#'+$itemCd[i]).css('background-size','cover');
+       			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
                 $('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
                 //if($itemCd[i]=="new"){
                 //	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -621,7 +633,7 @@ $('img.cropimg').exResize(function(){
             }
             $('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
             $('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-            $('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+            $('#'+$itemCd[$targetI]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
             $('#'+$itemCd[$targetI]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
             $('#'+$itemCd[$targetI]).css('line-height','6px');			//line-height:行の高さを指定する
             $('#'+$itemCd[$targetI]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -631,12 +643,13 @@ $('img.cropimg').exResize(function(){
             $('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
             $('#'+$itemCd[$targetI]).css('z-index','2');
             //if (<?php echo $_SESSION['background'];?>=='1'){
-            if ($iconSize[i]=='1'){
-                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-            }else{
-                $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-            }
+            //if ($iconSize[i]=='1'){
+            //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+            //}else{
+            //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+            //}
             $('#'+$itemCd[$targetI]).css('background-size','cover');
+   			$('#'+$itemCd[$targetI]).css('background-color',$iconColor[i]);
             $('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
         }
     },10);
@@ -702,6 +715,7 @@ $('img.cropimg').mousedown(function(){
     var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 		
     //背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
     setTimeout(function(){
@@ -729,7 +743,7 @@ $('img.cropimg').mousedown(function(){
 				}
 				$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 				$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-				$('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+				$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
 				$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 				$('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
 				$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -740,11 +754,11 @@ $('img.cropimg').mousedown(function(){
 				if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
                     $('#'+$itemCd[i]).css('z-index','2');
                     //if (<?php echo $_SESSION['background'];?>=='1'){
-                    if ($iconSize[i]=='1'){
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-                    }else{
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-                    }
+                    //if ($iconSize[i]=='1'){
+					//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+                    //}else{
+					//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+                    //}
                     //JSONのnullは""にキャストされている
                     //if($itemTop[i] != null && $itemLeft[i] != null){
                     if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -753,13 +767,14 @@ $('img.cropimg').mousedown(function(){
                 }else{
                     $('#'+$itemCd[i]).css('z-index','1');
                     //if (<?php echo $_SESSION['background'];?>=='1'){
-                    if ($iconSize[i]=='1'){
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-                    }else{
-						$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-                    }
+                    //if ($iconSize[i]=='1'){
+					//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+                    //}else{
+					//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+                    //}
 				}	
 				$('#'+$itemCd[i]).css('background-size','cover');
+       			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
 				$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 				//if($itemCd[i]=="new"){
 				//	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -789,7 +804,7 @@ $('img.cropimg').mousedown(function(){
             }
             $('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
             $('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-            $('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+            $('#'+$itemCd[$targetI]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
             $('#'+$itemCd[$targetI]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
             $('#'+$itemCd[$targetI]).css('line-height','6px');			//line-height:行の高さを指定する
             $('#'+$itemCd[$targetI]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -799,12 +814,13 @@ $('img.cropimg').mousedown(function(){
             $('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
             $('#'+$itemCd[$targetI]).css('z-index','2');
             //if (<?php echo $_SESSION['background'];?>=='1'){
-            if ($iconSize[i]=='1'){
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-            }else{
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-            }
+            //if ($iconSize[i]=='1'){
+			//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+            //}else{
+			//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+            //}
             $('#'+$itemCd[$targetI]).css('background-size','cover');
+   			$('#'+$itemCd[$targetI]).css('background-color',$iconColor[i]);
             $('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 		}
     },10);
@@ -819,6 +835,7 @@ $('img.cropimg').mousemove(function(){
     var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 
     //背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
     setTimeout(function(){
@@ -847,7 +864,7 @@ $('img.cropimg').mousemove(function(){
                     }
                     $('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
                     $('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-                    $('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+                    $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
                     $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
                     $('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
                     $('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -858,11 +875,11 @@ $('img.cropimg').mousemove(function(){
                     if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
                     	$('#'+$itemCd[i]).css('z-index','2');
 						//if (<?php echo $_SESSION['background'];?>=='1'){
-						if ($iconSize[i]=='1'){
-                            $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-						}else{
-                            $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-						}
+						//if ($iconSize[i]=='1'){
+                        //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+						//}else{
+                        //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+						//}
 						//JSONのnullは""にキャストされている
 						//if($itemTop[i] != null && $itemLeft[i] != null){
 						if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -871,13 +888,14 @@ $('img.cropimg').mousemove(function(){
                     }else{
 						$('#'+$itemCd[i]).css('z-index','1');
 						//if (<?php echo $_SESSION['background'];?>=='1'){
-						if ($iconSize[i]=='1'){
-                            $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-						}else{
-                            $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-						}
+						//if ($iconSize[i]=='1'){
+                        //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+						//}else{
+                        //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+						//}
                     }	
                     $('#'+$itemCd[i]).css('background-size','cover');
+        			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
                     $('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
                     //if($itemCd[i]=="new"){
                     //	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -906,7 +924,7 @@ $('img.cropimg').mousemove(function(){
 				}
 				$('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 				$('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-				$('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+				$('#'+$itemCd[$targetI]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
 				$('#'+$itemCd[$targetI]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 				$('#'+$itemCd[$targetI]).css('line-height','6px');			//line-height:行の高さを指定する
 				$('#'+$itemCd[$targetI]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -916,13 +934,14 @@ $('img.cropimg').mousemove(function(){
 				$('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
 				$('#'+$itemCd[$targetI]).css('z-index','2');
 				//if (<?php echo $_SESSION['background'];?>=='1'){
-				if ($iconSize[i]=='1'){
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				}else{
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-				}
+				//if ($iconSize[i]=='1'){
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+				//}else{
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+				//}
 				$('#'+$itemCd[$targetI]).css('background-size','cover');
-				$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
+       			$('#'+$itemCd[$targetI]).css('background-color',$iconColor[i]);
+    			$('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
             }
 		}
     },10);
@@ -953,6 +972,7 @@ $(window).resize(function(){
     var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 
     //各要素を再描画
     for (let i = 0; i < $itemCd.length; i++){
@@ -975,7 +995,7 @@ $(window).resize(function(){
             }
             $('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
             $('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-            $('#'+$itemCd[i]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+            $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
             $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
             $('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
             $('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -986,11 +1006,11 @@ $(window).resize(function(){
             if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
 				$('#'+$itemCd[i]).css('z-index','2');
 				//if (<?php echo $_SESSION['background'];?>=='1'){
-				if ($iconSize[i]=='1'){
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-				}else{
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-				}
+				//if ($iconSize[i]=='1'){
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+				//}else{
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+				//}
                 //JSONのnullは""にキャストされている
 				//if($itemTop[i] != null && $itemLeft[i] != null){
 				if($itemTop[i] != "" && $itemLeft[i] != ""){
@@ -999,13 +1019,14 @@ $(window).resize(function(){
             }else{
 				$('#'+$itemCd[i]).css('z-index','1');
 				//if (<?php echo $_SESSION['background'];?>=='1'){
-				if ($iconSize[i]=='1'){
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
-				}else{
-                    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
-				}
+				//if ($iconSize[i]=='1'){
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012657.gif")');
+				//}else{
+                //    $('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/yellow001.gif")');
+				//}
             }	
             $('#'+$itemCd[i]).css('background-size','cover');
+   			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
             $('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
             //if($itemCd[i]=="new"){
             //	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -1035,7 +1056,7 @@ $(window).resize(function(){
             }
             $('#'+$itemCd[$targetI]).css('background','transparent');	//background:背景に関する指定をまとめて行う
             $('#'+$itemCd[$targetI]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-            $('#'+$itemCd[$targetI]).css('border','solid 0px #ccc');	//border:枠線のスタイル・太さ・色を指定する
+            $('#'+$itemCd[$targetI]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
             $('#'+$itemCd[$targetI]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
             $('#'+$itemCd[$targetI]).css('line-height','6px');			//line-height:行の高さを指定する
             $('#'+$itemCd[$targetI]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -1045,12 +1066,13 @@ $(window).resize(function(){
             $('#'+$itemCd[$targetI]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
             $('#'+$itemCd[$targetI]).css('z-index','2');
             //if (<?php echo $_SESSION['background'];?>=='1'){
-            if ($iconSize[i]=='1'){
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
-            }else{
-				$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
-            }
+            //if ($iconSize[i]=='1'){
+			//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/sozai_cman_jp_20180714012808.gif")');
+            //}else{
+			//	$('#'+$itemCd[i]).css('background','url("http://localhost/study05/assets/img/red001.gif")');
+            //}
             $('#'+$itemCd[$targetI]).css('background-size','cover');
+  			$('#'+$itemCd[$targetI]).css('background-color',$iconColor[i]);
             $('#'+$itemCd[$targetI]).attr('title','資産番号 : '+$itemCd[$targetI]+' 資産名 : '+$itemName[$targetI]);
 		}
     });
