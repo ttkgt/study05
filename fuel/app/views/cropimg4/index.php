@@ -135,6 +135,28 @@
         z-index: 3;
     }
 		
+    #kakusu5 { 
+		/* width: 24%; */
+		/* width: 1%; */
+		/* height: 100%; */
+		background:#00FF00;
+		display: none;
+		cursor: default;
+		position: absolute;
+        z-index: 3;
+    }
+
+    #kakusu6 { 
+		/* width: 24%; */
+		/* width: 1%; */
+		/* height: 100%; */
+		background:#00FF00;
+		display: none;
+		cursor: default;
+		position: absolute;
+        z-index: 3;
+    }
+
     label {
 		position: relative;
         z-index: 11;
@@ -145,7 +167,7 @@
         z-index: 11;
     }
 	
-	
+    
 
 </style>
 
@@ -312,7 +334,7 @@ $(document).ready(function() {
     //新しい要素の存在をセッション変数に保存
     sessionStorage.setItem('newOnOff',"off");
 
-    setTimeout(function(){
+setTimeout(function(){
 		//各要素を再描画（1行目から）
 		for (let i = 0; i < $itemCd.length; i++){
             var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
@@ -394,8 +416,61 @@ $(document).ready(function() {
 		$('#kakusu3').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
 		//右
 		$('#kakusu4').css({top:0,left:window.innerWidth-39,display:'block',height:window.innerHeight,width:39})
-	},10);
+
+
+		$('#kakusu5').css({top:150,left:window.innerWidth-34,display:'block',height:32,width:32})
+        $('#kakusu5').css('background','url("http://localhost/study05/assets/img/save_32_31.png")');
+
+		$('#kakusu6').css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
+        $('#kakusu6').css('background','url("http://localhost/study05/assets/img/remove_32_32.png")');
+
+},10);
 }); 
+
+$(function(){
+$('#kakusu5').on('click', function(e) {
+    setTimeout(function(){
+        //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
+        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+        .append($('<input/>', {type: 'hidden', name: 'id'        , value: <?php echo $_SESSION['id'];?>}))
+        .append($('<input/>', {type: 'hidden', name: 'item_top'  , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'item_left' , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+        .appendTo(document.body)
+        .submit();
+    },10);
+});
+});
+
+$(function(){
+$('#kakusu6').on('click', function(e) {
+    setTimeout(function(){
+        // 確認ダイアログの表示
+        var result = confirm('除外しますか？');
+        if(result){
+            $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+            //新しい要素の存在をセッション変数に保存
+            sessionStorage.setItem('newOnOff',"off");
+            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+            .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+            .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+            .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+
+            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+            .appendTo(document.body)
+            .submit();
+        }
+    },10);
+});
+});
+
 
 $(function(){
     $('img.cropimg').on('click', function(e) {
@@ -1307,10 +1382,13 @@ $(function() {
 	<span id="new">00</span></span>
 	-->
 	
-	<span id="kakusu1"></span></span>
-	<span id="kakusu2"></span></span>
-	<span id="kakusu3"></span></span>
-	<span id="kakusu4"></span></span>
+	<span id="kakusu1"></span>
+	<span id="kakusu2"></span>
+	<span id="kakusu3"></span>
+	<span id="kakusu4"></span>
+	<span id="kakusu5"></span>
+	<span id="kakusu6"></span>
+    
 
 <!--
 	<div class="contextMenu" id="myMenu1">
@@ -1326,7 +1404,6 @@ $(function() {
 	//新規追加要素の移動を可能とする。
 	$('#<?php echo $_SESSION['itemCd'];?>').tinyDraggable();
 </script>
-
 
 </body> 
 </html> 
