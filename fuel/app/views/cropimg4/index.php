@@ -432,18 +432,35 @@ $('#kakusu5').on('click', function(e) {
     setTimeout(function(){
         //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
         $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-        .append($('<input/>', {type: 'hidden', name: 'id'        , value: <?php echo $_SESSION['id'];?>}))
-        .append($('<input/>', {type: 'hidden', name: 'item_top'  , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'item_left' , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+        .append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+        .append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'item_size'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
         .appendTo(document.body)
         .submit();
     },10);
 });
 });
+
+//$(function() {
+//  $("#kakusu5").mouseover(function(){
+//	  //alert("ON");
+//    //$("p").css("background-color","green");
+//		$("#kakusu5").css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
+//        $("#kakusu5").css('background','url("http://localhost/study05/assets/img/remove_32_32.png")');
+//  }).mouseout(function(){
+//	  //alert("OUT");
+//    //$("p").css("background-color","");
+//		$("#kakusu5").css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
+//        $("#kakusu5").css('background','url("http://localhost/study05/assets/img/save_32_31.png")');
+//  });
+//});
+
+
 
 $(function(){
 $('#kakusu6').on('click', function(e) {
@@ -459,10 +476,10 @@ $('#kakusu6').on('click', function(e) {
             .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
             .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
 
-            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+            //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+            //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+            //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+            //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
             .appendTo(document.body)
             .submit();
@@ -767,11 +784,13 @@ $('#<?php  echo $_SESSION['itemCd'];?>').mouseup(function(e){
         .append($('<input/>', {type: 'hidden', name: 'id'        , value: <?php echo $_SESSION['id'];?>}))
         .append($('<input/>', {type: 'hidden', name: 'item_top'  , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
         .append($('<input/>', {type: 'hidden', name: 'item_left' , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
-        .appendTo(document.body)
+
+        //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+        //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+		.appendTo(document.body)
         .submit();
         },10);
     }
@@ -1266,12 +1285,12 @@ $(function() {
                 {
                     label: "アイコン色",
                     items: [
-                        {label: "#98fb98", bgcolor: "#98fb98"},
-                        {label: "#ff8c00", bgcolor: "#98fb98"},
-                        {label: "#ff00ff", bgcolor: "#98fb98"},
-                        {label: "#00ffff", bgcolor: "#98fb98"},
-                        {label: "#fa8072", bgcolor: "#98fb98"},
-                        {label: "#fa8072", bgcolor: "#98fb98"}
+                        {label: "#98fb98", backgroundColor: "#98fb98"},
+                        {label: "#ff8c00", backgroundColor: "#98fb98"},
+                        {label: "#ff00ff", backgroundColor: "#98fb98"},
+                        {label: "#00ffff", backgroundColor: "#98fb98"},
+                        {label: "#fa8072", backgroundColor: "#98fb98"},
+                        {label: "#fa8072", backgroundColor: "#98fb98"}
                     ]
                 }
             ]
@@ -1304,10 +1323,10 @@ $(function() {
                     .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
                     .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
 			
-                    .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-                    .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-                    .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-                    .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+                    //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+                    //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+                    //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+                    //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
                     .appendTo(document.body)
                     .submit();
