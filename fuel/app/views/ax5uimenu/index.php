@@ -40,7 +40,10 @@
             ]
         });
         menu.onClick = function () {
-            console.log(this);
+            console.log(this.label);
+            //alert(this.str);
+      
+            
         };
         $("#context-menu-target").bind("contextmenu", function (e) {
             menu.popup(e);

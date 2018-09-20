@@ -172,8 +172,8 @@
 <script src="http://localhost/study05/assets/js/jquery.modern-blink.js"></script>
 <script src="http://localhost/study05/assets/js/tr_background_color.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.contextmenu.r2.js"></script>
-<script type="text/javascript" src="http://localhost/study05/assets/js/ax5core.min.js"></script>
-<script type="text/javascript" src="http://localhost/study05/assets/js/ax5menu.min.js"></script>
+<script src="http://localhost/study05/assets/js/ax5core.min.js"></script>
+<script src="http://localhost/study05/assets/js/ax5menu.min.js"></script>
 </head> 
 <body> 
 <!--<h1>cropimg デモでーす。</h1>-->
@@ -221,7 +221,7 @@
 	<script>var iconColor  = [];</script>
 	<?php foreach ($items as $item): ?>		
 		<tr>
-			<td><?php echo $item->id; ?></td>
+			<td bgcolor="<?php echo $item->icon_color; ?>"><?php echo $item->id; ?></td>
 			<td><?php echo $item->item_cd; ?></td>
 			<td><?php echo $item->item_name; ?></td>
 			<td><?php echo $item->maker; ?></td>
@@ -1167,7 +1167,7 @@ $(function() {
 */
 
     var menu;
-    $('#<?php echo $_SESSION['itemCd'];?>').ready(function () {
+    $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
         menu = new ax5.ui.menu({
             position: "absolute", // default position is "fixed"
             icons: {
@@ -1175,27 +1175,61 @@ $(function() {
             },
             items: [
                 {
-                    label: "Menu A",
+                    label: "アイコンサイズ",
                     items: [
-                        {label: "Menu A-0"},
-                        {label: "Menu A-1"},
-                        {label: "Menu A-2"}
+                        {label: "大　サイズ"},
+                        {label: "小　サイズ"}
                     ]
                 },
                 {
-                    label: "Menu B",
+                    label: "アイコン色",
                     items: [
-                        {label: "Menu B-0"},
-                        {label: "Menu B-1"},
-                        {label: "Menu B-2"}
+                        {label: "#98fb98", bgcolor: "#98fb98"},
+                        {label: "#ff8c00", bgcolor: "#98fb98"},
+                        {label: "#ff00ff", bgcolor: "#98fb98"},
+                        {label: "#00ffff", bgcolor: "#98fb98"},
+                        {label: "#fa8072", bgcolor: "#98fb98"},
+                        {label: "#fa8072", bgcolor: "#98fb98"}
                     ]
                 }
             ]
         });
         menu.onClick = function () {
-            console.log(this);
+            //console.log(this.label);
+            //alert(this.label);
+            //if(this.label=="#00FF00"){
+            //    alert("#00FF00です")
+            //}else{
+            //    alert("#00FF00ではありません")
+            //}
+            if(this.label=="大　サイズ"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_size', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_size' , value: "2"}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
+            else if(this.label=="小　サイズ"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_size', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_size' , value: "1"}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
+            else{
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_color', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_color' , value: this.label}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
         };
-        $("#container").bind("contextmenu", function (e) {
+        
+        //$("#container").bind("contextmenu", function (e) {
+        $("#<?php echo $_SESSION['itemCd'];?>").bind("contextmenu", function (e) {
             menu.popup(e);
             ax5.util.stopEvent(e);
             // e || {left: 'Number', top: 'Number', direction: '', width: 'Number'}
