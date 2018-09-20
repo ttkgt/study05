@@ -124,6 +124,7 @@
 							<li><a href="#"><?php echo Html::anchor('chromeContext/index','chromeContext'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('contextmenu/index','contextmenu'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('test20180831/index','test20180831'); ?></a></li>
+							<li><a href="#"><?php echo Html::anchor('ax5uimenu/index','ax5uimenu'); ?></a></li>
 						</ul>
 					</li>
 				</ul>
