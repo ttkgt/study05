@@ -9,6 +9,7 @@
 <link href="http://localhost/study05/assets/css/cropimg.css" rel="stylesheet" type="text/css" /> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/study05/assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/study05/assets/css/ax5menu.css" />
 
 <!-- CSS -->
 <!-- CSSの設定を内部に持っている-->
@@ -134,6 +135,28 @@
         z-index: 3;
     }
 		
+    #kakusu5 { 
+		/* width: 24%; */
+		/* width: 1%; */
+		/* height: 100%; */
+		background:#00FF00;
+		display: none;
+		cursor: default;
+		position: absolute;
+        z-index: 3;
+    }
+
+    #kakusu6 { 
+		/* width: 24%; */
+		/* width: 1%; */
+		/* height: 100%; */
+		background:#00FF00;
+		display: none;
+		cursor: default;
+		position: absolute;
+        z-index: 3;
+    }
+
     label {
 		position: relative;
         z-index: 11;
@@ -143,7 +166,9 @@
 		position: relative;
         z-index: 11;
     }
-		
+	
+    
+
 </style>
 
 <!-- 初期状態は非表示 -->
@@ -169,6 +194,8 @@
 <script src="http://localhost/study05/assets/js/jquery.modern-blink.js"></script>
 <script src="http://localhost/study05/assets/js/tr_background_color.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.contextmenu.r2.js"></script>
+<script src="http://localhost/study05/assets/js/ax5core.min.js"></script>
+<script src="http://localhost/study05/assets/js/ax5menu.min.js"></script>
 </head> 
 <body> 
 <!--<h1>cropimg デモでーす。</h1>-->
@@ -216,7 +243,7 @@
 	<script>var iconColor  = [];</script>
 	<?php foreach ($items as $item): ?>		
 		<tr>
-			<td><?php echo $item->id; ?></td>
+			<td bgcolor="<?php echo $item->icon_color; ?>"><?php echo $item->id; ?></td>
 			<td><?php echo $item->item_cd; ?></td>
 			<td><?php echo $item->item_name; ?></td>
 			<td><?php echo $item->maker; ?></td>
@@ -307,7 +334,7 @@ $(document).ready(function() {
     //新しい要素の存在をセッション変数に保存
     sessionStorage.setItem('newOnOff',"off");
 
-    setTimeout(function(){
+setTimeout(function(){
 		//各要素を再描画（1行目から）
 		for (let i = 0; i < $itemCd.length; i++){
             var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
@@ -389,8 +416,61 @@ $(document).ready(function() {
 		$('#kakusu3').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
 		//右
 		$('#kakusu4').css({top:0,left:window.innerWidth-39,display:'block',height:window.innerHeight,width:39})
-	},10);
+
+
+		$('#kakusu5').css({top:150,left:window.innerWidth-34,display:'block',height:32,width:32})
+        $('#kakusu5').css('background','url("http://localhost/study05/assets/img/save_32_31.png")');
+
+		$('#kakusu6').css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
+        $('#kakusu6').css('background','url("http://localhost/study05/assets/img/remove_32_32.png")');
+
+},10);
 }); 
+
+$(function(){
+$('#kakusu5').on('click', function(e) {
+    setTimeout(function(){
+        //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
+        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+        .append($('<input/>', {type: 'hidden', name: 'id'        , value: <?php echo $_SESSION['id'];?>}))
+        .append($('<input/>', {type: 'hidden', name: 'item_top'  , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'item_left' , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+        .appendTo(document.body)
+        .submit();
+    },10);
+});
+});
+
+$(function(){
+$('#kakusu6').on('click', function(e) {
+    setTimeout(function(){
+        // 確認ダイアログの表示
+        var result = confirm('除外しますか？');
+        if(result){
+            $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+            //新しい要素の存在をセッション変数に保存
+            sessionStorage.setItem('newOnOff',"off");
+            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+            .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+            .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+            .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+
+            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+            .appendTo(document.body)
+            .submit();
+        }
+    },10);
+});
+});
+
 
 $(function(){
     $('img.cropimg').on('click', function(e) {
@@ -1115,6 +1195,7 @@ $('.scrollTable td').on("click",function(){
     }
 });
 
+/*
 $(function() {
     $('#<?php echo $_SESSION['itemCd'];?>').contextMenu('myMenu1',
     {
@@ -1152,12 +1233,121 @@ $(function() {
                     //					alert('除外しました');
                 }
             },
-        }
+        },
+		menuStyle:{
+			width:'200px'
+		}
     });
 });
+*/
 
+    var menu;
+    $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
+        menu = new ax5.ui.menu({
+            position: "absolute", // default position is "fixed"
+            icons: {
+                'arrow': '▸'
+            },
+            items: [
+                {
+                    label: "位置",
+                    items: [
+                        {label: "保存"},
+                        {label: "除外"}
+                    ]
+                },
+                {
+                    label: "アイコンサイズ",
+                    items: [
+                        {label: "大　サイズ"},
+                        {label: "小　サイズ"}
+                    ]
+                },
+                {
+                    label: "アイコン色",
+                    items: [
+                        {label: "#98fb98", bgcolor: "#98fb98"},
+                        {label: "#ff8c00", bgcolor: "#98fb98"},
+                        {label: "#ff00ff", bgcolor: "#98fb98"},
+                        {label: "#00ffff", bgcolor: "#98fb98"},
+                        {label: "#fa8072", bgcolor: "#98fb98"},
+                        {label: "#fa8072", bgcolor: "#98fb98"}
+                    ]
+                }
+            ]
+        });
+        menu.onClick = function () {
+            //console.log(this.label);
+            //alert(this.label);
+            //if(this.label=="#00FF00"){
+            //    alert("#00FF00です")
+            //}else{
+            //    alert("#00FF00ではありません")
+            //}
+            if(this.label=="保存"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'item_top' , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+				.append($('<input/>', {type: 'hidden', name: 'item_left', value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+				.appendTo(document.body)
+				.submit();
+            }
+            else if(this.label=="除外"){
+                // 確認ダイアログの表示
+                var result = confirm('除外しますか？');
+                if(result){
+                    $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+                    //新しい要素の存在をセッション変数に保存
+                    sessionStorage.setItem('newOnOff',"off");
+                    $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+                    .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+                    .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+                    .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+			
+                    .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+                    .appendTo(document.body)
+                    .submit();
+                }
+            }
+            else if(this.label=="大　サイズ"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_size', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_size' , value: "2"}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
+            else if(this.label=="小　サイズ"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_size', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_size' , value: "1"}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
+            else{
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_color', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_color' , value: this.label}))
+				.appendTo(document.body)
+				.submit();
+				//alert('保存しました。')
+            }
+        };
+        //$("#container").bind("contextmenu", function (e) {
+        $("#<?php echo $_SESSION['itemCd'];?>").bind("contextmenu", function (e) {
+            menu.popup(e);
+            ax5.util.stopEvent(e);
+            // e || {left: 'Number', top: 'Number', direction: '', width: 'Number'}
+        });
+    });
 
 </script> 
+
 
 <div id="container">
 	<!--<span id="new">H1<span class="br">H1</span></span>-->
@@ -1192,30 +1382,28 @@ $(function() {
 	<span id="new">00</span></span>
 	-->
 	
-	<span id="kakusu1"></span></span>
-	<span id="kakusu2"></span></span>
-	<span id="kakusu3"></span></span>
-	<span id="kakusu4"></span></span>
+	<span id="kakusu1"></span>
+	<span id="kakusu2"></span>
+	<span id="kakusu3"></span>
+	<span id="kakusu4"></span>
+	<span id="kakusu5"></span>
+	<span id="kakusu6"></span>
+    
 
+<!--
 	<div class="contextMenu" id="myMenu1">
 		<ul>
-			<!--<li id="save"><img src="http://localhost/study05/assets/img/save_20180713055232.gif" /> 保存</li>-->
-			<!--<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>-->
-            <li><a href="#">アイコンサイズ &raquo;</a>
-                <ul>
-                    <li><a href="#">大</a></li>
-                    <li><a href="#">小</a></li>
-                </ul>
-            </li>
-		</ul>
+			<li id="save"><img src="http://localhost/study05/assets/img/save_20180713055232.gif" /> 保存</li>
+			<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>
+        </ul>
 	</div>
 </div><!--/#container-->
+-->
 
 <script>
 	//新規追加要素の移動を可能とする。
 	$('#<?php echo $_SESSION['itemCd'];?>').tinyDraggable();
 </script>
-
 
 </body> 
 </html> 
