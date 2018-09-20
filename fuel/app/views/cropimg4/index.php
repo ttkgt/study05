@@ -1175,6 +1175,13 @@ $(function() {
             },
             items: [
                 {
+                    label: "位置",
+                    items: [
+                        {label: "保存"},
+                        {label: "除外"}
+                    ]
+                },
+                {
                     label: "アイコンサイズ",
                     items: [
                         {label: "大　サイズ"},
@@ -1202,7 +1209,36 @@ $(function() {
             //}else{
             //    alert("#00FF00ではありません")
             //}
-            if(this.label=="大　サイズ"){
+            if(this.label=="保存"){
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'item_top' , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+				.append($('<input/>', {type: 'hidden', name: 'item_left', value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+				.appendTo(document.body)
+				.submit();
+            }
+            else if(this.label=="除外"){
+                // 確認ダイアログの表示
+                var result = confirm('除外しますか？');
+                if(result){
+                    $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+                    //新しい要素の存在をセッション変数に保存
+                    sessionStorage.setItem('newOnOff',"off");
+                    $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+                    .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+                    .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+                    .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+			
+                    .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+                    .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+                    .appendTo(document.body)
+                    .submit();
+                }
+            }
+            else if(this.label=="大　サイズ"){
 				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit_size', method: 'post'})
 				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
 				.append($('<input/>', {type: 'hidden', name: 'icon_size' , value: "2"}))
@@ -1227,7 +1263,6 @@ $(function() {
 				//alert('保存しました。')
             }
         };
-        
         //$("#container").bind("contextmenu", function (e) {
         $("#<?php echo $_SESSION['itemCd'];?>").bind("contextmenu", function (e) {
             menu.popup(e);
@@ -1235,7 +1270,6 @@ $(function() {
             // e || {left: 'Number', top: 'Number', direction: '', width: 'Number'}
         });
     });
-
 
 </script> 
 
