@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/study05/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/study05/assets/css/ax5menu.css" />
+<link rel="stylesheet" href="http://localhost/study05/assets/css/font-awesome.css" />
 
 <!-- CSS -->
 <!-- CSSの設定を内部に持っている-->
@@ -213,6 +214,7 @@
     <?php }?> 
 <?php }?> 
 
+		
 <?php echo Form::open('http://localhost/study05/cropimg4/index');?>
 <?php echo Form::label('検索文字 ', 'kensakumoji', array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::input('kensakumoji', '', array('size'=>20), array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
@@ -1463,27 +1465,27 @@ $(function() {
                 {
                     label: "位置",
                     items: [
-                        {icon: '<i class="http://localhost/study05/assets/img/test.ico"></i>', label: "保存"},
-                        {icon: '<i class="http://localhost/study05/assets/img/test.ico"></i>', label: "除外"}
+                        {label: "保存"},
+                        {label: "除外"}
                     ]
                 },
                 {
                     label: "アイコンサイズ",
                     items: [
-                        {label: "大　サイズ"},
-                        {label: "小　サイズ"}
+                        {icon: '<i class="fa fa-star fa-pink"></i>',label: "大　サイズ"},
+                        {icon: '<i class="fa fa-star"></i>',label: "小　サイズ"}
                     ]
                 },
                 {
                     label: "アイコン色",
                     items: [
-                        {label: "tomato"          , color: "ff6347"},
-                        {label: "mediumvioletred" , color: "#c71585"},
-                        {label: "burlywood"       , color: "#deb887"},
-                        {label: "gold"            , color: "#ffd700"},
-                        {label: "cyan"            , color: "#00ffff"},
-                        {label: "lime"            , color: "00ff00"},
-                        {label: "lightcoral"      , color: "f08080"}
+                        {icon: '<i class="fa fa-star fa-floralwhite"></i>' ,label: "floralwhite" ,color: "#fffaf0"},
+                        {icon: '<i class="fa fa-star fa-blue"></i>'        ,label: "blue"        ,color: "#0000ff"},
+                        {icon: '<i class="fa fa-star fa-palegreen"></i>'   ,label: "palegreen"   ,color: "#98fb98"},
+                        {icon: '<i class="fa fa-star fa-darkorange"></i>'  ,label: "darkorange"  ,color: "#ff8c00"},
+                        {icon: '<i class="fa fa-star fa-thistle"></i>'     ,label: "thistle"     ,color: "#dbdfd8"},
+                        {icon: '<i class="fa fa-star fa-yellow"></i>'      ,label: "yellow"      ,color: "#ffff00"},
+                        {icon: '<i class="fa fa-star fa-hotpink"></i>'     ,label: "hotpink"     ,color: "#ff69b4"}
                     ]
                 }
             ]
@@ -1713,6 +1715,7 @@ function reDraw(){
 	<span id="kakusu5"></span>
 	<span id="kakusu6"></span>
     
+
 
 <!--
 	<div class="contextMenu" id="myMenu1">
