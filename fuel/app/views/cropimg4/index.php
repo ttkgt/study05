@@ -1477,19 +1477,20 @@ $(function() {
                 {
                     label: "アイコン色",
                     items: [
-                        {label: "#98fb98", backgroundColor: "#98fb98"},
-                        {label: "#ff8c00", backgroundColor: "#98fb98"},
-                        {label: "#ff00ff", backgroundColor: "#98fb98"},
-                        {label: "#00ffff", backgroundColor: "#98fb98"},
-                        {label: "#fa8072", backgroundColor: "#98fb98"},
-                        {label: "#fa8072", backgroundColor: "#98fb98"}
+                        {label: "tomato"          , color: "ff6347"},
+                        {label: "mediumvioletred" , color: "#c71585"},
+                        {label: "burlywood"       , color: "#deb887"},
+                        {label: "gold"            , color: "#ffd700"},
+                        {label: "cyan"            , color: "#00ffff"},
+                        {label: "lime"            , color: "00ff00"},
+                        {label: "lightcoral"      , color: "f08080"}
                     ]
                 }
             ]
         });
         menu.onClick = function () {
-            //console.log(this.label);
-            //alert(this.label);
+            //console.log(this);
+            //alert(this);
             //if(this.label=="#00FF00"){
             //    alert("#00FF00です")
             //}else{
@@ -1551,7 +1552,7 @@ $(function() {
             }
             else{
             if (this.label!="位置"&&this.label!="アイコンサイズ"&&this.label!="アイコン色"){
-                sessionStorage.setItem('targetColor',this.label);
+                sessionStorage.setItem('targetColor',this.color);
                 sessionStorage.setItem('reDraw','ON');
 				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
                 .appendTo(document.body)
