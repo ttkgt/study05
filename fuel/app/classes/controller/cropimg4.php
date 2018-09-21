@@ -80,11 +80,15 @@ class Controller_cropimg4 extends Controller
 		$val->run();
 		if(Input::post('item_top')=='null' && Input::post('item_left')=='null')
 		{
-			$item->item_top  = NULL;
-			$item->item_left = NULL;
+			$item->item_top   = NULL;
+			$item->item_left  = NULL;
+			$item->icon_size  = NULL;
+			$item->icon_color = NULL;
 		}else{	
-			$item->item_top  = Input::post('item_top');
-			$item->item_left = Input::post('item_left');
+			$item->item_top   = Input::post('item_top');
+			$item->item_left  = Input::post('item_left');
+			$item->icon_size  = Input::post('icon_size');
+			$item->icon_color = Input::post('icon_color');
 		}
 		
 		$item->save();
