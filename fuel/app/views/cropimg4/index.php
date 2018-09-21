@@ -1463,8 +1463,8 @@ $(function() {
                 {
                     label: "位置",
                     items: [
-                        {label: "保存"},
-                        {label: "除外"}
+                        {icon: '<i class="http://localhost/study05/assets/img/test.ico"></i>', label: "保存"},
+                        {icon: '<i class="http://localhost/study05/assets/img/test.ico"></i>', label: "除外"}
                     ]
                 },
                 {
