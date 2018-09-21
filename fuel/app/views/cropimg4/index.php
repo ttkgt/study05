@@ -427,24 +427,24 @@ setTimeout(function(){
 },10);
 }); 
 
-$(function(){
-$('#kakusu5').on('click', function(e) {
-    setTimeout(function(){
-        //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
-        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-        .append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
-        .append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'item_size'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-        //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-        //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-        //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-        //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
-        .appendTo(document.body)
-        .submit();
-    },10);
-});
-});
+//$(function(){
+//$('#kakusu5').on('click', function(e) {
+//    setTimeout(function(){
+//        //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
+//        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+//        .append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+//        .append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+//        .append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+//        .append($('<input/>', {type: 'hidden', name: 'item_size'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+//        //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+//        //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+//        //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+//        //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+//        .appendTo(document.body)
+//        .submit();
+//    },10);
+//});
+//});
 
 //$(function() {
 //  $("#kakusu5").mouseover(function(){
@@ -462,31 +462,31 @@ $('#kakusu5').on('click', function(e) {
 
 
 
-$(function(){
-$('#kakusu6').on('click', function(e) {
-    setTimeout(function(){
-        // 確認ダイアログの表示
-        var result = confirm('除外しますか？');
-        if(result){
-            $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
-            //新しい要素の存在をセッション変数に保存
-            sessionStorage.setItem('newOnOff',"off");
-            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-            .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
-            .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
-            .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
-
-            //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-            //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-            //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-            //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
-
-            .appendTo(document.body)
-            .submit();
-        }
-    },10);
-});
-});
+//$(function(){
+//$('#kakusu6').on('click', function(e) {
+//    setTimeout(function(){
+//        // 確認ダイアログの表示
+//        var result = confirm('除外しますか？');
+//        if(result){
+//            $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+//            //新しい要素の存在をセッション変数に保存
+//            sessionStorage.setItem('newOnOff',"off");
+//            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+//            .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+//            .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+//            .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+//
+//            //.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+//            //.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+//            //.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+//            //.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+//
+//            .appendTo(document.body)
+//            .submit();
+//        }
+//    },10);
+//});
+//});
 
 
 $(function(){
