@@ -1456,10 +1456,9 @@ $(function() {
 
     var menu;
 	//var color = '<i class="fa fa-star fa-'+'ff00ff'+'"></i>';
-		<?php foreach ($colors as $color): ?>		
-			alert("<?php echo $color->code; ?>");
-		<?php endforeach; ?>
-
+    	//<?php foreach ($colors as $color): ?>		
+            //alert("icon: '"+'<i class="fa fa-star fa-'+"<?php echo $color->code; ?>"+'"></i>'+"' ,label: "+"'<?php echo $color->code; ?>' ,color: "+"'#<?php echo $color->code; ?>'");
+        //<?php endforeach; ?>
 
     $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
         menu = new ax5.ui.menu({
@@ -1485,14 +1484,22 @@ $(function() {
                 {
                     label: "アイコン色",
                     items: [
-                        {icon: '<i class="fa fa-star fa-floralwhite"></i>' ,label: "floralwhite" ,color: "#fffaf0"},
-                        {icon: '<i class="fa fa-star fa-blue"></i>'        ,label: "blue"        ,color: "#0000ff"},
-                        {icon: '<i class="fa fa-star fa-palegreen"></i>'   ,label: "palegreen"   ,color: "#98fb98"},
-                        {icon: '<i class="fa fa-star fa-darkorange"></i>'  ,label: "darkorange"  ,color: "#ff8c00"},
-                        {icon: '<i class="fa fa-star fa-thistle"></i>'     ,label: "thistle"     ,color: "#dbdfd8"},
-                        {icon: '<i class="fa fa-star fa-yellow"></i>'      ,label: "yellow"      ,color: "#ffff00"},
-                        {icon: '<i class="fa fa-star fa-hotpink"></i>'     ,label: "hotpink"     ,color: "#ff69b4"},
-                        {icon: color                                       ,label: "ピンク"      ,color: "#"+"ff00ff"}
+                    	//var color = '<i class="fa fa-star fa-'+'ff00ff'+'"></i>';
+                        //<?php foreach ($colors as $color): ?>
+                        //    <?php if ($color === end($colors)){ ?>
+                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"}
+                        //    <?php }else{ ?>                            
+                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"},
+                        //    <?php } ?>
+                        //<?php endforeach; ?>
+                        //{icon: '<i class="fa fa-star fa-floralwhite"></i>' ,label: "floralwhite" ,color: "#fffaf0"},
+                        //{icon: '<i class="fa fa-star fa-blue"></i>'        ,label: "blue"        ,color: "#0000ff"},
+                        //{icon: '<i class="fa fa-star fa-palegreen"></i>'   ,label: "palegreen"   ,color: "#98fb98"},
+                        //{icon: '<i class="fa fa-star fa-darkorange"></i>'  ,label: "darkorange"  ,color: "#ff8c00"},
+                        //{icon: '<i class="fa fa-star fa-thistle"></i>'     ,label: "thistle"     ,color: "#dbdfd8"},
+                        //{icon: '<i class="fa fa-star fa-yellow"></i>'      ,label: "yellow"      ,color: "#ffff00"},
+                        //{icon: '<i class="fa fa-star fa-hotpink"></i>'     ,label: 'hotpink'     ,color: '#ff69b4'},
+                        //{icon: color                                       ,label: "ピンク"      ,color: "#"+"ff00ff"}
                     ]
                 }
             ]
