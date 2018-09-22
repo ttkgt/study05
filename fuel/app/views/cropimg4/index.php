@@ -1455,6 +1455,12 @@ $(function() {
 */
 
     var menu;
+	//var color = '<i class="fa fa-star fa-'+'ff00ff'+'"></i>';
+		<?php foreach ($colors as $color): ?>		
+			alert("<?php echo $color->code; ?>");
+		<?php endforeach; ?>
+
+
     $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
         menu = new ax5.ui.menu({
             position: "absolute", // default position is "fixed"
@@ -1485,7 +1491,8 @@ $(function() {
                         {icon: '<i class="fa fa-star fa-darkorange"></i>'  ,label: "darkorange"  ,color: "#ff8c00"},
                         {icon: '<i class="fa fa-star fa-thistle"></i>'     ,label: "thistle"     ,color: "#dbdfd8"},
                         {icon: '<i class="fa fa-star fa-yellow"></i>'      ,label: "yellow"      ,color: "#ffff00"},
-                        {icon: '<i class="fa fa-star fa-hotpink"></i>'     ,label: "hotpink"     ,color: "#ff69b4"}
+                        {icon: '<i class="fa fa-star fa-hotpink"></i>'     ,label: "hotpink"     ,color: "#ff69b4"},
+                        {icon: color                                       ,label: "ピンク"      ,color: "#"+"ff00ff"}
                     ]
                 }
             ]

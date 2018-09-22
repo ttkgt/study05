@@ -47,6 +47,9 @@ class Controller_cropimg4 extends Controller
 		->order_by('id','asc')
 		->get();
 		
+		$data['colors'] = Model_Color::query()
+		->get();
+		
 		$_SESSION['img_top']    = 0; 
 		$_SESSION['img_left']   = 0; 
 		$_SESSION['img_height'] = 0; 
