@@ -861,18 +861,18 @@ $('img.cropimg').mousedown(function(){
 //});
     
 
-//背景画像を移動させたとき、多少のズレが生じるのでマウスを離したときに再表示させる
+//背景画像上でマウスが上げられたことを検知
 $('img.cropimg').mouseup(function(){
 //$('html').mouseup(function(){
 //alert('007');
     //DBの値を変数にセット
     //var $id      = JSON.parse(sessionStorage.getItem('id'));
-    var $itemCd    = JSON.parse(sessionStorage.getItem('itemCd'));
-    var $itemName  = JSON.parse(sessionStorage.getItem('itemName'));
-    var $itemTop   = JSON.parse(sessionStorage.getItem('itemTop'));
-    var $itemLeft  = JSON.parse(sessionStorage.getItem('itemLeft'));
-    var $iconSize  = JSON.parse(sessionStorage.getItem('iconSize'));
-    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
+//    var $itemCd    = JSON.parse(sessionStorage.getItem('itemCd'));
+//    var $itemName  = JSON.parse(sessionStorage.getItem('itemName'));
+//    var $itemTop   = JSON.parse(sessionStorage.getItem('itemTop'));
+//    var $itemLeft  = JSON.parse(sessionStorage.getItem('itemLeft'));
+//    var $iconSize  = JSON.parse(sessionStorage.getItem('iconSize'));
+//    var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 
 //reDraw();
 
@@ -901,7 +901,6 @@ $('img.cropimg').mouseup(function(){
                 $('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
                 $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
             }else{
-alert(reDraw);
                 if (reDraw=='OFF'){
                     $('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
                     $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
