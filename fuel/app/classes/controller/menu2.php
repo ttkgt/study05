@@ -12,6 +12,7 @@ class Controller_menu2 extends Controller
 		//$_SESSION['area']     = '第１工場';
 		$_SESSION['area']       = '第２工場';
 		$_SESSION['background'] = '1';  //1:小要素＋一覧表 , 2:大要素
+		$_SESSION['map']        = 'http://localhost/study05/assets/img/koujou1.png';
 
         if($_SESSION['background'] == '1'){
             //$_SESSION['resultWidth']    = '930'; 

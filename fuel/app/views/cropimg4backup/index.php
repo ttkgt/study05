@@ -570,6 +570,7 @@ $('#kakusu6').on('click', function(e) {
 
 $(function(){
     $('img.cropimg').on('click', function(e) {
+//    $('html').on('click', function(e) {
 //alert('001');
     //DBの値を変数にセット
     //var $id       = JSON.parse(sessionStorage.getItem('id'));
@@ -933,7 +934,8 @@ $('#<?php  echo $_SESSION['itemCd'];?>').mouseup(function(e){
 });
 		
 //背景画像上でマウスが下げられたことを検知
-$('img.cropimg').mousedown(function(){
+//$('img.cropimg').mousedown(function(){
+$('html').mousedown(function(){
 //alert('006');
         //背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
     setTimeout(function(){
@@ -941,6 +943,12 @@ $('img.cropimg').mousedown(function(){
 		sessionStorage.setItem('mouseUpDown',"down");
     },10);
 });
+
+//$('html').mousemove(function(){
+//
+//    alert('ZZZ');    
+//});
+    
 
 //背景画像を移動させたとき、多少のズレが生じるのでマウスを離したときに再表示させる
 $('html').mouseup(function(){
@@ -1167,7 +1175,8 @@ $('html').mouseup(function(){
 });
 
 //背景画像を移動させたとき要素がついてくるように表示
-$('img.cropimg').mousemove(function(){
+//$('img.cropimg').mousemove(function(){
+$('html').mousemove(function(){
 //alert('008');
     //DBの値を変数にセット
     //var $id       = JSON.parse(sessionStorage.getItem('id'));
