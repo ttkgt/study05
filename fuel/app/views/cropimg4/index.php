@@ -570,6 +570,7 @@ $('#kakusu6').on('click', function(e) {
 
 $(function(){
     $('img.cropimg').on('click', function(e) {
+//    $('html').on('click', function(e) {
 //alert('001');
     //DBの値を変数にセット
     //var $id       = JSON.parse(sessionStorage.getItem('id'));
@@ -579,6 +580,12 @@ $(function(){
     var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
     var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
     var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
+    
+    //セッション変数から標的の要素の値を取得
+    var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
+    var newLeft     = $('img.cropimg').width()  * parseFloat(sessionStorage.getItem('newLeftFold')) + $('img.cropimg').offset().left;
+    var targetSize  = sessionStorage.getItem('targetSize');
+    var targetColor = sessionStorage.getItem('targetColor');
 
     var that = this;
     setTimeout(function() {
@@ -596,17 +603,52 @@ $(function(){
 					var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
 					var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
 					//$('#'+$itemCd[i]).css({top:Top,left:Left,display:'block'}).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
-					$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
-					$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
-					$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
+                    if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){            
+                        $('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
+                        $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
+                    }else{
+                        if (reDraw=='OFF'){
+                            $('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
+                            $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
+                        }else{
+                            if (newTop==null){
+                                $('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
+                                $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
+                            }else{    
+                                $('#'+$itemCd[i]).css('top', newTop);					//top:上からの配置位置（距離）を指定する
+                                $('#'+$itemCd[i]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
+                            }
+                        }            
+                    }
+                    $('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
 					//if (<?php echo $_SESSION['background'];?>=='1'){
-					if ($iconSize[i]=='1'){
-						$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-					}else{
-						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-					}
+            if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){            
+                if ($iconSize[i]=='1'){
+                    $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+                    $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+                }else{
+                    $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+                    $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+                }
+                    }else{
+                        if (reDraw=='OFF'){
+                            if ($iconSize[i]=='1'){
+                                $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+                                $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+                            }else{
+                                $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+                                $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+                            }
+                        }else{
+                            if (targetSize=='1'){
+                                $('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+                                $('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
+                            }else{
+                                $('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+                                $('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
+                            }
+                        }
+                    }    
 					$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 					$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 					$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
@@ -640,7 +682,15 @@ $(function(){
 						//}
 					}	
 					$('#'+$itemCd[i]).css('background-size','cover');
-        			$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
+                    if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){  
+                        $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
+                    }else{
+                        if(reDraw=='OFF'){
+                            $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
+                        }else{
+                            $('#'+$itemCd[i]).css('background-color',targetColor);
+                        }
+                    }
 					$('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
 					//if($itemCd[i]=="new"){
 					//	if($itemTop[i] != null && $itemLeft[i] != null){
@@ -884,7 +934,8 @@ $('#<?php  echo $_SESSION['itemCd'];?>').mouseup(function(e){
 });
 		
 //背景画像上でマウスが下げられたことを検知
-$('img.cropimg').mousedown(function(){
+//$('img.cropimg').mousedown(function(){
+$('html').mousedown(function(){
 //alert('006');
         //背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
     setTimeout(function(){
@@ -892,6 +943,12 @@ $('img.cropimg').mousedown(function(){
 		sessionStorage.setItem('mouseUpDown',"down");
     },10);
 });
+
+//$('html').mousemove(function(){
+//
+//    alert('ZZZ');    
+//});
+    
 
 //背景画像を移動させたとき、多少のズレが生じるのでマウスを離したときに再表示させる
 $('html').mouseup(function(){
@@ -1118,7 +1175,8 @@ $('html').mouseup(function(){
 });
 
 //背景画像を移動させたとき要素がついてくるように表示
-$('img.cropimg').mousemove(function(){
+//$('img.cropimg').mousemove(function(){
+$('html').mousemove(function(){
 //alert('008');
     //DBの値を変数にセット
     //var $id       = JSON.parse(sessionStorage.getItem('id'));
@@ -1487,9 +1545,11 @@ $(function() {
                     	//var color = '<i class="fa fa-star fa-'+'ff00ff'+'"></i>';
                         //<?php foreach ($colors as $color): ?>
                         //    <?php if ($color === end($colors)){ ?>
-                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"}
+                        //        {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"}
+                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,color: "<?php echo $color->code; ?>"}
                         //    <?php }else{ ?>                            
-                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"},
+                        //        {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"},
+                                {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,color: "<?php echo $color->code; ?>"},
                         //    <?php } ?>
                         //<?php endforeach; ?>
                         //{icon: '<i class="fa fa-star fa-floralwhite"></i>' ,label: "floralwhite" ,color: "#fffaf0"},
