@@ -226,7 +226,7 @@
 
 
 		
-<?php echo Form::open('http://localhost/study05/cropimg4/index');?>
+<?php echo Form::open('http://localhost/study05/cropimg4backup/index');?>
 <?php echo Form::label('検索文字 ', 'kensakumoji', array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::input('kensakumoji', '', array('size'=>20), array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::submit('submit', '検索', array('class' => 'btn btn-success btn-sm'));?>
@@ -473,7 +473,7 @@ $(function(){
     $('#kakusu5').on('click', function(e) {
         setTimeout(function(){
             //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
-			$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+			$('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
 			.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
 			.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
 			.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
@@ -517,7 +517,7 @@ $(function(){
                 //新しい要素の存在をセッション変数に保存
                 sessionStorage.setItem('newOnOff',"off");
                 sessionStorage.setItem('reDraw','OFF');
-                $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+                $('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
                 .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
                 .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
                 .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
@@ -825,7 +825,7 @@ $('#<?php  echo $_SESSION['itemCd'];?>').mouseup(function(e){
         sessionStorage.setItem('newLeftFold',(x - $('img.cropimg').offset().left) / $('img.cropimg').width());
 
         //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
-        //$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+        //$('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
         //.append($('<input/>', {type: 'hidden', name: 'id'        , value: <?php echo $_SESSION['id'];?>}))
         //.append($('<input/>', {type: 'hidden', name: 'item_top'  , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
         //.append($('<input/>', {type: 'hidden', name: 'item_left' , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
@@ -1386,7 +1386,7 @@ $(function() {
         bindings: {
 //			'save': function() {
 //				//alert(<?php echo $_SESSION['id'];?>);
-//				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+//				$('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
 //				.append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
 //				.append($('<input/>', {type: 'hidden', name: 'item_top' , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
 //				.append($('<input/>', {type: 'hidden', name: 'item_left', value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
@@ -1401,7 +1401,7 @@ $(function() {
                     $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
                     //新しい要素の存在をセッション変数に保存
                     sessionStorage.setItem('newOnOff',"off");
-                    $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+                    $('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
                     .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
                     .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
                     .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
@@ -1485,7 +1485,7 @@ $(function() {
             //    alert("#00FF00ではありません")
             //}
             if(this.label=="保存"){
-				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+				$('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
 				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
 				.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
 				.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
@@ -1508,7 +1508,7 @@ $(function() {
                     //新しい要素の存在をセッション変数に保存
                     sessionStorage.setItem('newOnOff',"off");
                     sessionStorage.setItem('reDraw','OFF');
-                    $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+                    $('<form/>', {action: 'http://localhost/study05/cropimg4backup/edit', method: 'post'})
                     .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
                     .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
                     .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
@@ -1527,14 +1527,14 @@ $(function() {
             else if(this.label=="大　サイズ"){
                 sessionStorage.setItem('targetSize',"2");
                 sessionStorage.setItem('reDraw','ON');
-				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
+				$('<form/>', {action: 'http://localhost/study05/cropimg4backup/index', method: 'post'})
                 .appendTo(document.body)
 				.submit();
             }
             else if(this.label=="小　サイズ"){
                 sessionStorage.setItem('targetSize',"1");
                 sessionStorage.setItem('reDraw','ON');
-				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
+				$('<form/>', {action: 'http://localhost/study05/cropimg4backup/index', method: 'post'})
                 .appendTo(document.body)
 				.submit();
             }
@@ -1542,7 +1542,7 @@ $(function() {
             if (this.label!="位置"&&this.label!="アイコンサイズ"&&this.label!="アイコン色"){
                 sessionStorage.setItem('targetColor',this.color);
                 sessionStorage.setItem('reDraw','ON');
-				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
+				$('<form/>', {action: 'http://localhost/study05/cropimg4backup/index', method: 'post'})
                 .appendTo(document.body)
 				.submit();
     }
