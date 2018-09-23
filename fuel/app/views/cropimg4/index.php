@@ -353,7 +353,6 @@ $(document).ready(function() {
 
 	//各要素を再描画（1行目から）
 	for (let i = 0; i < $itemCd.length; i++){
-//alert('111 '+i+' '+$itemCd[i]);					
 		//setTimeout(function() {
 			var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
 			var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
@@ -483,105 +482,7 @@ $('img.cropimg').on('click', function(e) {
 			$(that).data('double', dblclick-1);
 		} else {
 //alert('001');
-			//各要素を再描画
-//			for (let i = 0; i < $itemCd.length; i++){
-//				//JSONのnullは""にキャストされている
-//				if ($itemTop[i] != "" || $itemLeft[i] != ""){
-//					var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
-//					var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
-
-//		if(mouseUpDown == "down") {
-
-//			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
-//				sessionStorage.setItem('targetI',i);
-//				if(newTop == null){
-//					newTop = Top;
-//				}
-//				if(newLeft == null){
-//					newLeft = Left;
-//				}
-				
-//				if (targetSize == null){
-//					sessionStorage.setItem('targetSize',$iconSize[i]);
-//					targetSize = $iconSize[i];
-//				}
-				
-//				if (targetColor == null){
-//					sessionStorage.setItem('targetColor',$iconColor[i]);
-//					targetColor = $iconSize[i];
-//				}
-//			}	
-
-//			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){ 
-//				$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
-//				$('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
-//			}else{
-//				$('#'+$itemCd[i]).css('top', newTop);					//top:上からの配置位置（距離）を指定する
-//				$('#'+$itemCd[i]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
-//			}
-	
-//					$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-
-//		}
-//					if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){            
-//						if ($iconSize[i]=='1'){
-//							$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-//							$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-//						}else{
-//							$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-//							$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-//						}
-//					}else{
-//						if (reDraw=='OFF'){
-//							if ($iconSize[i]=='1'){
-//								$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-//								$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-//							}else{
-//								$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-//								$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-//							}
-//						}else{
-//							if (targetSize=='1'){
-//								$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-//								$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-//							}else{
-//								$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-//								$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-//						 }
-//						}
-//					}    
-	
-//					$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
-//                    $('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-//                    $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
-//                    $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
-//                    $('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
-//                    $('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
-//                    $('#'+$itemCd[i]).css('cursor','default');			//cursor:カーソルの形状を指定する
-//                    $('#'+$itemCd[i]).css('overflow','hidden');			//overflow:はみ出た要素の表示方法を指定する
-//                    $('#'+$itemCd[i]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
-//                    $('#'+$itemCd[i]).css('text-align','left');			//position:ボックスの配置方法（基準位置）を指定する
-//                    if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){
-//                        $('#'+$itemCd[i]).css('z-index','2');
-//                        if($itemTop[i] != "" && $itemLeft[i] != ""){
-//                            sessionStorage.setItem('newOnOff',"on");
-//                        }
-//   					}else{
-//           				$('#'+$itemCd[i]).css('z-index','1');
-//   					}	
-//                    $('#'+$itemCd[i]).css('background-size','cover');
-//                    if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){  
-//                        $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
-//                    }else{
-//                        if(reDraw=='OFF'){
-//                            $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
-//                        }else{
-//                            $('#'+$itemCd[i]).css('background-color',targetColor);
-//                        }
-//                    }
-//                    $('#'+$itemCd[i]).attr('title','資産番号 : '+$itemCd[i]+' 資産名 : '+$itemName[i]);
-//                }
-//            }
+			//シングルクリックの処理があればここに記入
         }
     }, 250);
         //ダブルクリックされたら新しい要素を発生させる
@@ -709,29 +610,10 @@ $(function(){
 $(function(){
 	$('img.cropimg').mouseup(function(){
 		//alert('007');
-		//セッション変数から標的の要素の値を取得
-		//var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
-		//var newLeft     = $('img.cropimg').width()  * parseFloat(sessionStorage.getItem('newLeftFold')) + $('img.cropimg').offset().left;
-		//var targetSize  = sessionStorage.getItem('targetSize');
-		//var targetColor = sessionStorage.getItem('targetColor');
-    
 		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
 		//setTimeout(function(){
 			//alert("背景画像上でマウスを上げた時");
 			sessionStorage.setItem('mouseUpDown',"up");
-
-			//新規追加要素の位置
-			//var off = $('#<?php  echo $_SESSION['itemCd'];?>').offset();
-			//var y = off.top;
-			//var x = off.left;		
-			//新しく配置された要素の背景画像に対して相対的に表示される位置をセッション変数に保存
-			//sessionStorage.setItem('newTopFold' ,(y - $('img.cropimg').offset().top)  / $('img.cropimg').height());
-			//sessionStorage.setItem('newLeftFold',(x - $('img.cropimg').offset().left) / $('img.cropimg').width());
-
-			/*------------------------------------*/
-			//commonMove(); //共通要素移動処理
-			/*------------------------------------*/
-
 		//},0);
 	})
 });
