@@ -2335,6 +2335,256 @@
   overflow: visible;
   clip: auto;
 }
+.fa-black:before
+{
+color: #000000;
+}
+.fa-dimgray:before
+{
+color: #696969;
+}
+.fa-dimgray:before
+{
+color: #696969;
+}
+.fa-gray:before
+{
+color: #808080;
+}
+.fa-silver:before
+{
+color: #c0c0c0;
+}
+.fa-lightgray:before
+{
+color: #d3d3d3;
+}
+.fa-gainsboro:before
+{
+color: #dcdcdc;
+}
+.fa-whitesmoke:before
+{
+color: #f5f5f5;
+}
+.fa-white:before
+{
+color: #ffffff;
+}
+.fa-snow:before
+{
+color: #fffafa;
+}
+.fa-ghostwhite:before
+{
+color: #f8f8ff;
+}
+.fa-floralwhite:before
+{
+color: #fffaf0;
+}
+.fa-linen:before
+{
+color:#faf0e6;
+}
+.fa-antiquewhite:before
+{
+color: #faebd7;
+}
+.fa-papayawhip:before
+{
+color: #ffefd5;
+}
+.fa-blanchedalmond:before
+{
+color: #ffebcd;
+}
+.fa-bisque:before
+{
+color: #ffe4c4;
+}
+.fa-moccasin:before
+{
+color:#ffe4b5;
+}
+.fa-navajowhite:before
+{
+color: #ffdead;
+}
+.fa-peachpuff:before
+{
+color: #ffdab9;
+}
+.fa-mistyrose:before
+{
+color:#ffe4e1;
+}
+.fa-lavenderblush:before
+{
+color: #fff0f5;
+}
+.fa-seashell:before
+{
+color:#fff5ee;
+}
+.fa-oldlace:before
+{
+color: #fdf5e6;
+}
+.fa-ivory:before
+{
+color:#fffff0;
+}
+.fa-honeydew:before
+{
+color:#f0fff0;
+}
+.fa-mintcream:before
+{
+color: #f5fffa;
+}
+.fa-azure:before
+{
+color:#f0ffff;
+}
+.fa-aliceblue:before
+{
+color: #f0f8ff;
+}
+.fa-lavender:before
+{
+color:#e6e6fa;
+}
+.fa-lightsteelblue:before
+{
+color:#b0c4de;
+}
+.fa-lightslategray:before
+{
+color: #778899;
+}
+.fa-slategray:before
+{
+color:#708090;
+}
+.fa-steelblue:before
+{
+color: #4682b4;
+}
+.fa-royalblue:before
+{
+color:#4169e1;
+}
+.fa-midnightblue:before
+{
+color:#191970;
+}
+.fa-navy:before
+{
+color: #000080;
+}
+.fa-darkblue:before
+{
+color:#00008b;
+}
+.fa-mediumblue:before
+{
+color: #0000cd;
+}
+.fa-blue:before
+{
+color:#0000ff;
+}
+.fa-dodgerblue:before
+{
+color:#1e90ff;
+}
+.fa-cornflowerblue:before
+{
+color: #6495ed;
+}
+.fa-deepskyblue:before
+{
+color:#00bfff;
+}
+.fa-lightskyblue:before
+{
+color: #87cefa;
+}
+.fa-skyblue:before
+{
+color:#87ceeb;
+}
+.fa-lightblue:before
+{
+color:#add8e6;
+}
+.fa-powderblue:before
+{
+color: #b0e0e6;
+}
+.fa-paleturquoise:before
+{
+color:#afeeee;
+}
+.fa-lightcyan:before
+{
+color: #e0ffff;
+}
+.fa-cyan:before
+{
+color:#00ffff;
+}
+.fa-aqua:before
+{
+color:#00ffff;
+}
+.fa-turquoise:before
+{
+color: #40e0d0;
+}
+.fa-mediumturquoise:before
+{
+color:#48d1cc;
+}
+.fa-darkturquoise:before
+{
+color:#00ced1;
+}
+.fa-lightseagreen:before
+{
+color: #20b2aa;
+}
+.fa-cadetblue:before
+{
+color:#5f9ea0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .fa-white:before
 {
 color: #ffffff;

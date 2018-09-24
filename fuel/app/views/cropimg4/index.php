@@ -466,6 +466,11 @@ $(document).ready(function() {
 					$('#'+$itemCd[i]).css('background-color',targetColor);
 				}
 			}
+			if ($iconColor[i] == '#0000ff'){
+				$('#'+$itemCd[i]).css('color','white');
+			}else{
+				$('#'+$itemCd[i]).css('color','black');
+			}
 
             if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
 				if ($iconSize[i]=='1'){
