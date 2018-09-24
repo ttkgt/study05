@@ -466,7 +466,37 @@ $(document).ready(function() {
 					$('#'+$itemCd[i]).css('background-color',targetColor);
 				}
 			}
-			if ($iconColor[i].substring(0,5) == '#0000'){
+			//背景色に合わせて文字色を
+			if ($iconColor[i] == '#000000'
+					|| $iconColor[i] == '#696969'
+					|| $iconColor[i] == '#4169e1'
+					|| $iconColor[i] == '#191970'
+					|| $iconColor[i] == '#000080'
+					|| $iconColor[i] == '#00008b'
+					|| $iconColor[i] == '#0000cd'
+					|| $iconColor[i] == '#0000ff'
+					|| $iconColor[i] == '#008080'
+					|| $iconColor[i] == '#2f4f4f'
+					|| $iconColor[i] == '#006400'
+					|| $iconColor[i] == '#008000'
+					|| $iconColor[i] == '#556b2f'
+					|| $iconColor[i] == '#a0522b'
+					|| $iconColor[i] == '#8b4513'
+					|| $iconColor[i] == '#800000'
+					|| $iconColor[i] == '#8b0000'
+					|| $iconColor[i] == '#a52a2a'
+					|| $iconColor[i] == '#b22222'
+					|| $iconColor[i] == '#dc143c'
+					|| $iconColor[i] == '#c71585'
+					|| $iconColor[i] == '#9932cc'
+					|| $iconColor[i] == '#9400d3'
+					|| $iconColor[i] == '#8b008b'
+					|| $iconColor[i] == '#800080'
+					|| $iconColor[i] == '#4b0082'
+					|| $iconColor[i] == '#483d8b'
+					|| $iconColor[i] == '#8a2be2'
+					|| $iconColor[i] == '#6a5acd'
+				){
 				$('#'+$itemCd[i]).css('color','white');
 			}else{
 				$('#'+$itemCd[i]).css('color','black');
