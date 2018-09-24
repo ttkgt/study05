@@ -437,8 +437,14 @@ $(document).ready(function() {
 
 			$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-			$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
-			$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
+            
+			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
+                $('#'+$itemCd[i]).css('border','solid 3px #ff0000');	//border:枠線のスタイル・太さ・色を指定する
+            }else{
+                $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
+            }
+
+            $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 			$('#'+$itemCd[i]).css('line-height','14px');			//line-height:行の高さを指定する
 			$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
 			$('#'+$itemCd[i]).css('cursor','default');			//cursor:カーソルの形状を指定する
