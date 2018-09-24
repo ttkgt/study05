@@ -466,7 +466,9 @@ $(document).ready(function() {
 					$('#'+$itemCd[i]).css('background-color',targetColor);
 				}
 			}
+			
 			//背景色に合わせて文字色を
+		setTimeout(function() {
 			if ($iconColor[i] == '#000000'
 					|| $iconColor[i] == '#696969'
 					|| $iconColor[i] == '#4169e1'
@@ -497,12 +499,20 @@ $(document).ready(function() {
 					|| $iconColor[i] == '#8a2be2'
 					|| $iconColor[i] == '#6a5acd'
 				){
-				$('#'+$itemCd[i]).css('color','white');
-			}else{
-				$('#'+$itemCd[i]).css('color','black');
+					$('#'+$itemCd[i]).css('color','white');
+					if($itemCd[i]=='H17'){
+						alert( $iconColor[i]);	
+					}
+				
+				}else{
+					$('#'+$itemCd[i]).css('color','black');
+					if($itemCd[i]=='H17'){
+						alert( $iconColor[i]);	
+				}
 			}
+        }, 1000);
 
-            if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
+			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
 				if ($iconSize[i]=='1'){
                     $('#'+$itemCd[i]).text(i + 1);
 				}else{
