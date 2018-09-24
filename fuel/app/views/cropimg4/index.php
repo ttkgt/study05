@@ -466,7 +466,7 @@ $(document).ready(function() {
 					$('#'+$itemCd[i]).css('background-color',targetColor);
 				}
 			}
-			if ($iconColor[i] == '#0000ff'){
+			if ($iconColor[i].substring(0,5) == '#0000'){
 				$('#'+$itemCd[i]).css('color','white');
 			}else{
 				$('#'+$itemCd[i]).css('color','black');
