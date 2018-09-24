@@ -468,49 +468,47 @@ $(document).ready(function() {
 			}
 			
 			//背景色に合わせて文字色を
-		setTimeout(function() {
-			if ($iconColor[i] == '#000000'
-					|| $iconColor[i] == '#696969'
-					|| $iconColor[i] == '#4169e1'
-					|| $iconColor[i] == '#191970'
-					|| $iconColor[i] == '#000080'
-					|| $iconColor[i] == '#00008b'
-					|| $iconColor[i] == '#0000cd'
-					|| $iconColor[i] == '#0000ff'
-					|| $iconColor[i] == '#008080'
-					|| $iconColor[i] == '#2f4f4f'
-					|| $iconColor[i] == '#006400'
-					|| $iconColor[i] == '#008000'
-					|| $iconColor[i] == '#556b2f'
-					|| $iconColor[i] == '#a0522b'
-					|| $iconColor[i] == '#8b4513'
-					|| $iconColor[i] == '#800000'
-					|| $iconColor[i] == '#8b0000'
-					|| $iconColor[i] == '#a52a2a'
-					|| $iconColor[i] == '#b22222'
-					|| $iconColor[i] == '#dc143c'
-					|| $iconColor[i] == '#c71585'
-					|| $iconColor[i] == '#9932cc'
-					|| $iconColor[i] == '#9400d3'
-					|| $iconColor[i] == '#8b008b'
-					|| $iconColor[i] == '#800080'
-					|| $iconColor[i] == '#4b0082'
-					|| $iconColor[i] == '#483d8b'
-					|| $iconColor[i] == '#8a2be2'
-					|| $iconColor[i] == '#6a5acd'
-				){
-					$('#'+$itemCd[i]).css('color','white');
-					if($itemCd[i]=='H17'){
-						alert( $iconColor[i]);	
-					}
+//			if ($iconColor[i] == '#000000'
+//					|| $iconColor[i] == '#696969'
+//					|| $iconColor[i] == '#4169e1'
+//					|| $iconColor[i] == '#191970'
+//					|| $iconColor[i] == '#000080'
+//					|| $iconColor[i] == '#00008b'
+//					|| $iconColor[i] == '#0000cd'
+//					|| $iconColor[i] == '#0000ff'
+//					|| $iconColor[i] == '#008080'
+//					|| $iconColor[i] == '#2f4f4f'
+//					|| $iconColor[i] == '#006400'
+//					|| $iconColor[i] == '#008000'
+//					|| $iconColor[i] == '#556b2f'
+//					|| $iconColor[i] == '#a0522b'
+//					|| $iconColor[i] == '#8b4513'
+//					|| $iconColor[i] == '#800000'
+//					|| $iconColor[i] == '#8b0000'
+//					|| $iconColor[i] == '#a52a2a'
+//					|| $iconColor[i] == '#b22222'
+//					|| $iconColor[i] == '#dc143c'
+//					|| $iconColor[i] == '#c71585'
+//					|| $iconColor[i] == '#9932cc'
+//					|| $iconColor[i] == '#9400d3'
+//					|| $iconColor[i] == '#8b008b'
+//					|| $iconColor[i] == '#800080'
+//					|| $iconColor[i] == '#4b0082'
+//					|| $iconColor[i] == '#483d8b'
+//					|| $iconColor[i] == '#8a2be2'
+//					|| $iconColor[i] == '#6a5acd'
+//			){
+//					$('#'+$itemCd[i]).css('color','white');
+					//if($itemCd[i]=='H17'){
+					//	alert( $iconColor[i]);	
+					//}
 				
-				}else{
-					$('#'+$itemCd[i]).css('color','black');
-					if($itemCd[i]=='H17'){
-						alert( $iconColor[i]);	
-				}
-			}
-        }, 1000);
+//			}else{
+//					$('#'+$itemCd[i]).css('color','black');
+					//if($itemCd[i]=='H17'){
+					//	alert( $iconColor[i]);	
+                    //}
+//            }
 
 			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
 				if ($iconSize[i]=='1'){
@@ -518,23 +516,73 @@ $(document).ready(function() {
 				}else{
                     $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
 				}
-			}else{
+                checkColor = $iconColor[i];
+            }else{
 				if (reDraw=='OFF'){
 					if ($iconSize[i]=='1'){
                         $('#'+$itemCd[i]).text(i + 1);
 					}else{
                         $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
 					}
+                    checkColor = $iconColor[i];
 				}else{
 					if (targetSize=='1'){
                         $('#'+$itemCd[i]).text(i + 1);
 					}else{
                         $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
 					}
+                    checkColor = targetColor;
 				}
 			}
     
-        //}, 250);
+			//背景色に合わせて文字色を
+			if (checkColor == '#000000'
+					|| checkColor == '#696969'
+					|| checkColor == '#4169e1'
+					|| checkColor == '#191970'
+					|| checkColor == '#000080'
+					|| checkColor == '#00008b'
+					|| checkColor == '#0000cd'
+					|| checkColor == '#0000ff'
+					|| checkColor == '#008080'
+					|| checkColor == '#2f4f4f'
+					|| checkColor == '#006400'
+					|| checkColor == '#008000'
+					|| checkColor == '#556b2f'
+					|| checkColor == '#a0522b'
+					|| checkColor == '#8b4513'
+					|| checkColor == '#800000'
+					|| checkColor == '#8b0000'
+					|| checkColor == '#a52a2a'
+					|| checkColor == '#b22222'
+					|| checkColor == '#dc143c'
+					|| checkColor == '#c71585'
+					|| checkColor == '#9932cc'
+					|| checkColor == '#9400d3'
+					|| checkColor == '#8b008b'
+					|| checkColor == '#800080'
+					|| checkColor == '#4b0082'
+					|| checkColor == '#483d8b'
+					|| checkColor == '#8a2be2'
+					|| checkColor == '#6a5acd'
+			){
+                    setColor = 'white';
+					$('#'+$itemCd[i]).css('color','white');
+					//if($itemCd[i]=='H17'){
+					//	alert( $iconColor[i]);	
+					//}
+				
+			}else{
+                    setColor = 'black';
+					$('#'+$itemCd[i]).css('color','black');
+					//if($itemCd[i]=='H17'){
+					//	alert( $iconColor[i]);	
+                    //}
+            }
+    
+    
+    
+    //}, 250);
 	}
 	/*------------------------------------*/
 	//commonMove(); //共通要素移動処理
