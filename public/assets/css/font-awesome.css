@@ -2335,6 +2335,10 @@
   overflow: visible;
   clip: auto;
 }
+.fa-white:before
+{
+color: #ffffff;
+}
 .fa-green:before
 {
 color: #008000;

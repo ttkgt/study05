@@ -235,12 +235,13 @@
 <table class="scrollTable" cellpadding="0" cellspacing="0" border="0">
     <thead>
 		<tr>
+			<th width="2%" align="center">Color</th>
 			<th width="2%" align="center">No</th>
 			<th width="5%" align="center">資産番号</th>
 			<th width="20%" align="center">資産名</th>
 			<th width="20%" align="center">型式・メーカー</th>
 			<th width="10%" align="center">設置場所</th>
-			<th width="43%" align="center">説明</th>
+			<th width="41%" align="center">説明</th>
 		</tr>
     </thead>
     <tbody>
@@ -254,9 +255,12 @@
 	<script>var itemLeft   = [];</script>
 	<script>var iconSize   = [];</script>
 	<script>var iconColor  = [];</script>
-	<?php foreach ($items as $item): ?>		
+    <?php $i = 0; ?>
+	<?php foreach ($items as $item): ?>
+    <?php $i++; ?>
 		<tr>
-			<td bgcolor="<?php echo $item->icon_color; ?>"><?php echo $item->id; ?></td>
+			<td bgcolor="<?php echo $item->icon_color; ?>"><?php echo ' '; ?></td>
+            <td><?php echo $i; ?></td>
 			<td><?php echo $item->item_cd; ?></td>
 			<td><?php echo $item->item_name; ?></td>
 			<td><?php echo $item->maker; ?></td>
@@ -303,7 +307,7 @@ $(document).ready(function() {
     $("body").css({ visibility: "visible" });
 
     //DBの値を変数にセット
-    //var $id       = JSON.parse(sessionStorage.getItem('id'));
+    var $id        = JSON.parse(sessionStorage.getItem('id'));
     var $itemCd    = JSON.parse(sessionStorage.getItem('itemCd'));
     var $itemName  = JSON.parse(sessionStorage.getItem('itemName'));
     var $itemTop   = JSON.parse(sessionStorage.getItem('itemTop'));
@@ -327,7 +331,10 @@ $(document).ready(function() {
     	sessionStorage.setItem('startOffsetTop' ,$('img.cropimg').offset().top);
 		sessionStorage.setItem('startOffsetLeft',$('img.cropimg').offset().left);
     }
-
+    
+    //マウスが背景画像に乗っているかを判断
+    var mouseInOut = "OUT";
+    
     //標的要素をＤＢの値で表示するか、画面操作後の値で表示するかを判断
     //ON :画面操作後の値で表示
     //OFF:ＤＢの値で表示
@@ -347,8 +354,19 @@ $(document).ready(function() {
     }else{
         var newLeft     = null;
     }
-    var targetSize  = sessionStorage.getItem('targetSize');
-    var targetColor = sessionStorage.getItem('targetColor');
+    
+	if (sessionStorage.getItem('targetSize')!=null){
+        var targetSize  = sessionStorage.getItem('targetSize');
+    }else{
+        var targetSize  = null;
+    }
+    
+	if (sessionStorage.getItem('targetColor')!=null){
+        var targetColor  = sessionStorage.getItem('targetColor');
+    }else{
+        var targetColor  = null;
+    }
+    
 //alert('000');
 
 	//各要素を再描画（1行目から）
@@ -356,13 +374,15 @@ $(document).ready(function() {
 		//setTimeout(function() {
 			var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
 			var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
-		
 			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
 				sessionStorage.setItem('targetI',i);
+                
 				if(newTop == null){
+                    sessionStorage.setItem('newTopFold',(Top - $('img.cropimg').offset().top) / $('img.cropimg').height());
 					newTop = Top;
-				}
+                }
 				if(newLeft == null){
+                    sessionStorage.setItem('newLeftFold',(Left - $('img.cropimg').offset().left) / $('img.cropimg').width());
 					newLeft = Left;
 				}
 				
@@ -387,7 +407,8 @@ $(document).ready(function() {
 	
 			$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
 			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
-				if ($iconSize[i]=='1'){
+
+            if ($iconSize[i]=='1'){
 					$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
 					$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
 				}else{
@@ -418,7 +439,7 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
 			$('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
 			$('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
-			$('#'+$itemCd[i]).css('line-height','6px');			//line-height:行の高さを指定する
+			$('#'+$itemCd[i]).css('line-height','14px');			//line-height:行の高さを指定する
 			$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
 			$('#'+$itemCd[i]).css('cursor','default');			//cursor:カーソルの形状を指定する
 			$('#'+$itemCd[i]).css('overflow','hidden');			//overflow:はみ出た要素の表示方法を指定する
@@ -439,7 +460,30 @@ $(document).ready(function() {
 					$('#'+$itemCd[i]).css('background-color',targetColor);
 				}
 			}
-		//}, 250);
+
+            if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
+				if ($iconSize[i]=='1'){
+                    $('#'+$itemCd[i]).text(i + 1);
+				}else{
+                    $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+				}
+			}else{
+				if (reDraw=='OFF'){
+					if ($iconSize[i]=='1'){
+                        $('#'+$itemCd[i]).text(i + 1);
+					}else{
+                        $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+					}
+				}else{
+					if (targetSize=='1'){
+                        $('#'+$itemCd[i]).text(i + 1);
+					}else{
+                        $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+					}
+				}
+			}
+    
+        //}, 250);
 	}
 	/*------------------------------------*/
 	//commonMove(); //共通要素移動処理
@@ -449,11 +493,11 @@ $(document).ready(function() {
 	commonAddMargin(); //共通追加余白処理
 	/*------------------------------------*/
 
-	$('#addMargin5').css({top:150,left:window.innerWidth-34,display:'block',height:32,width:32})
-    $('#addMargin5').css('background','url("http://localhost/study05/assets/img/save_32_31.png")');
+	$('#addMargin5').css({top:10,left:window.innerWidth-140,display:'block',height:46,width:100})
+    $('#addMargin5').css('background','url("http://localhost/study05/assets/img/save.png")');
 
-	$('#addMargin6').css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
-    $('#addMargin6').css('background','url("http://localhost/study05/assets/img/remove_32_32.png")');
+	$('#addMargin6').css({top:70,left:window.innerWidth-140,display:'block',height:46,width:100})
+    $('#addMargin6').css('background','url("http://localhost/study05/assets/img/exclusion.png")');
 
 }); 
 
@@ -487,7 +531,7 @@ $('img.cropimg').on('click', function(e) {
     }, 250);
         //ダブルクリックされたら新しい要素を発生させる
 }).dblclick(function(e) {
-alert('002');
+    //alert('002');
     //alert("ダブルクリック時");
     $(this).data('double', 2);
     //alert('ダブルクリック');
@@ -554,7 +598,6 @@ $(function(){
 		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
 		//setTimeout(function(){
 			//alert("新規追加画像の上でマウスが下げられた時");
-			sessionStorage.setItem('newUpDown',"down");
 			sessionStorage.setItem('mouseUpDown',"up");
 		//},10);
 	})
@@ -571,7 +614,6 @@ $(function(){
 			//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
 			//setTimeout(function(){
 				//alert("新規追加要素画像上でマウスを上げた時");
-				sessionStorage.setItem('newUpDown',"up");
 				sessionStorage.setItem('mouseUpDown',"up");
 				//新規追加要素の位置
 				var off = $('#<?php  echo $_SESSION['itemCd'];?>').offset();
@@ -623,8 +665,7 @@ $(function(){
 --------------------------------------------------------------------------------*/
 $(function(){
 	$('img.cropimg').mousemove(function(){
-		//$('html').mousemove(function(){
-		//alert('008');
+//		alert('008');
 
 		//alert("背景画像上でマウスを下げた時");
 		//sessionStorage.setItem('mouseUpDown',"down");
@@ -632,12 +673,12 @@ $(function(){
 		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
 		//setTimeout(function(){
 
-		if(sessionStorage.getItem('mouseUpDown') == "down") {
-			/*------------------------------------*/
-			commonAllMove(); //共通要素移動処理
-			/*------------------------------------*/
-		}
-		//},10);
+        if (sessionStorage.getItem('mouseUpDown') == "down") {
+            /*------------------------------------*/
+            commonAllMove(); //共通要素移動処理
+            /*------------------------------------*/
+        }
+        //},10);
 	})
 });
 	
@@ -647,7 +688,7 @@ $(function(){
 //ブラウザのサイズ変更時に再描画させる。
 $(function(){
 	$(window).resize(function(){
-	alert('009');
+	//alert('009');
 
 		/*------------------------------------*/
 		commonAddMargin(); //共通追加余白処理
@@ -660,9 +701,28 @@ $(function(){
 	})
 });
 	
+//$(function(){
+//	$('img.cropimg').mouseover(function(){
+//        mouseInOut = "IN";
+//    })
+//});
+
+//$(function(){
+//	$('img.cropimg').mouseout(function(){
+//        mouseInOut = "OUT";
+//    })
+//});
 
 
-	
+//$(function(){
+//	$('img.cropimg').mousemove(function(){
+//        alert('html mousemove');
+//    })
+//});
+
+
+
+
 //});
 
 
@@ -732,13 +792,13 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
             'arrow': '▸'
         },
         items: [
-            {
-                label: "位置",
-                items: [
-                    {label: "保存"},
-                    {label: "除外"}
-                ]
-            },
+//            {
+//                label: "位置",
+//                items: [
+//                    {label: "保存"},
+//                    {label: "除外"}
+//                ]
+//            },
             {
                 label: "アイコンサイズ",
                 items: [
@@ -788,12 +848,16 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
                 //新しい要素の存在をセッション変数に保存
                 sessionStorage.setItem('newOnOff',"off");
                 sessionStorage.setItem('reDraw','OFF');
+                sessionStorage.setItem('newTopFold',null);
+                sessionStorage.setItem('newLeftFold',null);
+                sessionStorage.setItem('targetSize',"2");
+                sessionStorage.setItem('targetColor','#ffffff');
                 $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
                 .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
                 .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
                 .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: 'null'}))
+                .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: '2'}))
+                .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: '#ffffff'}))
 			
                 .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
                 .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
@@ -884,7 +948,6 @@ function commonAllMove(){
 			var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 	
 			//セッション変数から標的の要素の値を取得
-			//var newUpDown   = sessionStorage.getItem('newUpDown');;
 			var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
 			var newLeft     = $('img.cropimg').width()  * parseFloat(sessionStorage.getItem('newLeftFold')) + $('img.cropimg').offset().left;
 			var targetSize  = sessionStorage.getItem('targetSize');
@@ -918,25 +981,26 @@ function commonAllMove(){
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------------
+ * 保存ボタンがクリックされた時
+------------------------------------------------------------------------------------------------------------------------------*/ 
 $(function(){
     $('#addMargin5').on('click', function(e) {
-        setTimeout(function(){
-            //新しく配置された要素の背景画像に対して相対的に表示される位置をDBに保存
-			$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-			.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
-			.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-			.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
+        sessionStorage.setItem('reDraw','OFF');
+        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+		.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+		.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+		.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+        .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
+        .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
 			
-            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
-			.appendTo(document.body)
-			.submit();
-        },0);
+        .appendTo(document.body)
+		.submit();
     });
 });
 
@@ -956,32 +1020,37 @@ $(function(){
 
 
 
+/*----------------------------------------------------------------------------------------------------------------------------
+ * 除外ボタンがクリックされた時
+------------------------------------------------------------------------------------------------------------------------------*/ 
 $(function(){
     $('#addMargin6').on('click', function(e) {
-        setTimeout(function(){
-            // 確認ダイアログの表示
-            var result = confirm('除外しますか？');
-            if(result){
-                $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
-                //新しい要素の存在をセッション変数に保存
-                sessionStorage.setItem('newOnOff',"off");
-                sessionStorage.setItem('reDraw','OFF');
-                $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-                .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
-                .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: 'null'}))
+        // 確認ダイアログの表示
+        var result = confirm('除外しますか？');
+        if(result){
+            $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+            //新しい要素の存在をセッション変数に保存
+            sessionStorage.setItem('newOnOff',"off");
+            sessionStorage.setItem('reDraw','OFF');
+　          sessionStorage.setItem('newTopFold',null);
+　          sessionStorage.setItem('newLeftFold',null);
+            sessionStorage.setItem('targetSize',"2");
+            sessionStorage.setItem('targetColor','#ffffff');
+            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+            .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+            .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+            .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: '2'}))
+            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: '#ffffff'}))
 			
-                .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-                .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-                .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-                .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
-                .appendTo(document.body)
-                .submit();
-            }
-        },0);
+            .appendTo(document.body)
+            .submit();
+        }
     });
 });
 
@@ -1003,16 +1072,11 @@ $(function(){
 -->
 	<!--文字付で画像を表示-->
 	<?php foreach ($items as $item): ?>
-            <?php if($_SESSION['background'] == '1'){?> 
-                <span id=<?php echo $item->item_cd; ?>><?php echo $item->id; ?></span>
-            <?php }else{?> 
-                <span id=<?php echo $item->item_cd; ?>><?php echo $item->item_name; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_cd,0,18); ?></span></span></span>
-            <?php }?> 
-            <!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?><span class="br"><span class="br"><?php echo mb_substr($item->item_name,0,18); ?></span></span></span>-->
-            <!--<span id=<?php echo $item->item_cd; ?>><?php echo $item->item_cd; ?></span>-->
+        <span id=<?php echo $item->item_cd; ?>></span>
 	<?php endforeach; ?>	
-                
-                
+
+
+
 
 <!--
 	<span id="H01">02</span></span>

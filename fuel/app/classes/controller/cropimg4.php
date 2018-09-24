@@ -85,8 +85,8 @@ class Controller_cropimg4 extends Controller
 		{
 			$item->item_top   = NULL;
 			$item->item_left  = NULL;
-			$item->icon_size  = NULL;
-			$item->icon_color = NULL;
+			$item->icon_size  = Input::post('icon_size');
+			$item->icon_color = Input::post('icon_color');
 		}else{	
 			$item->item_top   = Input::post('item_top');
 			$item->item_left  = Input::post('item_left');

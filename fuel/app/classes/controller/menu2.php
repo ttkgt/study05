@@ -7,8 +7,8 @@ class Controller_menu2 extends Controller
 		if(!isset($_SESSION)){
 			session_start();
 		}
-		$_SESSION['id']         = '14';
-		$_SESSION['itemCd']     = 'H14';
+		$_SESSION['id']         = '24';
+		$_SESSION['itemCd']     = 'H00027993';
 		//$_SESSION['area']     = '第１工場';
 		$_SESSION['area']       = '第２工場';
 		$_SESSION['background'] = '1';  //1:小要素＋一覧表 , 2:大要素
