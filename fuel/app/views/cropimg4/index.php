@@ -469,63 +469,43 @@ $(document).ready(function() {
                     checkColor = targetColor;
 				}
 			}
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-    
 			//背景色に合わせて文字色を
 			if (checkColor == '#000000'
-					|| checkColor == '#696969'
-					|| checkColor == '#4169e1'
-					|| checkColor == '#191970'
-					|| checkColor == '#000080'
-					|| checkColor == '#00008b'
-					|| checkColor == '#0000cd'
-					|| checkColor == '#0000ff'
-					|| checkColor == '#008080'
-					|| checkColor == '#2f4f4f'
-					|| checkColor == '#006400'
-					|| checkColor == '#008000'
-					|| checkColor == '#556b2f'
-					|| checkColor == '#a0522b'
-					|| checkColor == '#8b4513'
-					|| checkColor == '#800000'
-					|| checkColor == '#8b0000'
-					|| checkColor == '#a52a2a'
-					|| checkColor == '#b22222'
-					|| checkColor == '#dc143c'
-					|| checkColor == '#c71585'
-					|| checkColor == '#9932cc'
-					|| checkColor == '#9400d3'
-					|| checkColor == '#8b008b'
-					|| checkColor == '#800080'
-					|| checkColor == '#4b0082'
-					|| checkColor == '#483d8b'
-					|| checkColor == '#8a2be2'
-					|| checkColor == '#6a5acd'
+				|| checkColor == '#696969'
+				|| checkColor == '#4169e1'
+				|| checkColor == '#191970'
+				|| checkColor == '#000080'
+				|| checkColor == '#00008b'
+				|| checkColor == '#0000cd'
+				|| checkColor == '#0000ff'
+				|| checkColor == '#008080'
+				|| checkColor == '#2f4f4f'
+				|| checkColor == '#006400'
+				|| checkColor == '#008000'
+				|| checkColor == '#556b2f'
+				|| checkColor == '#a0522b'
+				|| checkColor == '#8b4513'
+				|| checkColor == '#800000'
+				|| checkColor == '#8b0000'
+				|| checkColor == '#a52a2a'
+				|| checkColor == '#b22222'
+				|| checkColor == '#dc143c'
+				|| checkColor == '#c71585'
+				|| checkColor == '#9932cc'
+				|| checkColor == '#9400d3'
+				|| checkColor == '#8b008b'
+				|| checkColor == '#800080'
+				|| checkColor == '#4b0082'
+				|| checkColor == '#483d8b'
+				|| checkColor == '#8a2be2'
+				|| checkColor == '#6a5acd'
 			){
-                    setColor = 'white';
-					$('#'+$itemCd[i]).css('color','white');
-					//if($itemCd[i]=='H17'){
-					//	alert( $iconColor[i]);	
-					//}
-				
+                setColor = 'white';
+    			$('#'+$itemCd[i]).css('color','white');
 			}else{
-                    setColor = 'black';
-					$('#'+$itemCd[i]).css('color','black');
-					//if($itemCd[i]=='H17'){
-					//	alert( $iconColor[i]);	
-                    //}
+                setColor = 'black';
+				$('#'+$itemCd[i]).css('color','black');
             }
-    
-    
     
     //}, 250);
 	}
