@@ -831,23 +831,24 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
                     //{label: "小　サイズ"}
                     <?php foreach ($sizes as $size): ?>
                         <?php if ($size === end($sizes)){ ?>
-                            {label: "<?php echo $size->name; ?>" ,size: "<?php echo $size->code; ?>"}
+                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"}
                         <?php }else{ ?>                            
-                            {label: "<?php echo $size->name; ?>" ,size: "<?php echo $size->code; ?>"},
+                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"},
                         <?php } ?>
                     <?php endforeach; ?>
                 ]
             },
             {
+            //色はfont-awesome.cssでクラスを設定
                 label: "アイコン色",
                 items: [
                     <?php foreach ($colors as $color): ?>
                         <?php if ($color === end($colors)){ ?>
                     //        {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"}
-                            {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,color: "<?php echo $color->code; ?>"}
+                            {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,code: "<?php echo $color->code; ?>"}
                         <?php }else{ ?>                            
                     //        {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->code; ?>" ,color: "#<?php echo $color->code; ?>"},
-                            {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,color: "<?php echo $color->code; ?>"},
+                            {icon: '<i class="fa fa-star fa-<?php echo $color->name; ?>"></i>' ,label: "<?php echo $color->name; ?>" ,code: "<?php echo $color->code; ?>"},
                         <?php } ?>
                     <?php endforeach; ?>
                 ]
@@ -855,60 +856,61 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
         ]
     });
     menu.onClick = function () {
-        if(this.label=="保存"){
-            sessionStorage.setItem('reDraw','OFF');
-			$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-			.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
-			.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-			.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
-			
-            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
-
-			.appendTo(document.body)
-			.submit();
-        }
-        else if(this.label=="除外"){
-            // 確認ダイアログの表示
-            var result = confirm('除外しますか？');
-            if(result){
-                $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
-                //新しい要素の存在をセッション変数に保存
-                sessionStorage.setItem('newOnOff',"off");
-                sessionStorage.setItem('reDraw','OFF');
-                sessionStorage.setItem('newTopFold',null);
-                sessionStorage.setItem('newLeftFold',null);
-                sessionStorage.setItem('targetSize',"2");
-                sessionStorage.setItem('targetColor','#ffffff');
-                $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-                .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
-                .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: '2'}))
-                .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: '#ffffff'}))
-			
-                .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-                .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-                .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-                .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
-
-                .appendTo(document.body)
-                .submit();
-            }
-        }
-		else if (this.size=="1"){
-            sessionStorage.setItem('targetSize',this.size);
+//        if(this.label=="保存"){
+//            sessionStorage.setItem('reDraw','OFF');
+//			$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+//			.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+//			.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+//			.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+//            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
+//            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
+//			
+//            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+//            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+//            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+//            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+//
+//			.appendTo(document.body)
+//			.submit();
+//        }
+//        else if(this.label=="除外"){
+//            // 確認ダイアログの表示
+//            var result = confirm('除外しますか？');
+//            if(result){
+//                $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
+//                //新しい要素の存在をセッション変数に保存
+//                sessionStorage.setItem('newOnOff',"off");
+//                sessionStorage.setItem('reDraw','OFF');
+//                sessionStorage.setItem('newTopFold',null);
+//                sessionStorage.setItem('newLeftFold',null);
+//                sessionStorage.setItem('targetSize',"2");
+//                sessionStorage.setItem('targetColor','#ffffff');
+//                $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+//                .append($('<input/>', {type: 'hidden', name: 'id'       , value: <?php echo $_SESSION['id'];?>}))
+//                .append($('<input/>', {type: 'hidden', name: 'item_top' , value: 'null'}))
+//                .append($('<input/>', {type: 'hidden', name: 'item_left', value: 'null'}))
+//                .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: '2'}))
+//                .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: '#ffffff'}))
+//			
+//                .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+//                .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+//                .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+//                .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+//
+//                .appendTo(document.body)
+//                .submit();
+//            }
+//        }
+//		else if (this.size=="1"){
+		if (this.code=="1"){
+            sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
 			.submit();
         }
-        else if (this.size=="2"){
-            sessionStorage.setItem('targetSize',this.size);
+        else if (this.code=="2"){
+            sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
@@ -916,7 +918,7 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
         }
         else{
             //if (this.label!="位置"&&this.label!="アイコンサイズ"&&this.label!="アイコン色"){
-                sessionStorage.setItem('targetColor',this.color);
+                sessionStorage.setItem('targetColor',this.code);
                 sessionStorage.setItem('reDraw','ON');
 				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
                 .appendTo(document.body)
