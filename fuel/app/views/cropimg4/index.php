@@ -136,7 +136,7 @@
         z-index: 3;
     }
 		
-    #addMargin5 { 
+    #buttonSave { 
 		/* width: 24%; */
 		/* width: 1%; */
 		/* height: 100%; */
@@ -147,7 +147,7 @@
         z-index: 3;
     }
 
-    #addMargin6 { 
+    #buttonExclusion { 
 		/* width: 24%; */
 		/* width: 1%; */
 		/* height: 100%; */
@@ -196,6 +196,7 @@
 <body> 
 <!--<h1>cropimg デモでーす。</h1>-->
 <!--
+後で削除する。
 <?php if($_SESSION['area'] == '第２工場'){?> 
     <?php if($_SESSION['img_top'] == 0){?> 
             <img src="http://localhost/study05/assets/img/koujou1.png" alt="crop img" class="cropimg">
@@ -406,44 +407,8 @@ $(document).ready(function() {
 			}
 	
 			$('#'+$itemCd[i]).css('display','block');			//display:要素の表示形式（ブロック・インライン・フレックス等）を指定する
-			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
-
-            if ($iconSize[i]=='1'){
-					$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-					$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-				}else{
-					$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-					$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-				}
-			}else{
-				if (reDraw=='OFF'){
-					if ($iconSize[i]=='1'){
-						$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-					}else{
-						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-					}
-				}else{
-					if (targetSize=='1'){
-						$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
-					}else{
-						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
-						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
-					}
-				}
-			}
-
 			$('#'+$itemCd[i]).css('background','transparent');	//background:背景に関する指定をまとめて行う
 			$('#'+$itemCd[i]).css('padding','8px');				//padding:余白にかんする指定をまとめて行う
-            
-			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
-                $('#'+$itemCd[i]).css('border','solid 3px #ff0000');	//border:枠線のスタイル・太さ・色を指定する
-            }else{
-                $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
-            }
-
             $('#'+$itemCd[i]).css('border-radius','4px');		//border-radius:ボックスの４つのコーナーの角丸をまとめて指定する
 			$('#'+$itemCd[i]).css('line-height','14px');			//line-height:行の高さを指定する
 			$('#'+$itemCd[i]).css('font-size','14px');			//font-size:フォントのサイズを指定する
@@ -451,89 +416,69 @@ $(document).ready(function() {
 			$('#'+$itemCd[i]).css('overflow','hidden');			//overflow:はみ出た要素の表示方法を指定する
 			$('#'+$itemCd[i]).css('position','absolute');		//position:ボックスの配置方法（基準位置）を指定する
 			$('#'+$itemCd[i]).css('text-align','left');			//position:ボックス内の文字を左寄せに指定する
-			if ($itemCd[i] == '<?php echo $_SESSION['itemCd'];?>'){
-				$('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
-			}else{
-				$('#'+$itemCd[i]).css('z-index','1');			//z-index:重なりの順序を指定する
-			}
 			$('#'+$itemCd[i]).css('background-size','cover');
-			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){            
-				$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
-			}else{
-				if(reDraw=='OFF'){
-					$('#'+$itemCd[i]).css('background-color',$iconColor[i]);
-				}else{
-					$('#'+$itemCd[i]).css('background-color',targetColor);
-				}
-			}
-			
-			//背景色に合わせて文字色を
-//			if ($iconColor[i] == '#000000'
-//					|| $iconColor[i] == '#696969'
-//					|| $iconColor[i] == '#4169e1'
-//					|| $iconColor[i] == '#191970'
-//					|| $iconColor[i] == '#000080'
-//					|| $iconColor[i] == '#00008b'
-//					|| $iconColor[i] == '#0000cd'
-//					|| $iconColor[i] == '#0000ff'
-//					|| $iconColor[i] == '#008080'
-//					|| $iconColor[i] == '#2f4f4f'
-//					|| $iconColor[i] == '#006400'
-//					|| $iconColor[i] == '#008000'
-//					|| $iconColor[i] == '#556b2f'
-//					|| $iconColor[i] == '#a0522b'
-//					|| $iconColor[i] == '#8b4513'
-//					|| $iconColor[i] == '#800000'
-//					|| $iconColor[i] == '#8b0000'
-//					|| $iconColor[i] == '#a52a2a'
-//					|| $iconColor[i] == '#b22222'
-//					|| $iconColor[i] == '#dc143c'
-//					|| $iconColor[i] == '#c71585'
-//					|| $iconColor[i] == '#9932cc'
-//					|| $iconColor[i] == '#9400d3'
-//					|| $iconColor[i] == '#8b008b'
-//					|| $iconColor[i] == '#800080'
-//					|| $iconColor[i] == '#4b0082'
-//					|| $iconColor[i] == '#483d8b'
-//					|| $iconColor[i] == '#8a2be2'
-//					|| $iconColor[i] == '#6a5acd'
-//			){
-//					$('#'+$itemCd[i]).css('color','white');
-					//if($itemCd[i]=='H17'){
-					//	alert( $iconColor[i]);	
-					//}
-				
-//			}else{
-//					$('#'+$itemCd[i]).css('color','black');
-					//if($itemCd[i]=='H17'){
-					//	alert( $iconColor[i]);	
-                    //}
-//            }
+            
+			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
+                $('#'+$itemCd[i]).css('border','solid 3px #ff0000');	//border:枠線のスタイル・太さ・色を指定する
+            }else{
+                $('#'+$itemCd[i]).css('border','solid 1px #000000');	//border:枠線のスタイル・太さ・色を指定する
+            }
 
-			if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
+			if ($itemCd[i] == '<?php  echo $_SESSION['itemCd'];?>'){ 
+                $('#'+$itemCd[i]).css('z-index','2');			//z-index:重なりの順序を指定する
+            }else{
+				$('#'+$itemCd[i]).css('z-index','1');			//z-index:重なりの順序を指定する
+            }
+    
+            if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){
 				if ($iconSize[i]=='1'){
                     $('#'+$itemCd[i]).text(i + 1);
+					$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+					$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
 				}else{
                     $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+					$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+					$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
 				}
+                $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
                 checkColor = $iconColor[i];
             }else{
 				if (reDraw=='OFF'){
 					if ($iconSize[i]=='1'){
                         $('#'+$itemCd[i]).text(i + 1);
+						$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+						$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
 					}else{
                         $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
 					}
+                    $('#'+$itemCd[i]).css('background-color',$iconColor[i]);
                     checkColor = $iconColor[i];
 				}else{
 					if (targetSize=='1'){
                         $('#'+$itemCd[i]).text(i + 1);
+						$('#'+$itemCd[i]).css('width','16px');				//width:幅を指定する
+						$('#'+$itemCd[i]).css('height','10px');				//height:高さを指定する
 					}else{
                         $('#'+$itemCd[i]).text($itemCd[i] + '　' + $itemName[i]);
+						$('#'+$itemCd[i]).css('width','120px');				//width:幅を指定する
+						$('#'+$itemCd[i]).css('height','40px');				//height:高さを指定する
 					}
+                    $('#'+$itemCd[i]).css('background-color',targetColor);
                     checkColor = targetColor;
 				}
 			}
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
     
 			//背景色に合わせて文字色を
 			if (checkColor == '#000000'
@@ -592,11 +537,11 @@ $(document).ready(function() {
 	commonAddMargin(); //共通追加余白処理
 	/*------------------------------------*/
 
-	$('#addMargin5').css({top:10,left:window.innerWidth-140,display:'block',height:46,width:100})
-    $('#addMargin5').css('background','url("http://localhost/study05/assets/img/save.png")');
+	$('#buttonSave').css({top:10,left:window.innerWidth-140,display:'block',height:46,width:100})
+    $('#buttonSave').css('background','url("http://localhost/study05/assets/img/save.png")');
 
-	$('#addMargin6').css({top:70,left:window.innerWidth-140,display:'block',height:46,width:100})
-    $('#addMargin6').css('background','url("http://localhost/study05/assets/img/exclusion.png")');
+	$('#buttonExclusion').css({top:70,left:window.innerWidth-140,display:'block',height:46,width:100})
+    $('#buttonExclusion').css('background','url("http://localhost/study05/assets/img/exclusion.png")');
 
 }); 
 
@@ -1084,46 +1029,34 @@ function commonAllMove(){
  * 保存ボタンがクリックされた時
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 $(function(){
-    $('#addMargin5').on('click', function(e) {
-        sessionStorage.setItem('reDraw','OFF');
-        $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-		.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
-		.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-		.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-        .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
-        .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
+    $('#buttonSave').on('click', function(e) {
+        // 確認ダイアログの表示
+        var result = confirm('保存しますか？');
+        if(result){
+            sessionStorage.setItem('reDraw','OFF');
+            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+            .append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+            .append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+            .append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
+            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
 			
-        .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-        .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-        .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
-        .appendTo(document.body)
-		.submit();
+            .appendTo(document.body)
+            .submit();
+        }
     });
 });
-
-//$(function() {
-//  $("#addMargin5").mouseover(function(){
-//	  //alert("ON");
-//    //$("p").css("background-color","green");
-//		$("#addMargin5").css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
-//        $("#addMargin5").css('background','url("http://localhost/study05/assets/img/remove_32_32.png")');
-//  }).mouseout(function(){
-//	  //alert("OUT");
-//    //$("p").css("background-color","");
-//		$("#addMargin5").css({top:188,left:window.innerWidth-34,display:'block',height:32,width:32})
-//        $("#addMargin5").css('background','url("http://localhost/study05/assets/img/save_32_31.png")');
-//  });
-//});
-
-
 
 /*----------------------------------------------------------------------------------------------------------------------------
  * 除外ボタンがクリックされた時
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 $(function(){
-    $('#addMargin6').on('click', function(e) {
+    $('#buttonExclusion').on('click', function(e) {
         // 確認ダイアログの表示
         var result = confirm('除外しますか？');
         if(result){
@@ -1188,8 +1121,8 @@ $(function(){
 	<span id="addMarginBottom"></span>
 	<span id="addMarginLeft"></span>
 	<span id="addMarginRight"></span>
-	<span id="addMargin5"></span>
-	<span id="addMargin6"></span>
+	<span id="buttonSave"></span>
+	<span id="buttonExclusion"></span>
     
 
 
