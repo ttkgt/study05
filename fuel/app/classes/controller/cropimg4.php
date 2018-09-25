@@ -128,6 +128,9 @@ class Controller_cropimg4 extends Controller
 		$data['colors'] = Model_Color::query()
 		->get();
 
+   		$data['sizes'] = Model_Size::query()
+		->get();
+
         $_SESSION['img_top']    = Input::post('img_top'); 
 		$_SESSION['img_left']   = Input::post('img_left'); 
 		$_SESSION['img_height'] = Input::post('img_height'); 
