@@ -831,9 +831,9 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
                     //{label: "小　サイズ"}
                     <?php foreach ($sizes as $size): ?>
                         <?php if ($size === end($sizes)){ ?>
-                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"}
+                            {label: "<?php echo $size->name; ?>" ,size: "<?php echo $size->code; ?>"}
                         <?php }else{ ?>                            
-                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"},
+                            {label: "<?php echo $size->name; ?>" ,size: "<?php echo $size->code; ?>"},
                         <?php } ?>
                     <?php endforeach; ?>
                 ]
@@ -900,28 +900,28 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
                 .submit();
             }
         }
-        else if(this.code=="1"){
-            sessionStorage.setItem('targetSize',this.code);
+		else if (this.size=="1"){
+            sessionStorage.setItem('targetSize',this.size);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
 			.submit();
         }
-        else if(this.code=="2"){
-            sessionStorage.setItem('targetSize',this.code);
+        else if (this.size=="2"){
+            sessionStorage.setItem('targetSize',this.size);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
 			.submit();
         }
         else{
-            if (this.label!="位置"&&this.label!="アイコンサイズ"&&this.label!="アイコン色"){
+            //if (this.label!="位置"&&this.label!="アイコンサイズ"&&this.label!="アイコン色"){
                 sessionStorage.setItem('targetColor',this.color);
                 sessionStorage.setItem('reDraw','ON');
 				$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
                 .appendTo(document.body)
 				.submit();
-			}
+			//}
         }
     };
     $("#<?php echo $_SESSION['itemCd'];?>").bind("contextmenu", function (e) {
