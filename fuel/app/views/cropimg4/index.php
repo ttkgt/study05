@@ -810,7 +810,8 @@ var menu;
 //<?php endforeach; ?>
 
 $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
-    menu = new ax5.ui.menu({
+        
+        menu = new ax5.ui.menu({
         position: "absolute", // default position is "fixed"
         icons: {
             'arrow': '▸'
@@ -826,8 +827,15 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
             {
                 label: "アイコンサイズ",
                 items: [
-                    {icon: '<i class="fa fa-star fa-pink"></i>',label: "大　サイズ"},
-                    {icon: '<i class="fa fa-star"></i>',label: "小　サイズ"}
+                    //{label: "大　サイズ"},
+                    //{label: "小　サイズ"}
+                    <?php foreach ($sizes as $size): ?>
+                        <?php if ($size === end($sizes)){ ?>
+                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"}
+                        <?php }else{ ?>                            
+                            {label: "<?php echo $size->name; ?>" ,code: "<?php echo $size->code; ?>"},
+                        <?php } ?>
+                    <?php endforeach; ?>
                 ]
             },
             {
@@ -893,14 +901,14 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
             }
         }
         else if(this.label=="大　サイズ"){
-            sessionStorage.setItem('targetSize',"2");
+            sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
 			.submit();
         }
         else if(this.label=="小　サイズ"){
-            sessionStorage.setItem('targetSize',"1");
+            sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
