@@ -900,14 +900,14 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
                 .submit();
             }
         }
-        else if(this.label=="大　サイズ"){
+        else if(this.code=="1"){
             sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
             .appendTo(document.body)
 			.submit();
         }
-        else if(this.label=="小　サイズ"){
+        else if(this.code=="2"){
             sessionStorage.setItem('targetSize',this.code);
             sessionStorage.setItem('reDraw','ON');
 			$('<form/>', {action: 'http://localhost/study05/cropimg4/index', method: 'post'})
