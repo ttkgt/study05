@@ -2,8 +2,17 @@
 .ci-main .ci-image-wrapper {margin:0px 30px 15px 0px;position:relative;overflow:hidden;border:1px solid #000;box-shadow:0px 0px 10px rgba(0,0,0,.8);background-image:url('trbg.png');background-repeat:repeat;}
 .ci-main .ci-image-wrapper:hover {cursor:move;}
 .ci-main .ci-image-wrapper img {position:absolute;z-index:1;top:0px;left:0px;display:block !important;max-width:none !important;}
-.ci-main .ci-image-wrapper .ci-fixing-position {display:block;width:17px;height:17px;background-color:#000;position:absolute;z-index:2;background-image:url('buttons.png');background-repeat:no-repeat;}
+.ci-main .ci-image-wrapper .ci-fixing-position {display:block;width:17px;height:17px;background-color:#000;position:absolute;z-index:-1;background-image:url('buttons.png');background-repeat:no-repeat;}
 .ci-main .ci-image-wrapper .ci-fixing-position:hover {cursor:pointer;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fptl {bottom:39px;right:39px;background-position:0px -21px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fptc {bottom:39px;right:22px;background-position:-17px -21px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fptr {bottom:39px;right:5px;background-position:-34px -21px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpcl {bottom:22px;right:39px;background-position:0px -38px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpcc {bottom:22px;right:22px;background-position:-17px -38px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpcr {bottom:22px;right:5px;background-position:-34px -38px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpbl {bottom:5px;right:39px;background-position:0px -55px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpbc {bottom:5px;right:22px;background-position:-17px -55px;}
+.ci-main .ci-image-wrapper .ci-fixing-position.ci-fpbr {bottom:5px;right:5px;background-position:-34px -55px;}
 .ci-main .ci-tool {position:absolute;z-index:100;top:0px;right:0px;}
 .ci-main .ci-tool .ci-button {display:block;width:21px;height:21px;margin:0px 0px 5px 5px;background-image:url('buttons.png');background-repeat:no-repeat;}
 .ci-main .ci-tool .ci-button:hover {cursor:pointer;}

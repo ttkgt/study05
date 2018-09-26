@@ -646,7 +646,6 @@ $(function(){
 			//新しく配置された要素の背景画像に対して相対的に表示される位置をセッション変数に保存
 			sessionStorage.setItem('newTopFold' ,(y - $('img.cropimg').offset().top)  / $('img.cropimg').height());
 			sessionStorage.setItem('newLeftFold',(x - $('img.cropimg').offset().left) / $('img.cropimg').width());
-
 			/*------------------------------------*/
 			//commonMove(); //共通要素移動処理
 			/*------------------------------------*/
@@ -975,27 +974,32 @@ function commonAllMove(){
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 $(function(){
     $('#buttonSave').on('click', function(e) {
-        // 確認ダイアログの表示
-        var result = confirm('保存しますか？');
-        if(result){
-            sessionStorage.setItem('reDraw','OFF');
-            $('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
-            .append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
-            .append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
-            .append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
-            .append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
+		//地図の外では標的要素は保存させない
+		if (sessionStorage.getItem('newTopFold')<1 && sessionStorage.getItem('newLeftFold')<1) {
+			// 確認ダイアログの表示
+			var result = confirm('保存しますか？');
+			if(result){
+				sessionStorage.setItem('reDraw','OFF');
+				$('<form/>', {action: 'http://localhost/study05/cropimg4/edit', method: 'post'})
+				.append($('<input/>', {type: 'hidden', name: 'id'         , value: <?php echo $_SESSION['id'];?>}))
+				.append($('<input/>', {type: 'hidden', name: 'item_top'   , value: parseFloat(sessionStorage.getItem('newTopFold'))}))
+				.append($('<input/>', {type: 'hidden', name: 'item_left'  , value: parseFloat(sessionStorage.getItem('newLeftFold'))}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_size'  , value: sessionStorage.getItem('targetSize')}))
+				.append($('<input/>', {type: 'hidden', name: 'icon_color' , value: sessionStorage.getItem('targetColor')}))
 			
-            .append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
-            .append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
-            .append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+				.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+				.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+				.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+				.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
 
-            .appendTo(document.body)
-            .submit();
-        }
-        // 確認ダイアログの表示
-        alert('保存しました。');
+				.appendTo(document.body)
+				.submit();
+			}
+			// 確認ダイアログの表示
+			alert('保存しました。');
+		}else{
+			alert('地図の外では保存できません。');
+		}
     });
 });
 
