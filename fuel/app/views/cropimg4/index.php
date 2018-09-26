@@ -703,27 +703,9 @@ $(function(){
 	})
 });
 	
-//$(function(){
-//	$('img.cropimg').mouseover(function(){
-//        mouseInOut = "IN";
-//    })
-//});
-
-//$(function(){
-//	$('img.cropimg').mouseout(function(){
-//        mouseInOut = "OUT";
-//    })
-//});
-
-//$(function(){
-//	$('body').mousedown(function(){
-//        alert('html mousedown');
-//    })
-//});
-
-//});
-
-
+/*--------------------------------------------------------------------------------
+* 一覧表の表示
+--------------------------------------------------------------------------------*/
 $(function(){
   $('.scrollTable').scrolltable({
     //stripe: true,
@@ -733,6 +715,9 @@ $(function(){
    });
 });
 
+/*--------------------------------------------------------------------------------
+* 一覧表のある列をクリックで要素を点滅させる
+--------------------------------------------------------------------------------*/
 $('.scrollTable td').on("click",function(){
     //DBの値を変数にセット
     var $itemCd   = JSON.parse(sessionStorage.getItem('itemCd'));
@@ -744,13 +729,6 @@ $('.scrollTable td').on("click",function(){
     	$('#'+$itemCd[i]).modernBlink('start');
 	$('#'+$itemCd[i]).modernBlink('stop');
     }
-    //新規追加要素が存在する場合のみ
-    //var newOnOff = sessionStorage.getItem('newOnOff');
-    //if(newOnOff == "on") {
-    //	$('#'+$itemCd[$targetI]).modernBlink('start');
-    //	$('#'+$itemCd[$targetI]).modernBlink('stop');
-    //}
-	
     //1行目から
     for (let i = 0; i < $itemCd.length; i++){
     	if(td_now == $itemCd[i]) {
@@ -934,7 +912,7 @@ function commonAllMove(){
 //alert('commonMove');
 
 	//alert("背景画像を移動させたとき");
-    var mouseUpDown = sessionStorage.getItem('mouseUpDown');		
+    //var mouseUpDown = sessionStorage.getItem('mouseUpDown');		
 
 //alert(mouseUpDown);
 
