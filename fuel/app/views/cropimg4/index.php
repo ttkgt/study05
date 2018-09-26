@@ -6,7 +6,7 @@
 <meta name="description" content="cropimgのデモでーす。"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>cropimg - jQueryプラグイン</title> 
-<link href="http://localhost/study05/assets/css/cropimg.css" rel="stylesheet" type="text/css" /> 
+<link href="http://localhost/study05/assets/css/zcropimg.css" rel="stylesheet" type="text/css" /> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/study05/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/study05/assets/css/ax5menu.css" />
@@ -344,6 +344,10 @@ $(document).ready(function() {
         reDraw = 'OFF';
     };
 
+    //mouseのUP DOWNの初期値を設定
+    sessionStorage.setItem('targetUpDown',"up");
+    sessionStorage.setItem('mouseUpDown',"up");
+
     //セッション変数から標的の要素の値を取得
     if (sessionStorage.getItem('newTopFold')!=null){
         var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
@@ -614,24 +618,27 @@ $(function(){
 });
 
 /*--------------------------------------------------------------------------------
-* 新規追加要素を移動させるときの再描画を防止する為、新規追加要素画像上でマウスが下げられたことを検知
+* 標的要素を移動させるときの再描画を防止する為、標的要素画像上でマウスが下げられたことを検知
 --------------------------------------------------------------------------------*/
 $(function(){
-	$('#<?php  echo $_SESSION['itemCd'];?>').mousedown(function(){
+	$('#<?php  echo $_SESSION['itemCd'];?>').mousedown(function(e){
 		//alert('004');
-		sessionStorage.setItem('mouseUpDown',"up");
-	})
+		//左クリックのときだけ
+		if(e.which == 1){ 
+            sessionStorage.setItem('targetUpDown',"down");
+        }
+    })
 });
 
 /*--------------------------------------------------------------------------------
-* 新規追加要素を移動させるときの再描画を防止する為、新規追加要素画像上でマウスが上げられたことを検知
+* 標的要素を移動させるときの再描画を防止する為、標的要素画像上でマウスが上げられたことを検知
 --------------------------------------------------------------------------------*/
 $(function(){
 	$('#<?php  echo $_SESSION['itemCd'];?>').mouseup(function(e){
 		//alert('005');
 		//左クリックのときだけ
 		if(e.which == 1){ 
-			sessionStorage.setItem('mouseUpDown',"up");
+			sessionStorage.setItem('targetUpDown',"up");
 			//新規追加要素の位置
 			var off = $('#<?php  echo $_SESSION['itemCd'];?>').offset();
 			var y = off.top;
@@ -676,7 +683,7 @@ $(function(){
 //	$('img.cropimg').mousemove(function(){
 	$('body').mousemove(function(){
         //alert('008');
-        if (sessionStorage.getItem('mouseUpDown') == "down") {
+        if ((sessionStorage.getItem('mouseUpDown') == "down") && (sessionStorage.getItem('targetUpDown') == "up")) {
             /*------------------------------------*/
             commonAllMove(); //共通要素移動処理
             /*------------------------------------*/
@@ -987,6 +994,8 @@ $(function(){
             .appendTo(document.body)
             .submit();
         }
+        // 確認ダイアログの表示
+        alert('保存しました。');
     });
 });
 
