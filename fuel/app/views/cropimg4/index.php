@@ -469,7 +469,7 @@ $(document).ready(function() {
                     checkColor = targetColor;
 				}
 			}
-			//背景色に合わせて文字色を
+			//背景色に合わせて文字色を、whiteとblackを切り替える
 			if (checkColor == '#000000'
 				|| checkColor == '#696969'
 				|| checkColor == '#4169e1'
@@ -619,11 +619,7 @@ $(function(){
 $(function(){
 	$('#<?php  echo $_SESSION['itemCd'];?>').mousedown(function(){
 		//alert('004');
-		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-		//setTimeout(function(){
-			//alert("新規追加画像の上でマウスが下げられた時");
-			sessionStorage.setItem('mouseUpDown',"up");
-		//},10);
+		sessionStorage.setItem('mouseUpDown',"up");
 	})
 });
 
@@ -635,22 +631,18 @@ $(function(){
 		//alert('005');
 		//左クリックのときだけ
 		if(e.which == 1){ 
-			//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-			//setTimeout(function(){
-				//alert("新規追加要素画像上でマウスを上げた時");
-				sessionStorage.setItem('mouseUpDown',"up");
-				//新規追加要素の位置
-				var off = $('#<?php  echo $_SESSION['itemCd'];?>').offset();
-				var y = off.top;
-				var x = off.left;		
-				//新しく配置された要素の背景画像に対して相対的に表示される位置をセッション変数に保存
-				sessionStorage.setItem('newTopFold' ,(y - $('img.cropimg').offset().top)  / $('img.cropimg').height());
-				sessionStorage.setItem('newLeftFold',(x - $('img.cropimg').offset().left) / $('img.cropimg').width());
+			sessionStorage.setItem('mouseUpDown',"up");
+			//新規追加要素の位置
+			var off = $('#<?php  echo $_SESSION['itemCd'];?>').offset();
+			var y = off.top;
+			var x = off.left;		
+			//新しく配置された要素の背景画像に対して相対的に表示される位置をセッション変数に保存
+			sessionStorage.setItem('newTopFold' ,(y - $('img.cropimg').offset().top)  / $('img.cropimg').height());
+			sessionStorage.setItem('newLeftFold',(x - $('img.cropimg').offset().left) / $('img.cropimg').width());
 
 			/*------------------------------------*/
 			//commonMove(); //共通要素移動処理
 			/*------------------------------------*/
-			//},0);
 		}
 	})
 });
@@ -659,14 +651,10 @@ $(function(){
 * 背景画像上でマウスが下げられた
 --------------------------------------------------------------------------------*/
 $(function(){
-	$('img.cropimg').mousedown(function(){
-	//$('html').mousedown(function(){
+//	$('img.cropimg').mousedown(function(){
+	$('body').mousedown(function(){
 		//alert('006');
-		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-		//setTimeout(function(){
-			//alert("背景画像上でマウスを下げた時");
-			sessionStorage.setItem('mouseUpDown',"down");
-		//},10);
+		sessionStorage.setItem('mouseUpDown',"down");
 	})
 });
 
@@ -674,13 +662,10 @@ $(function(){
 * 背景画像上でマウスが上げられた
 --------------------------------------------------------------------------------*/
 $(function(){
-	$('img.cropimg').mouseup(function(){
+//	$('img.cropimg').mouseup(function(){
+	$('body').mouseup(function(){
 		//alert('007');
-		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-		//setTimeout(function(){
-			//alert("背景画像上でマウスを上げた時");
-			sessionStorage.setItem('mouseUpDown',"up");
-		//},0);
+		sessionStorage.setItem('mouseUpDown',"up");
 	})
 });
 
@@ -688,24 +673,17 @@ $(function(){
 * 背景画像を移動させたときに各要素を再描画させる。
 --------------------------------------------------------------------------------*/
 $(function(){
-	$('img.cropimg').mousemove(function(){
-//		alert('008');
-
-		//alert("背景画像上でマウスを下げた時");
-		//sessionStorage.setItem('mouseUpDown',"down");
-
-		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-		//setTimeout(function(){
-
+//	$('img.cropimg').mousemove(function(){
+	$('body').mousemove(function(){
+        //alert('008');
         if (sessionStorage.getItem('mouseUpDown') == "down") {
             /*------------------------------------*/
             commonAllMove(); //共通要素移動処理
             /*------------------------------------*/
         }
-        //},10);
 	})
 });
-	
+
 /*--------------------------------------------------------------------------------
 * ブラウザのサイズが変わったときに各要素を再描画させる。
 --------------------------------------------------------------------------------*/
@@ -737,21 +715,13 @@ $(function(){
 //    })
 //});
 
-
 //$(function(){
-//	$('img.cropimg').mousemove(function(){
-//        alert('html mousemove');
+//	$('body').mousedown(function(){
+//        alert('html mousedown');
 //    })
 //});
 
-
-
-
 //});
-
-
-
-
 
 
 $(function(){
