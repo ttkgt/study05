@@ -194,29 +194,13 @@
 <script src="http://localhost/study05/assets/js/ax5menu.min.js"></script>
 </head> 
 <body> 
+<!-----------------------------------------------------------------------------------------------
+  背景画像の表示  ※表示する場合、各々の高さの調整が必要となる。
+--------------------------------------------------------------------------------------------------->
 <!--<h1>cropimg デモでーす。</h1>-->
-<!--
-後で削除する。
-<?php if($_SESSION['area'] == '第２工場'){?> 
-    <?php if($_SESSION['img_top'] == 0){?> 
-            <img src="http://localhost/study05/assets/img/koujou1.png" alt="crop img" class="cropimg">
-    <?php }else{?> 
-            <img src="http://localhost/study05/assets/img/koujou1.png" alt="crop img"  class="cropimg" 
-                 style="position:relative; top:<?php echo $_SESSION['img_top'];?>px; left:<?php echo $_SESSION['img_left'];?>px" 
-                 height="<?php echo $_SESSION['img_height'];?>" width="<?php echo $_SESSION['img_width'];?>">
-    <?php }?> 
-<?php }else{?> 
-    <?php if($_SESSION['img_top'] == 0){?> 
-            <img src="http://localhost/study05/assets/img/koujyou.jpg" alt="crop img" class="cropimg">
-    <?php }else{?> 
-            <img src="http://localhost/study05/assets/img/koujyou.jpg" alt="crop img"  class="cropimg" 
-                 style="position:relative; top:<?php echo $_SESSION['img_top'];?>px; left:<?php echo $_SESSION['img_left'];?>px" 
-                 height="<?php echo $_SESSION['img_height'];?>" width="<?php echo $_SESSION['img_width'];?>">
-    <?php }?> 
-<?php }?> 
--->
-
-<!--背景画像の表示-->
+<!-----------------------------------------------------------------------------------------------
+  背景画像の表示
+--------------------------------------------------------------------------------------------------->
 <?php if($_SESSION['img_top'] == 0){?> 
         <img src="<?php  echo $_SESSION['map'];?>" alt="crop img" class="cropimg">
 <?php }else{?> 
@@ -225,14 +209,19 @@
              height="<?php echo $_SESSION['img_height'];?>" width="<?php echo $_SESSION['img_width'];?>">
 <?php }?> 
 
-
-		
+<!-----------------------------------------------------------------------------------------------
+  地図と一覧表の間の検索部分の表示
+--------------------------------------------------------------------------------------------------->
 <?php echo Form::open('http://localhost/study05/cropimg4/index');?>
 <?php echo Form::label('検索文字 ', 'kensakumoji', array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::input('kensakumoji', '', array('size'=>20), array('style' => 'font-size: 14px;'), array('style' => 'z-index:11;'));?>
 <?php echo Form::submit('submit', '検索', array('class' => 'btn btn-success btn-sm'));?>
 <?php echo Form::close();?>
 
+<!-----------------------------------------------------------------------------------------------
+  一覧表の表示
+  地図表示で使用する要素のための、値をDBから配列変数に設定
+--------------------------------------------------------------------------------------------------->
 <table class="scrollTable" cellpadding="0" cellspacing="0" border="0">
     <thead>
 		<tr>
@@ -295,8 +284,19 @@
     </tbody>
 </table>
 
+<!-----------------------------------------------------------------------------------------------
+  地図の表示
+--------------------------------------------------------------------------------------------------->
 <script> 
 
+/*--------------------------------------------------------------------------------
+* 地図の表示
+* 初回表示時、
+* ［保存］ボタンクリック時、
+* ［除外］ボタンクリック時、
+* ［検索］ボタンクリック時
+* に地図表示される。
+--------------------------------------------------------------------------------*/
 $(document).ready(function() {
     $('img.cropimg').cropimg({ 
         //幅と高さを指定
