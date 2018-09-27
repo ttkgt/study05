@@ -6,7 +6,7 @@
 <meta name="description" content="cropimgのデモでーす。"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>cropimg - jQueryプラグイン</title> 
-<link href="http://localhost/study05/assets/css/zcropimg.css" rel="stylesheet" type="text/css" /> 
+<link href="http://localhost/study05/assets/css/cropimg_nsyt.css" rel="stylesheet" type="text/css" /> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/study05/assets/css/style.css">
 <link rel="stylesheet" type="text/css" href="http://localhost/study05/assets/css/ax5menu.css" />
@@ -183,8 +183,8 @@
 <script src="http://localhost/study05/assets/js/jquery-2.1.1.js"></script>
 <script src="http://localhost/study05/assets/js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.mousewheel.js"></script> 
-<script src="http://localhost/study05/assets/js/zcropimg.jquery.js"></script>
-<script src="http://localhost/study05/assets/js/jquery.exresize.0.1.0_kagata.js"></script>
+<script src="http://localhost/study05/assets/js/cropimg.jquery_nsyt.js"></script>
+<script src="http://localhost/study05/assets/js/jquery.exresize.0.1.0_nsyt.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.tiny-draggable.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.scrolltable.js"></script>
 <script src="http://localhost/study05/assets/js/jquery.modern-blink.js"></script>
