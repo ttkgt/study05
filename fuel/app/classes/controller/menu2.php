@@ -18,8 +18,8 @@ class Controller_menu2 extends Controller
             //$_SESSION['resultWidth']    = '930'; 
 			//$_SESSION['resultHeight']   = '523';
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
-            $_SESSION['resultHeight']   = 'window.innerHeight * 0.6';
-            $_SESSION['scrollTableHeight']   = 'window.innerHeight - window.innerHeight * 0.6';
+            $_SESSION['resultHeight']   = 'window.innerHeight * 0.7';
+            $_SESSION['scrollTableHeight']   = 'window.innerHeight - window.innerHeight * 0.7';
         }else{
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
             $_SESSION['resultHeight']   = 'window.innerHeight';
