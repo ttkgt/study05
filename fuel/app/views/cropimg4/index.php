@@ -563,8 +563,7 @@ $('img.cropimg').on('click', function(e) {
     //alert("ダブルクリック時");
     $(this).data('double', 2);
     //alert('ダブルクリック');
-    //新しい要素の存在をセッション変数に保存
-    sessionStorage.setItem('newOnOff',"on");
+    
     //マウスの位置
     var y = e.pageY;
     var x = e.pageX;
@@ -833,7 +832,6 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
 //            if(result){
 //                $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
 //                //新しい要素の存在をセッション変数に保存
-//                sessionStorage.setItem('newOnOff',"off");
 //                sessionStorage.setItem('reDraw','OFF');
 //                sessionStorage.setItem('newTopFold',null);
 //                sessionStorage.setItem('newLeftFold',null);
@@ -916,58 +914,42 @@ function commonAddMargin(){
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 function commonAllMove(){   
 //alert('commonMove');
-
-	//alert("背景画像を移動させたとき");
-    //var mouseUpDown = sessionStorage.getItem('mouseUpDown');		
-
-//alert(mouseUpDown);
-
-	//if(mouseUpDown == "down") {
-			
-		//背景移動時の要素のズレ防止のため、0.01秒の遅れを発生させる
-		setTimeout(function(){
-			//DBの値を変数にセット
-			//var $id       = JSON.parse(sessionStorage.getItem('id'));
-			var $itemCd   = JSON.parse(sessionStorage.getItem('itemCd'));
-			var $itemName = JSON.parse(sessionStorage.getItem('itemName'));
-			var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
-			var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
-			var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
-			var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
+	//DBの値を変数にセット
+	//var $id       = JSON.parse(sessionStorage.getItem('id'));
+	var $itemCd   = JSON.parse(sessionStorage.getItem('itemCd'));
+	var $itemName = JSON.parse(sessionStorage.getItem('itemName'));
+	var $itemTop  = JSON.parse(sessionStorage.getItem('itemTop'));
+	var $itemLeft = JSON.parse(sessionStorage.getItem('itemLeft'));
+	var $iconSize = JSON.parse(sessionStorage.getItem('iconSize'));
+	var $iconColor = JSON.parse(sessionStorage.getItem('iconColor'));
 	
-			//セッション変数から標的の要素の値を取得
-			var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
-			var newLeft     = $('img.cropimg').width()  * parseFloat(sessionStorage.getItem('newLeftFold')) + $('img.cropimg').offset().left;
-			var targetSize  = sessionStorage.getItem('targetSize');
-			var targetColor = sessionStorage.getItem('targetColor');
+	//セッション変数から標的の要素の値を取得
+	var newTop      = $('img.cropimg').height() * parseFloat(sessionStorage.getItem('newTopFold'))  + $('img.cropimg').offset().top;
+	var newLeft     = $('img.cropimg').width()  * parseFloat(sessionStorage.getItem('newLeftFold')) + $('img.cropimg').offset().left;
+	var targetSize  = sessionStorage.getItem('targetSize');
+	var targetColor = sessionStorage.getItem('targetColor');
 
-			//各要素を再描画
-			for (let i = 0; i < $itemCd.length; i++){
-				if ($itemTop[i] != "" || $itemLeft[i] != ""){
-					var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
-					var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
+	//各要素を再描画
+	for (let i = 0; i < $itemCd.length; i++){
+        var Top  = $('img.cropimg').height() * parseFloat($itemTop[i])  + $('img.cropimg').offset().top;
+		var Left = $('img.cropimg').width()  * parseFloat($itemLeft[i]) + $('img.cropimg').offset().left;
 
-					if(sessionStorage.getItem('newTopFold')==null){
-						newTop = Top;
-					}
-					if(sessionStorage.getItem('newLeftFold')==null){
-						newLeft = Left;
-					}
+		if(sessionStorage.getItem('newTopFold')==null){
+			newTop = Top;
+		}
+		if(sessionStorage.getItem('newLeftFold')==null){
+			newLeft = Left;
+		}
 
-					if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){ 
-						$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
-                        $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
-                    }else{
-                        $('#'+$itemCd[i]).css('top', newTop);					//top:上からの配置位置（距離）を指定する
-                        $('#'+$itemCd[i]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
-                    }
-				}	
-			}
-		},0);
-	//}
+		if ($itemCd[i] != '<?php  echo $_SESSION['itemCd'];?>'){ 
+			$('#'+$itemCd[i]).css('top', Top);					//top:上からの配置位置（距離）を指定する
+            $('#'+$itemCd[i]).css('left', Left);				//left:左からの配置位置（距離）を指定する
+        }else{
+            $('#'+$itemCd[i]).css('top', newTop);					//top:上からの配置位置（距離）を指定する
+            $('#'+$itemCd[i]).css('left', newLeft);				//left:左からの配置位置（距離）を指定する
+        }
+	}
 }
-
-
 
 /*----------------------------------------------------------------------------------------------------------------------------
  * 保存ボタンがクリックされた時
@@ -1013,7 +995,6 @@ $(function(){
         if(result){
             $('#<?php echo $_SESSION['itemCd'];?>').hide(1000);
             //新しい要素の存在をセッション変数に保存
-            sessionStorage.setItem('newOnOff',"off");
             sessionStorage.setItem('reDraw','OFF');
 　          sessionStorage.setItem('newTopFold',null);
 　          sessionStorage.setItem('newLeftFold',null);
