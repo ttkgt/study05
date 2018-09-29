@@ -40,7 +40,8 @@
 	</fieldset>
 -->
 <?php echo Form::open(array("class"=>"form-inline")); ?>
-    <div>
+	<div style="border:thin solid #000000;">
+		<div>
         <div class="form-group">
             <div class="col-xs-20">
                 <?php echo Form::label('工事番号', 'kouji_cd', array('class'=>'control-label')); ?>
@@ -53,7 +54,7 @@
         </div>
         <div class="form-group">
             <div class="col-xs20">
-    			<?php echo Form::label('工事名称', 'kouji_name', array('class'=>'control-label')); ?>
+    			<?php echo Form::label('工事名称　　', 'kouji_name', array('class'=>'control-label')); ?>
             </div>
         </div>
         <div class="form-group">
@@ -75,7 +76,7 @@
     <div>   
         <div class="form-group">
             <div class="col-xs-20">
-                <?php echo Form::label('状態', 'kouji_state', array('class'=>'control-label')); ?>
+                <?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
             </div>
         </div>
         <div class="form-group">
@@ -98,4 +99,5 @@
     	<label class='control-label'>&nbsp;</label>
 		<?php echo Form::submit('submit', '保存', array('class' => 'btn btn-primary')); ?>
     </div>
-<?php echo Form::close(); ?>
+	</div>
+		<?php echo Form::close(); ?>
