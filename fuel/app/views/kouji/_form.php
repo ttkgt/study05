@@ -47,27 +47,27 @@
 					<?php echo Form::label('工事番号', 'kouji_cd', array('class'=>'control-label')); ?>
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="col-xl-12">
-					<?php echo Form::input('kouji_cd'   , Input::post('kouji_cd'   , isset($kouji) ? $kouji->kouji_cd    : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Kouji cd')); ?>
-				</div>
-			</div>
 		</div>
-		<div>   
+		<div>
 			<div class="form-group">
 				<div class="col-xl-12">
 					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
 				</div>
 			</div>
+		</div>
+		<div>
 			<div class="form-group">
 				<div class="col-xl-12">
-					<?php echo Form::input('kouji_state', Input::post('kouji_state', isset($kouji) ? $kouji->kouji_state : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Kouji state')); ?>
+					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
 				</div>
 			</div>
-		</div>    
-		<div class="form-group">
-			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', '保存', array('class' => 'btn btn-primary')); ?>
+		</div>
+		<div>
+			<div class="form-group">
+				<div class="col-xl-12">
+					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
+				</div>
+			</div>
 		</div>
     </div>
     <div style="border:thin solid #000000; float:left; padding:4px;">
