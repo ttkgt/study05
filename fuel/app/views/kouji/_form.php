@@ -40,8 +40,10 @@
 	</fieldset>
 -->
 <?php echo Form::open(array("class"=>"form-inline")); ?>
-    <div>
-        <?php echo Form::label('工事情報', 'kouji_cd', array('class'=>'control-label')); ?>
+    <div style="border:thin solid #000000; padding:4px; margin-bottom:-1px ;">
+        <div class="col-xs-12">
+            <?php echo Form::label('工事情報', 'kouji_cd', array('class'=>'control-label')); ?>
+        </div>
     </div>
     <div style="border:thin solid #000000; padding:4px ;">
 		<div>
