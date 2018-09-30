@@ -40,10 +40,13 @@
 	</fieldset>
 -->
 <?php echo Form::open(array("class"=>"form-inline")); ?>
-	<div style="border:thin solid #000000;">
+    <div>
+        <?php echo Form::label('工事情報', 'kouji_cd', array('class'=>'control-label')); ?>
+    </div>
+    <div style="border:thin solid #000000; padding:4px ;">
 		<div>
         <div class="form-group">
-            <div class="col-xs-20">
+            <div class="col-xs-12">
                 <?php echo Form::label('工事番号', 'kouji_cd', array('class'=>'control-label')); ?>
             </div>
         </div>
@@ -53,7 +56,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs20">
+            <div class="col-xs-12">
     			<?php echo Form::label('工事名称　　', 'kouji_name', array('class'=>'control-label')); ?>
             </div>
         </div>
@@ -63,7 +66,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-20">
+            <div class="col-xs-12">
     			<?php echo Form::label('工事種類', 'kouji_type', array('class'=>'control-label')); ?>
             </div>
         </div>
@@ -75,7 +78,7 @@
     </div>
     <div>   
         <div class="form-group">
-            <div class="col-xs-20">
+            <div class="col-xs-12">
                 <?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
             </div>
         </div>
@@ -85,7 +88,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-20">
+            <div class="col-xs-12">
                 <?php echo Form::label('ＩＰアドレス', 'ip', array('class'=>'control-label')); ?>
             </div>
         </div>
