@@ -40,32 +40,18 @@
 	</fieldset>
 -->
 <?php echo Form::open(array("class"=>"form-inline")); ?>
-    <div style="border:thin solid #000000; padding:4px; float:left; margin-bottom:-1px;  margin-right:-1px;">
+    <div style="border:thin solid #000000; padding:4px; float:left; margin-bottom:-1px;  margin-right:-1px; height:112px;">
 		<div>
 			<div class="form-group">
 				<div class="col-xl-12">
-					<?php echo Form::label('工事番号', 'kouji_cd', array('class'=>'control-label')); ?>
+					<?php echo Form::label('', 'kouji_cd', array('class'=>'control-label')); ?>
 				</div>
 			</div>
 		</div>
 		<div>
 			<div class="form-group">
 				<div class="col-xl-12">
-					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="form-group">
-				<div class="col-xl-12">
-					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div class="form-group">
-				<div class="col-xl-12">
-					<?php echo Form::label('状態　　', 'kouji_state', array('class'=>'control-label')); ?>
+					<?php echo Form::label('工事情報', 'kouji_cd', array('class'=>'control-label')); ?>
 				</div>
 			</div>
 		</div>
