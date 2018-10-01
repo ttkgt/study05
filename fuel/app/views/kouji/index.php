@@ -124,6 +124,9 @@ $('.loading').fadeOut();
 
 			<?php echo Form::submit('submit', 'バーコードＰＤＦ', array('class' => 'btn btn-success btn-sm'));?>
 			<?php echo Form::hidden(Config::get('security.csrf_token_key'), Security::fetch_token());?>
+            
+            <img src="http://localhost/study05/assets/img/koujyou.jpg" width="100" height="100"/>
+
 		</p>
 		<?php echo Pagination::instance('mypagination')->render(); ?>
 		
