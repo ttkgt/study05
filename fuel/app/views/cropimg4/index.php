@@ -6,6 +6,7 @@
 <meta name="description" content="cropimgのデモでーす。"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>cropimg - jQueryプラグイン</title> 
+<!--必要-->
 <link href="http://localhost/study05/assets/css/cropimg_nsyt.css" rel="stylesheet" type="text/css" /> 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.22/themes/base/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://localhost/study05/assets/css/style.css">
