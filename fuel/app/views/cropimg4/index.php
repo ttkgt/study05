@@ -1036,9 +1036,9 @@ $(function(){
 
 </script> 
 
-
+<!--
 <div id="container">
-
+-->
     <!--文字付で画像を表示-->
 	<?php foreach ($items as $item): ?>
         <span id=<?php echo $item->item_cd; ?>></span>
@@ -1060,7 +1060,9 @@ $(function(){
 			<li id="remove"><img src="http://localhost/study05/assets/img/upload_20180713082822.gif" /> 除外</li>
         </ul>
 	</div>
-</div><!--/#container-->
+-->
+<!--
+</div>
 -->
 
 <script>
