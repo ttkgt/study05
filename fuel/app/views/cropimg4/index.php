@@ -35,7 +35,7 @@
     a:hover { text-decoration:none; color: #000;}
 
     h1 {
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
         /* padding: 10px 0; */
         padding: 2px;
         background: #000;
@@ -45,6 +45,7 @@
         text-align: center;
         position: relative;
         z-index: 10;
+		height:40px;
     }
 
     h2 {
@@ -198,7 +199,7 @@
 <!-----------------------------------------------------------------------------------------------
   背景画像の表示  ※表示する場合、各々の高さの調整が必要となる。
 --------------------------------------------------------------------------------------------------->
-<!--<h1>cropimg デモでーす。</h1>-->
+<h1>cropimg デモでーす。</h1>
 <!-----------------------------------------------------------------------------------------------
   背景画像の表示
 --------------------------------------------------------------------------------------------------->
@@ -304,7 +305,7 @@ $(document).ready(function() {
 		resultWidth :<?php echo $_SESSION['resultWidth'];?>, 
         resultHeight:<?php echo $_SESSION['resultHeight'];?>
     }); 
-    
+	
     //スクリプトから表示状態を指定する
     $("body").css({ visibility: "visible" });
 
@@ -522,10 +523,10 @@ $(document).ready(function() {
 	commonAddMargin(); //共通追加余白処理
 	/*------------------------------------*/
 
-	$('#buttonSave').css({top:10,left:window.innerWidth-140,display:'block',height:46,width:100})
+	$('#buttonSave').css({top:10 +(40 +10),left:window.innerWidth-140,display:'block',height:46,width:100})
     $('#buttonSave').css('background','url("http://localhost/study05/assets/img/save.png")');
 
-	$('#buttonExclusion').css({top:70,left:window.innerWidth-140,display:'block',height:46,width:100})
+	$('#buttonExclusion').css({top:70 +(40 +10),left:window.innerWidth-140,display:'block',height:46,width:100})
     $('#buttonExclusion').css('background','url("http://localhost/study05/assets/img/exclusion.png")');
 
 }); 
@@ -909,11 +910,12 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 function commonAddMargin(){
 	//上
+	//$('#addMarginTop').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
 	$('#addMarginTop').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
 	//下
 	if (<?php echo $_SESSION['background'];?>=='1'){
-		$('#addMarginBottom').css({top:<?php echo $_SESSION['resultHeight'];?> -4
-			,left:0,display:'block',height:<?php echo $_SESSION['scrollTableHeight'];?>,width:'100%'})
+		$('#addMarginBottom').css({top:<?php echo $_SESSION['resultHeight'];?> -4 +(40 + 10 -1)
+			,left:0,display:'block',height:<?php echo $_SESSION['scrollTableHeight'];?> +8,width:'100%'})
 	}else{
 		$('#addMarginBottom').css({top:window.innerHeight-(parseFloat(sessionStorage.getItem('startOffsetTop')) *2 +4)
 			,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')) *2.4,width:'100%'})
