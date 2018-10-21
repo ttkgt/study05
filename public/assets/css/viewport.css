@@ -1,0 +1,47 @@
+
+p{
+  line-hight:1;
+  margin:0;
+}
+.wrap{
+  width:50%;
+  min-height:100px;
+  background:#ccc;
+  font-size:60px;
+}
+.textP{
+  font-size:50%;
+}
+
+.textPx{
+  font-size:30px;
+}
+
+.textVw1{
+font-size:1vw;
+}
+.textVw2{
+font-size:2vw;
+}
+.textVw3{
+font-size:3vw;
+}
+.textVw4{
+font-size:4vw;
+}
+.textVw5{
+font-size:5vw;
+}
+.textVw6{
+font-size:6vw;
+}
+
+table {
+	border-collapse: collapse;
+}
+td {
+	border: solid 1px;
+	padding: 0.1em;
+}
+
+
