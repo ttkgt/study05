@@ -72,6 +72,15 @@ function getNow() {
     <td class="textVw2" align="right">100%</td>
   </tr>
 </table>
+	<form>
+		<div>
+			<label class="textVw2" for="uname">Choose a username: </label>
+			<input class="textVw2" type="text" id="uname" name="name">
+		</div>
+		<div>
+			<button class="textVw2">Submit</button>
+		</div>
+	</form>
 
 </div></body>
 </html>
