@@ -111,8 +111,12 @@
 					</li>
 					<li><a href="#">ステップアップ &raquo;</a>
 						<ul>
+							<li><a href="#"><?php echo Html::anchor('html2canvas/index','html2canvas'); ?></a></li>
+							<li><a href="#"><?php echo Html::anchor('request01/index','request01'); ?></a></li>
+							<li><a href="#"><?php echo Html::anchor('textarea/index','textarea'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('viewport01/index','viewport01'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('viewport02/index','viewport02'); ?></a></li>
+							<li><a href="#"><?php echo Html::anchor('viewport03/index','viewport03'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('tinyDraggable/index','tinyDraggable'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('boxwrapper/index','boxwrapper'); ?></a></li>
 							<li><a href="#"><?php echo Html::anchor('locatedarea/index','locatedarea'); ?></a></li>

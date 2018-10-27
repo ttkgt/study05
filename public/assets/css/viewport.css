@@ -1,12 +1,16 @@
 
+body {
+font-family: 'MS Gothic', sans-serif ;
+}
+
 p{
   line-hight:1;
   margin:0;
 }
 .wrap{
-  width:50%;
+  width:100%;
   min-height:100px;
-  background:#ccc;
+  background:#fff;
   font-size:60px;
 }
 .textP{

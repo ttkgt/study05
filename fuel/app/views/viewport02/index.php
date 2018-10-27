@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
+<!--<meta charset="UTF-8" />-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="@-ms-viewport" content="width=device-width, initial-scale=1.0">
 <title>「viewport」</title>
 <link rel="stylesheet" type="text/css" href="http://localhost/study05/assets/css/viewport.css" />
 </head>
 <body>
-<span id="view_clock"></span>
+<!--
+    <span id="view_clock"></span>
+-->
 <script type="text/javascript">
 timerID = setInterval('clock()',500); //0.5秒毎にclock()を実行
 
@@ -36,7 +38,7 @@ function getNow() {
 <span class="textVw3"  style="border-bottom: solid 1px black;"> 10:05:10時点 </span>
 <br><br>
 <div class="wrap">
-  <table>
+  <table align="center">
   <tr>
     <td class="textVw3" align="center">全出荷件数</td>
     <td class="textVw5" align="right">1,000</td>
@@ -53,7 +55,8 @@ function getNow() {
     <td class="textVw3" align="center">％</td>
   </tr>
 </table>
-  <table>
+    <br>
+  <table align="center">
   <tr>
     <td class="textVw2" align="center">10時</td>
     <td class="textVw2" align="center">12時</td>
@@ -67,13 +70,14 @@ function getNow() {
     <td class="textVw2" align="right">100%</td>
   </tr>
   <tr>
-    <td class="textVw2" align="right">20%</td>
+      <td class="textVw2" align="right"><font color="red">20%</font></td>
     <td class="textVw2" align="right">50%</td>
     <td class="textVw2" align="right">100%</td>
     <td class="textVw2" align="right">100%</td>
   </tr>
 </table>
-	<form>
+<!--
+    <form>
 		<div>
 			<label class="textVw2" for="uname">Choose a username: </label>
 			<input class="textVw2" type="text" id="uname" name="name">
@@ -82,6 +86,6 @@ function getNow() {
 			<button class="textVw2">Submit</button>
 		</div>
 	</form>
-
+-->
 </div></body>
 </html>
