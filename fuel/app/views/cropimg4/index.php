@@ -698,7 +698,8 @@ $(function(){
 	$(window).resize(function(){
 	//alert('009');
 
-    	sessionStorage.setItem('startOffsetTop' ,$('img.cropimg').offset().top);
+		//地図表示領域のオフセットを取り直す
+		sessionStorage.setItem('startOffsetTop' ,$('img.cropimg').offset().top);
 		sessionStorage.setItem('startOffsetLeft',$('img.cropimg').offset().left);
 
 		/*------------------------------------*/
@@ -708,6 +709,17 @@ $(function(){
 		/*------------------------------------*/
 		commonAllMove(); //共通要素移動処理
 		/*------------------------------------*/
+		
+		sessionStorage.setItem('reDraw','ON');
+		$('<form/>', {action: 'http://localhost/study05/cropimg4/reindex', method: 'post'})
+
+		.append($('<input/>', {type: 'hidden', name: 'img_top'   , value: $('img.cropimg').offset().top  - parseFloat(sessionStorage.getItem('startOffsetTop'))}))
+		.append($('<input/>', {type: 'hidden', name: 'img_left'  , value: $('img.cropimg').offset().left - parseFloat(sessionStorage.getItem('startOffsetLeft'))}))
+		.append($('<input/>', {type: 'hidden', name: 'img_height', value: $('img.cropimg').height()}))
+		.append($('<input/>', {type: 'hidden', name: 'img_width' , value: $('img.cropimg').width()}))
+
+        .appendTo(document.body)
+		.submit();
 
 	})
 });
@@ -912,6 +924,7 @@ $("#<?php echo $_SESSION['itemCd'];?>").ready(function () {
  * 「.attr()」 は、要素にマウスが当たったときの吹き出しの内容である。
 ------------------------------------------------------------------------------------------------------------------------------*/ 
 function commonAddMargin(){
+	//alert("commonAddMargin");
 	//上
 	//$('#addMarginTop').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
 	$('#addMarginTop').css({top:0,left:0,display:'block',height:parseFloat(sessionStorage.getItem('startOffsetTop')),width:'100%'})
