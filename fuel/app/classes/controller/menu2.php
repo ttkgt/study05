@@ -15,11 +15,12 @@ class Controller_menu2 extends Controller
 		$_SESSION['map']        = 'http://localhost/study05/assets/img/koujou1.png';
 
         if($_SESSION['background'] == '1'){
-            //$_SESSION['resultWidth']    = '930'; 
-			//$_SESSION['resultHeight']   = '523';
-            $_SESSION['resultWidth']    = 'window.innerWidth'; 
-            $_SESSION['resultHeight']   = 'window.innerHeight * 0.7 - 40';
-            $_SESSION['scrollTableHeight']   = 'window.innerHeight - (window.innerHeight * 0.7 + 12)';
+            $_SESSION['resultWidth']    = '1140'; 
+			$_SESSION['resultHeight']   = '650';
+            $_SESSION['scrollTableHeight']   = 'window.innerHeight - (650 + 12)';
+            //$_SESSION['resultWidth']    = 'window.innerWidth'; 
+            //$_SESSION['resultHeight']   = 'window.innerHeight * 0.7 - 40';
+            //$_SESSION['scrollTableHeight']   = 'window.innerHeight - (window.innerHeight * 0.7 + 12)';
         }else{
             $_SESSION['resultWidth']    = 'window.innerWidth'; 
             $_SESSION['resultHeight']   = 'window.innerHeight';

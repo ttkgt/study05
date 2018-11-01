@@ -698,6 +698,9 @@ $(function(){
 	$(window).resize(function(){
 	//alert('009');
 
+    	sessionStorage.setItem('startOffsetTop' ,$('img.cropimg').offset().top);
+		sessionStorage.setItem('startOffsetLeft',$('img.cropimg').offset().left);
+
 		/*------------------------------------*/
 		commonAddMargin(); //共通追加余白処理
 		/*------------------------------------*/
@@ -923,7 +926,8 @@ function commonAddMargin(){
 	//左
 	$('#addMarginLeft').css({top:0,left:0,display:'block',height:window.innerHeight,width:parseFloat(sessionStorage.getItem('startOffsetLeft'))})
 	//右
-	$('#addMarginRight').css({top:0,left:window.innerWidth-39,display:'block',height:window.innerHeight,width:39})
+	//$('#addMarginRight').css({top:0,left:window.innerWidth-39,display:'block',height:window.innerHeight,width:39})
+	$('#addMarginRight').css({top:0,left:parseFloat(sessionStorage.getItem('startOffsetLeft'))+<?php echo $_SESSION['resultWidth'];?>-30,display:'block',height:window.innerHeight,width:window.innerWidth-(parseFloat(sessionStorage.getItem('startOffsetLeft'))+<?php echo $_SESSION['resultWidth'];?>-30)})
 }	
 	
 	
