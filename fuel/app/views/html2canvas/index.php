@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <title>html2canvasテスト</title>
-<!--http://hinanaoblog.xyz/?p=434-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 <script src="html2canvas.min.js"></script>
